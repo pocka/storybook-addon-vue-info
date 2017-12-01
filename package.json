@@ -7,7 +7,9 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:component": "node scripts/compile-component.js -i src/components/InfoView.vue -o build/components/InfoView.vue",
+    "compile:ts": "tsc"
   },
   "repository": {
     "type": "git",
