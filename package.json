@@ -1,0 +1,26 @@
+{
+  "name": "storybook-addon-vue-info",
+  "version": "0.1.0",
+  "description": "Storybook addon that shows Vue component information",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocka/storybook-addon-vue-info.git"
+  },
+  "keywords": [
+    "vue",
+    "storybook"
+  ],
+  "author": "pocka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pocka/storybook-addon-vue-info/issues"
+  },
+  "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme"
+}
