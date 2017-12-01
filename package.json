@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
+    "commander": "^2.12.2",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "vue": "^2.5.9",
