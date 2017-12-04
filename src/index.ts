@@ -11,7 +11,18 @@ import parseStoryComponent from './parseStoryComponent'
 // tsc cannot resolve module at compile-time.
 const InfoView = require('./components/InfoView')
 
-const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
+/**
+ * Shows Vue component's information.
+ *
+ * @example
+ * storiesOf('My Vue component')
+ *   .addDecorator(VueInfoAddon)
+ *   .add('default', () => ({
+ *     components: { MyAwesomeComponent },
+ *     template: '<my-awesome-component :value="0"/>'
+ *   }))
+ */
+const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => {
   const story = storyFn()
 
   const componentInfo = parseStoryComponent(story)
@@ -34,4 +45,4 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
   } as ComponentOptions<Vue>
 }
 
-export default VueInfoDecorator
+export default VueInfoAddon
