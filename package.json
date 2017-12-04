@@ -13,7 +13,7 @@
     "compile:ts": "tsc",
     "mkdir": "mkdir -p lib/components",
     "build": "npm run mkdir && npm run compile:component && npm run compile:ts",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "example": "cd example && npm install && npm run storybook"
   },
   "repository": {
