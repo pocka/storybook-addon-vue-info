@@ -1,25 +1,15 @@
 import Vue, { ComponentOptions, PropOptions } from 'vue'
 
+import {
+  RuntimeComponent, RuntimeComponents, RuntimeComponentOptions
+} from './types/VueRuntime'
+import ComponentInfo from './types/ComponentInfo'
+
 import constructorToString from './utils/constructorToString'
 
 const InfoView = require('./components/InfoView')
 
-interface RawComponent {
-  name: string
-  options: ComponentOptions<any>
-  extendedOptions: ComponentOptions<any>
-}
-
-interface RawComponents {
-  [name: string]: RawComponent
-}
-
-interface ComponentInfo {
-  name: string
-  component: RawComponent
-}
-
-const VueInfoDecorator = (storyFn: () => ComponentOptions<any>) => {
+const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
   const story = storyFn()
 
   const [componentInfo, template] = parseComponent(story)
@@ -59,7 +49,7 @@ const hyphenate = (input: string): string => input.replace(/\B([A-Z])/g, '-$1').
 
 const getOuterTagName = (template: string): string => template.replace(/<([^\s>]+)[\s\S]+$/, '$1')
 
-const lookupMatchedComponent = (tagName: string, components?: RawComponents): ComponentInfo | undefined => {
+const lookupMatchedComponent = (tagName: string, components?: RuntimeComponents): ComponentInfo | undefined => {
   if (!components) {
     return undefined
   }
@@ -74,7 +64,7 @@ const lookupMatchedComponent = (tagName: string, components?: RawComponents): Co
   })
 }
 
-const parseComponent = (component: ComponentOptions<any>): [ComponentInfo, string] => {
+const parseComponent = (component: RuntimeComponentOptions): [ComponentInfo, string] => {
   const template = component.template
 
   if (!template) {
@@ -83,10 +73,10 @@ const parseComponent = (component: ComponentOptions<any>): [ComponentInfo, strin
 
   const tagName = hyphenate(getOuterTagName(template))
 
-  const components = component.components as { [name: string]: RawComponent }
+  const components = component.components as RuntimeComponents
 
-  const info = lookupMatchedComponent(tagName, component.components as RawComponents) ||
-    lookupMatchedComponent(tagName, (Vue as any).options.components)
+  const info = lookupMatchedComponent(tagName, components) ||
+    lookupMatchedComponent(tagName, (Vue as any).options.components as RuntimeComponents)
 
   if (!info) {
     throw new Error(`No match components registered: ${tagName}`)
