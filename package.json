@@ -30,12 +30,14 @@
     "url": "https://github.com/pocka/storybook-addon-vue-info/issues"
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
+  "dependencies": {
+    "vueify": "^9.4.1"
+  },
   "devDependencies": {
     "commander": "^2.12.2",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "vue": "^2.5.9",
-    "vueify": "^9.4.1"
   },
   "peerDependencies": {
     "vue": "^2.0.0"
