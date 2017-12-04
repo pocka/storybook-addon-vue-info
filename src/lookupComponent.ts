@@ -15,9 +15,11 @@ function lookupComponent(name: string, components?: RuntimeComponents): Componen
 
   for (let componentName in components) {
     if (hyphenate(componentName) === name) {
+      const component = components[componentName]
+
       return {
         name: componentName,
-        component: components[componentName]
+        component: component.options ? component.options : component
       }
     }
   }

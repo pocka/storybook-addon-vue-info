@@ -1,6 +1,6 @@
-import { RuntimeComponent } from './VueRuntime'
+import { RuntimeComponentOptions } from './VueRuntime'
 
 export default interface ComponentInfo {
   name: string
-  component: RuntimeComponent
+  component: RuntimeComponentOptions
 }
