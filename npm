@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$1" = "run" -a "$2" = "run:example" ]; then
+if [ "$1" = "run" -a "$2" = "example" ]; then
 	docker run \
 		--rm \
 		-it \
