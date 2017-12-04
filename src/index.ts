@@ -6,6 +6,8 @@ import {
 import ComponentInfo from './types/ComponentInfo'
 
 import constructorToString from './utils/constructorToString'
+import hyphenate from './utils/hyphenate'
+import getOutermostTagName from './utils/getOutermostTagName'
 
 const InfoView = require('./components/InfoView')
 
@@ -45,10 +47,6 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
 
 export default VueInfoDecorator
 
-const hyphenate = (input: string): string => input.replace(/\B([A-Z])/g, '-$1').toLowerCase()
-
-const getOuterTagName = (template: string): string => template.replace(/<([^\s>]+)[\s\S]+$/, '$1')
-
 const lookupMatchedComponent = (tagName: string, components?: RuntimeComponents): ComponentInfo | undefined => {
   if (!components) {
     return undefined
@@ -71,7 +69,7 @@ const parseComponent = (component: RuntimeComponentOptions): [ComponentInfo, str
     throw new Error('`template` must be on component options, but got undefined.')
   }
 
-  const tagName = hyphenate(getOuterTagName(template))
+  const tagName = hyphenate(getOutermostTagName(template))
 
   const components = component.components as RuntimeComponents
 
