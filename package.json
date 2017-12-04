@@ -12,7 +12,8 @@
     "compile:component": "node scripts/compile-component.js -i src/components/InfoView.vue -o lib/components/InfoView",
     "compile:ts": "tsc",
     "mkdir": "mkdir -p lib/components",
-    "build": "npm run mkdir && npm run compile:component && npm run compile:ts"
+    "build": "npm run mkdir && npm run compile:component && npm run compile:ts",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
