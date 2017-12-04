@@ -1,4 +1,4 @@
-import Vue, { ComponentOptions } from 'vue'
+import Vue, { ComponentOptions, PropOptions } from 'vue'
 
 import constructorToString from './utils/constructorToString'
 
