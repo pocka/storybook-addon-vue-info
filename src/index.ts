@@ -4,6 +4,7 @@ import {
   RuntimeComponent, RuntimeComponents, RuntimeComponentOptions
 } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
+import PropInfo from './types/PropInfo'
 
 import constructorToString from './utils/constructorToString'
 import hyphenate from './utils/hyphenate'
@@ -20,7 +21,7 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
 
   const { props } = componentInfo.component.options
 
-  const propsList = Object.keys(props as any).map(name => {
+  const propsList: PropInfo[] = Object.keys(props as any).map(name => {
     const prop = (props as any)[name]
 
     return {
