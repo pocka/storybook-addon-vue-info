@@ -2,7 +2,8 @@
   "name": "storybook-addon-vue-info",
   "version": "0.1.0",
   "description": "Storybook addon that shows Vue component information",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "example": "example"
   },
