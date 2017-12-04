@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pocka/storybook-addon-vue-info/issues"
   },
-  "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme"
+  "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
+  "dependencies": {
+    "vue": "^2.5.9"
+  }
 }
