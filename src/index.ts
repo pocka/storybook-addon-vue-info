@@ -1,12 +1,10 @@
 import Vue, { ComponentOptions, PropOptions } from 'vue'
 
 import {
-  RuntimeComponent, RuntimeComponents, RuntimeComponentOptions
+  RuntimeComponents, RuntimeComponentOptions
 } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
-import PropInfo from './types/PropInfo'
 
-import constructorToString from './utils/constructorToString'
 import hyphenate from './utils/hyphenate'
 import getOutermostTagName from './utils/getOutermostTagName'
 
