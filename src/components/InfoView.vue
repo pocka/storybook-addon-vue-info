@@ -1,5 +1,5 @@
 <script>
-export default {
+module.exports = {
   props: {
     name: {
       type: String,
