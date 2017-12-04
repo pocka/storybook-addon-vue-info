@@ -11,6 +11,7 @@ import hyphenate from './utils/hyphenate'
 import getOutermostTagName from './utils/getOutermostTagName'
 
 import getPropsInfoList from './getPropsInfoList'
+import lookupComponent from './lookupComponent'
 
 // Since addon's component is compiled by vueify,
 // tsc cannot resolve module at compile-time.
@@ -41,21 +42,6 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
 
 export default VueInfoDecorator
 
-const lookupMatchedComponent = (tagName: string, components?: RuntimeComponents): ComponentInfo | undefined => {
-  if (!components) {
-    return undefined
-  }
-
-  return Object.keys(components).map(name => {
-    return {
-      name,
-      component: components[name]
-    }
-  }).find(info => {
-    return hyphenate(info.name) === tagName
-  })
-}
-
 const parseComponent = (component: RuntimeComponentOptions): [ComponentInfo, string] => {
   const { template } = component
 
@@ -74,8 +60,8 @@ const parseComponent = (component: RuntimeComponentOptions): [ComponentInfo, str
 
   // If component was not declared in `components` prop,
   // assume it was registered globally.
-  const info = lookupMatchedComponent(outermostTagName, localComponents) ||
-    lookupMatchedComponent(outermostTagName, globalComponents)
+  const info = lookupComponent(outermostTagName, localComponents) ||
+    lookupComponent(outermostTagName, globalComponents)
 
   if (!info) {
     throw new Error(`No match components registered: ${outermostTagName}`)
