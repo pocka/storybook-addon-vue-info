@@ -9,6 +9,8 @@ import constructorToString from './utils/constructorToString'
 import hyphenate from './utils/hyphenate'
 import getOutermostTagName from './utils/getOutermostTagName'
 
+// Since addon's component is compiled by vueify,
+// tsc cannot resolve module at compile-time.
 const InfoView = require('./components/InfoView')
 
 const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
@@ -38,7 +40,7 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
           propsList
         },
         scopedSlots: {
-          default: () => [h(story as () => any)]
+          default: () => [h(story)]
         }
       })
     }
@@ -63,21 +65,28 @@ const lookupMatchedComponent = (tagName: string, components?: RuntimeComponents)
 }
 
 const parseComponent = (component: RuntimeComponentOptions): [ComponentInfo, string] => {
-  const template = component.template
+  const { template } = component
 
+  // We need template for display "Usage".
   if (!template) {
     throw new Error('`template` must be on component options, but got undefined.')
   }
 
-  const tagName = hyphenate(getOutermostTagName(template))
+  const outermostTagName = hyphenate(getOutermostTagName(template))
 
-  const components = component.components as RuntimeComponents
+  // Components registered by `{ components: { Foo }}`
+  const localComponents = component.components as RuntimeComponents
 
-  const info = lookupMatchedComponent(tagName, components) ||
-    lookupMatchedComponent(tagName, (Vue as any).options.components as RuntimeComponents)
+  // Components registered by `Vue.component('foo', Foo)`
+  const globalComponents = (Vue as any).options.components as RuntimeComponents
+
+  // If component was not declared in `components` prop,
+  // assume it was registered globally.
+  const info = lookupMatchedComponent(outermostTagName, localComponents) ||
+    lookupMatchedComponent(outermostTagName, globalComponents)
 
   if (!info) {
-    throw new Error(`No match components registered: ${tagName}`)
+    throw new Error(`No match components registered: ${outermostTagName}`)
   }
 
   return [info, template]
