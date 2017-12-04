@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 const program = require('commander')
-const compiler = require('vue-component-compiler')
+const compiler = require('vueify').compiler
 
 function main(args) {
   program
