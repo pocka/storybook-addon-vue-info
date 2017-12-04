@@ -10,6 +10,8 @@ import constructorToString from './utils/constructorToString'
 import hyphenate from './utils/hyphenate'
 import getOutermostTagName from './utils/getOutermostTagName'
 
+import getPropsInfoList from './getPropsInfoList'
+
 // Since addon's component is compiled by vueify,
 // tsc cannot resolve module at compile-time.
 const InfoView = require('./components/InfoView')
@@ -19,18 +21,7 @@ const VueInfoDecorator = (storyFn: () => RuntimeComponentOptions) => {
 
   const [componentInfo, template] = parseComponent(story)
 
-  const { props } = componentInfo.component.options
-
-  const propsList: PropInfo[] = Object.keys(props as any).map(name => {
-    const prop = (props as any)[name]
-
-    return {
-      name,
-      type: constructorToString(prop.type),
-      required: !!prop.required,
-      default: prop.default
-    }
-  })
+  const propsList = getPropsInfoList(componentInfo.component)
 
   return {
     render(h) {
