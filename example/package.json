@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "dependencies": {
+    "storybook-addon-vue-info": "file:..",
     "vue": "^2.5.9"
   },
   "devDependencies": {
