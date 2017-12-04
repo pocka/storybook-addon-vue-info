@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import VueInfoAddon from 'storybook-addon-vue-info'
 
-import BaseButton from '../src/components/BaseButton'
+import BaseButton from '../src/components/BaseButton.vue'
 
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)

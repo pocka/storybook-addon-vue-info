@@ -2,7 +2,7 @@ import { configure } from '@storybook/vue'
 
 import Vue from 'vue'
 
-import BaseButton from '../src/components/BaseButton'
+import BaseButton from '../src/components/BaseButton.vue'
 
 Vue.component('base-button', BaseButton)
 
