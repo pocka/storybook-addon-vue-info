@@ -5,7 +5,7 @@
  * @returns An outermost tag name (not include "<" nor ">")
  */
 function getOutermostTagName(xmlString: string): string {
-  return xmlString.replace(/<([^\s>]+)[\s\S]+$/, '$1')
+  return xmlString.replace(/<([^\s>\/]+)[\s\S]+$/, '$1')
 }
 
 export default getOutermostTagName

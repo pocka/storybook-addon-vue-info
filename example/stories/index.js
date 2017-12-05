@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import VueInfoAddon from 'storybook-addon-vue-info'
 
+import BaseBlank from '../src/components/BaseBlank.vue'
 import BaseButton from '../src/components/BaseButton.vue'
 
 storiesOf('BaseButton', module)
@@ -14,4 +15,11 @@ storiesOf('BaseButton', module)
       LocalButton: BaseButton
     },
     template: '<local-button :disabled="true" label="local"/>'
+  }))
+
+storiesOf('BaseBlank', module)
+  .addDecorator(VueInfoAddon)
+  .add('blank', () => ({
+    components: { BaseBlank },
+    template: '<base-blank/>'
   }))
