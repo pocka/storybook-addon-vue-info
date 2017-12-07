@@ -7,6 +7,8 @@
 
 A Storybook addon that shows component's information.
 
+- [Demo](https://storybook-addon-vue-info.netlify.com/)
+
 ![Screenshot](https://raw.githubusercontent.com/pocka/storybook-addon-vue-info/master/assets/storybook-addon-vue-info--screen-shot.png)
 
 ## Install
