@@ -17,6 +17,17 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
   return Object.keys(props).map(name => {
     const prop = (props as any)[name]
 
+    // If there are no props defined in Object sytle,
+    // Vue does not convert "prop: Constructor" into Object style (See #3).
+    if (typeof prop === 'function') {
+      return {
+        name,
+        type: constructorToString(prop),
+        required: false,
+        default: undefined
+      }
+    }
+
     return {
       name,
       type: constructorToString(prop.type),
