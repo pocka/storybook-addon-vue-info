@@ -63,6 +63,7 @@ h2 {
 }
 
 .code {
+  overflow: auto;
   padding: 1em;
   color: #fff;
   background-color: #333;
