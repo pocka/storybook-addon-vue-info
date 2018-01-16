@@ -5,7 +5,7 @@ import { RuntimeComponentOptions } from '../types/VueRuntime'
 
 const InfoView = require('./components/InfoView')
 
-const defaultOptions: InfoAddonOptions {}
+const defaultOptions: InfoAddonOptions = {}
 
 type StoryFactory = () => RuntimeComponentOptions
 type WithInfo = (story: StoryFactory) => ComponentOptions<Vue>
