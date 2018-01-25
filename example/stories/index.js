@@ -19,6 +19,12 @@ storiesOf('BaseButton', module)
   .add('long long template', () => ({
     template: '<base-button type="primary" disabled label="Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components."/>'
   }))
+  .add('multiline template', () => ({
+    template: `
+      <base-button label="You can also use multiline template!">
+      </base-button>
+    `
+  }))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
