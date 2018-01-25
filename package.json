@@ -34,6 +34,7 @@
     "vueify": "^9.4.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "commander": "^2.12.2",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
