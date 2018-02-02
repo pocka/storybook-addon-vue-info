@@ -19,6 +19,8 @@ const constructorToString = (constructor: Constructor | Constructor[]): string =
     return `function`
   } else if (constructor === Symbol) {
     return 'Symbol'
+  } else if (constructor === Array) {
+    return 'Array'
   } else {
     return 'unknown'
   }
