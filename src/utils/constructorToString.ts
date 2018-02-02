@@ -20,7 +20,7 @@ const constructorToString = (constructor: Constructor | Constructor[]): string =
   } else if (constructor === Symbol) {
     return 'Symbol'
   } else if (constructor === Array) {
-    return 'Array'
+    return 'array'
   } else {
     return 'unknown'
   }
