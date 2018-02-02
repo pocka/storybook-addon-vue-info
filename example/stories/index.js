@@ -5,6 +5,8 @@ import VueInfoAddon from 'storybook-addon-vue-info'
 import BaseBlank from '../src/components/BaseBlank.vue'
 import BaseButton from '../src/components/BaseButton.vue'
 
+import NumberList from '../src/components/NumberList.vue'
+
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
   .add('global component', () => ({
@@ -31,4 +33,11 @@ storiesOf('BaseBlank', module)
   .add('blank', () => ({
     components: { BaseBlank },
     template: '<base-blank/>'
+  }))
+
+storiesOf('NumberList', module)
+  .addDecorator(VueInfoAddon)
+  .add('A prop with `type: Array`', () => ({
+    components: { NumberList },
+    template: '<number-list :numbers="[3, 4, 5]"/>'
   }))
