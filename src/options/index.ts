@@ -6,6 +6,5 @@ export const defaultOptions: InfoAddonOptions = {
   header: true,
   source: true,
   styles: {},
-  TableComponent: null,
   summary: ''
 }
