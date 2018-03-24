@@ -4,6 +4,7 @@ import { RuntimeComponentOptions } from './types/VueRuntime'
 
 import getPropsInfoList from './getPropsInfoList'
 import parseStoryComponent from './parseStoryComponent'
+import { defaultOptions, InfoAddonOptions } from './options'
 
 export { default as withInfo } from './withInfo'
 
@@ -46,3 +47,7 @@ const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => {
 }
 
 export default VueInfoAddon
+
+export function setDefaults(opts: Partial<InfoAddonOptions> | string): void {
+  Object.assign(defaultOptions, typeof opts === 'string' ? { summary: opts } : opts)
+}

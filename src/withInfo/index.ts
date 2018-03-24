@@ -1,26 +1,12 @@
 import Vue, { ComponentOptions } from 'vue'
 
-import InfoAddonOptions from '../types/InfoAddonOptions'
+import { defaultOptions, InfoAddonOptions } from '../options'
 import { RuntimeComponentOptions } from '../types/VueRuntime'
 
 import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
 
 const InfoView = require('../components/InfoView')
-
-const defaultOptions: InfoAddonOptions = {
-  header: true,
-  inline: true,
-  source: true,
-  lookupGlobalComponent: true,
-  useKebabCase: true,
-  propTables: [],
-  propTablesExclude: [],
-  styles: {},
-  components: {},
-  TableComponent: null,
-  summary: ''
-}
 
 export type StoryFactory = () => RuntimeComponentOptions
 export type WithInfo = (story: StoryFactory) => () => ComponentOptions<Vue>
