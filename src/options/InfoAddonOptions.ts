@@ -21,11 +21,6 @@ interface VueInfoAddonOptions {
   source: boolean
 
   /**
-   * Whether to lookup Components registered globaly (Vue only option)
-   */
-  lookupGlobalComponent: boolean
-
-  /**
    * Displays component name in kebab-case instead of PascalCase (Vue only option)
    */
   useKebabCase: boolean
