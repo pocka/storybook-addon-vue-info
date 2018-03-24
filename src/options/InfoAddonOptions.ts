@@ -21,11 +21,6 @@ interface VueInfoAddonOptions {
   source: boolean
 
   /**
-   * Displays component name in kebab-case instead of PascalCase (Vue only option)
-   */
-  useKebabCase: boolean
-
-  /**
    * Overrides styles of addon.
    */
   styles: {} // TODO: Implement!
