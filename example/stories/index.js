@@ -5,6 +5,8 @@ import VueInfoAddon, { withInfo } from 'storybook-addon-vue-info'
 import BaseBlank from '../src/components/BaseBlank.vue'
 import BaseButton from '../src/components/BaseButton.vue'
 
+import NumberList from '../src/components/NumberList.vue'
+
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
   .add('global component', () => ({
@@ -20,6 +22,12 @@ storiesOf('BaseButton', module)
     template:
       '<base-button type="primary" disabled label="Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components."/>'
   }))
+  .add('multiline template', () => ({
+    template: `
+      <base-button label="You can also use multiline template!">
+      </base-button>
+    `
+  }))
 
 storiesOf('withInfo API', module).add(
   'withInfo/1',
@@ -33,4 +41,11 @@ storiesOf('BaseBlank', module)
   .add('blank', () => ({
     components: { BaseBlank },
     template: '<base-blank/>'
+  }))
+
+storiesOf('NumberList', module)
+  .addDecorator(VueInfoAddon)
+  .add('A prop with `type: Array`', () => ({
+    components: { NumberList },
+    template: '<number-list :numbers="[3, 4, 5]"/>'
   }))
