@@ -16,6 +16,10 @@ module.exports = {
     showHeader: {
       type: Boolean,
       required: true
+    },
+    showSource: {
+      type: Boolean,
+      required: true
     }
   }
 }
@@ -29,8 +33,12 @@ module.exports = {
     >
       {{name}}
     </h1>
-    <h2>Usage</h2>
-    <pre class="code"><code>{{template}}</code></pre>
+
+    <template v-if="showSource">
+      <h2>Usage</h2>
+      <pre class="code"><code>{{template}}</code></pre>
+    </template>
+
     <h2>Preview</h2>
     <div class="component-area">
       <slot></slot>
