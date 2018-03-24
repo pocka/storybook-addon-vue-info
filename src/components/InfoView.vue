@@ -20,22 +20,30 @@ module.exports = {
     showSource: {
       type: Boolean,
       required: true
+    },
+    userStyle: {
+      type: Object,
+      required: true
     }
   }
 }
 </script>
 
 <template>
-  <div class="vue-info">
+  <div
+    class="vue-info"
+    :style="userStyle.info"
+  >
     <h1
       class="title"
       v-if="showHeader"
+      :style="userStyle.header ? userStyle.header.h1 : {}"
     >
       {{name}}
     </h1>
 
     <template v-if="showSource">
-      <h2>Usage</h2>
+      <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
       <pre class="code"><code>{{template}}</code></pre>
     </template>
 
@@ -43,7 +51,8 @@ module.exports = {
     <div class="component-area">
       <slot></slot>
     </div>
-    <h2>Props</h2>
+
+    <h2 :style="userStyle.propTableHead">Props</h2>
     <table class="props">
       <thead class="props-head">
         <tr>

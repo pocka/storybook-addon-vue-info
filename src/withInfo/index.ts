@@ -38,7 +38,8 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             template: story.template,
             propsList,
             showHeader: opts.header,
-            showSource: opts.source
+            showSource: opts.source,
+            userStyle: opts.styles
           },
           scopedSlots: {
             default: () => [h(story)]

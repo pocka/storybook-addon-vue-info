@@ -46,6 +46,28 @@ storiesOf('withInfo API', module)
   })(() => ({
     template: '<base-button label="Without source"/>'
   })))
+  .add('set .style', withInfo({
+    styles: {
+      info: {
+        backgroundColor: '#faa'
+      },
+      header: {
+        h1: {
+          fontSize: '1em'
+        }
+      },
+      source: {
+        h1: {
+          fontStyle: 'italic'
+        }
+      },
+      propTableHead: {
+        color: '#f33'
+      }
+    }
+  })(() => ({
+    template: '<base-button label="funny styled info"/>'
+  })))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)

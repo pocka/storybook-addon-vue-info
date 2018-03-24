@@ -5,6 +5,8 @@ import { Component } from 'vue'
  */
 export type VueComponent = Component<any, any, any, any> | string
 
+export type InlineStyle = { [key: string]: string | number }
+
 /**
  * Addon options
  * NOTE: There are no maxProp*** options since we use template strings to render source code.
@@ -23,7 +25,16 @@ interface VueInfoAddonOptions {
   /**
    * Overrides styles of addon.
    */
-  styles: {} // TODO: Implement!
+  styles: {
+    info?: InlineStyle
+    header?: {
+      h1?: InlineStyle
+    }
+    source?: {
+      h1?: InlineStyle
+    }
+    propTableHead?: InlineStyle
+  }
 
   /**
    * Overrides components used to display markdown
