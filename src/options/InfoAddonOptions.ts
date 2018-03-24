@@ -16,11 +16,6 @@ interface VueInfoAddonOptions {
   header: boolean
 
   /**
-   * Displays info inline vs click button to view
-   */
-  inline: boolean
-
-  /**
    * Displays the source of story Component
    */
   source: boolean
@@ -34,16 +29,6 @@ interface VueInfoAddonOptions {
    * Displays component name in kebab-case instead of PascalCase (Vue only option)
    */
   useKebabCase: boolean
-
-  /**
-   * Displays Prop Tables with this components
-   */
-  propTables: VueComponent[]
-
-  /**
-   * Exclude Components from being shown in Prop Tables section
-   */
-  propTablesExclude: VueComponent[]
 
   /**
    * Overrides styles of addon.
