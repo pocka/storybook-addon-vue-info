@@ -36,6 +36,11 @@ storiesOf('withInfo API', module)
       template: '<base-button label="You can use withInfo API"/>'
     }))
   )
+  .add('set .header=false', withInfo({
+    header: false
+  })(() => ({
+    template: '<base-button label="No header info!"/>'
+  })))
   .add('set .TableComponent', withInfo({
     TableComponent: BaseButton
   })(() => ({

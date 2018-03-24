@@ -12,6 +12,10 @@ module.exports = {
     propsList: {
       type: Array,
       required: true
+    },
+    showHeader: {
+      type: Boolean,
+      required: true
     }
   }
 }
@@ -19,7 +23,12 @@ module.exports = {
 
 <template>
   <div class="vue-info">
-    <h1 class="title">{{name}}</h1>
+    <h1
+      class="title"
+      v-if="showHeader"
+    >
+      {{name}}
+    </h1>
     <h2>Usage</h2>
     <pre class="code"><code>{{template}}</code></pre>
     <h2>Preview</h2>
