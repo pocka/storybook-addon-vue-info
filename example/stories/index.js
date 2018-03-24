@@ -68,6 +68,14 @@ storiesOf('withInfo API', module)
   })(() => ({
     template: '<base-button label="funny styled info"/>'
   })))
+  .add('set .summary', withInfo({
+    summary: 'This summary is set by options.summary !!'
+  })(() => ({
+    template: '<base-button label="awesome button"/>'
+  })))
+  .add('pass summary strings to options', withInfo('Awesome button!')(() => ({
+    template: '<base-button label="My Awesome Button!"/>'
+  })))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)

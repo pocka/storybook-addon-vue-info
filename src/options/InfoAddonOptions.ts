@@ -27,6 +27,7 @@ interface VueInfoAddonOptions {
    */
   styles: {
     info?: InlineStyle
+    infoContent?: InlineStyle
     header?: {
       h1?: InlineStyle
     }

@@ -5,6 +5,9 @@ module.exports = {
       type: String,
       required: true
     },
+    summary: {
+      type: String
+    },
     template: {
       type: String,
       required: true
@@ -41,6 +44,13 @@ module.exports = {
     >
       {{name}}
     </h1>
+    <div
+      v-if="summary"
+      class="summary"
+      :style="userStyle.infoContent"
+    >
+      {{summary}}
+    </div>
 
     <template v-if="showSource">
       <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
@@ -86,6 +96,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
   margin-top: 2em;
+}
+
+.summary {
+  color: #777;
 }
 
 .code {
