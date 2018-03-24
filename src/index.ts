@@ -5,6 +5,7 @@ import { RuntimeComponentOptions } from './types/VueRuntime'
 import getPropsInfoList from './getPropsInfoList'
 import parseStoryComponent from './parseStoryComponent'
 import { defaultOptions, InfoAddonOptions } from './options'
+import withInfo from './withInfo'
 
 export { default as withInfo } from './withInfo'
 
@@ -23,28 +24,7 @@ const InfoView = require('./components/InfoView')
  *     template: '<my-awesome-component :value="0"/>'
  *   }))
  */
-const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => {
-  const story = storyFn()
-
-  const componentInfo = parseStoryComponent(story)
-
-  const propsList = getPropsInfoList(componentInfo.component)
-
-  return {
-    render(h) {
-      return h(InfoView, {
-        props: {
-          name: componentInfo.name,
-          template: story.template,
-          propsList
-        },
-        scopedSlots: {
-          default: () => [h(story)]
-        }
-      })
-    }
-  } as ComponentOptions<Vue>
-}
+const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => withInfo({})(storyFn)()
 
 export default VueInfoAddon
 
