@@ -1,4 +1,5 @@
 import { configure } from '@storybook/vue'
+import { setDefaults } from 'storybook-addon-vue-info'
 
 import Vue from 'vue'
 
@@ -11,3 +12,7 @@ function loadStories() {
 }
 
 configure(loadStories, module)
+
+setDefaults({
+  summary: 'This summary is set by setDefaults/1'
+})

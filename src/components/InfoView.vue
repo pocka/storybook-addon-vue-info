@@ -5,6 +5,9 @@ module.exports = {
       type: String,
       required: true
     },
+    summary: {
+      type: String
+    },
     template: {
       type: String,
       required: true
@@ -12,21 +15,54 @@ module.exports = {
     propsList: {
       type: Array,
       required: true
+    },
+    showHeader: {
+      type: Boolean,
+      required: true
+    },
+    showSource: {
+      type: Boolean,
+      required: true
+    },
+    userStyle: {
+      type: Object,
+      required: true
     }
   }
 }
 </script>
 
 <template>
-  <div class="vue-info">
-    <h1 class="title">{{name}}</h1>
-    <h2>Usage</h2>
-    <pre class="code"><code>{{template}}</code></pre>
+  <div
+    class="vue-info"
+    :style="userStyle.info"
+  >
+    <h1
+      class="title"
+      v-if="showHeader"
+      :style="userStyle.header ? userStyle.header.h1 : {}"
+    >
+      {{name}}
+    </h1>
+    <div
+      v-if="summary"
+      class="summary"
+      :style="userStyle.infoContent"
+    >
+      {{summary}}
+    </div>
+
+    <template v-if="showSource">
+      <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
+      <pre class="code"><code>{{template}}</code></pre>
+    </template>
+
     <h2>Preview</h2>
     <div class="component-area">
       <slot></slot>
     </div>
-    <h2>Props</h2>
+
+    <h2 :style="userStyle.propTableHead">Props</h2>
     <table class="props">
       <thead class="props-head">
         <tr>
@@ -60,6 +96,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
   margin-top: 2em;
+}
+
+.summary {
+  color: #777;
 }
 
 .code {

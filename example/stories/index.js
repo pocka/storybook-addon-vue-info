@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 
-import VueInfoAddon from 'storybook-addon-vue-info'
+import VueInfoAddon, { withInfo } from 'storybook-addon-vue-info'
 
 import BaseBlank from '../src/components/BaseBlank.vue'
 import BaseButton from '../src/components/BaseButton.vue'
@@ -19,7 +19,8 @@ storiesOf('BaseButton', module)
     template: '<local-button :disabled="true" label="local"/>'
   }))
   .add('long long template', () => ({
-    template: '<base-button type="primary" disabled label="Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components."/>'
+    template:
+      '<base-button type="primary" disabled label="Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components."/>'
   }))
   .add('multiline template', () => ({
     template: `
@@ -27,6 +28,54 @@ storiesOf('BaseButton', module)
       </base-button>
     `
   }))
+
+storiesOf('withInfo API', module)
+  .add(
+    'withInfo/1',
+    withInfo({})(() => ({
+      template: '<base-button label="You can use withInfo API"/>'
+    }))
+  )
+  .add('set .header=false', withInfo({
+    header: false
+  })(() => ({
+    template: '<base-button label="No header info!"/>'
+  })))
+  .add('set .source=false', withInfo({
+    source: false
+  })(() => ({
+    template: '<base-button label="Without source"/>'
+  })))
+  .add('set .style', withInfo({
+    styles: {
+      info: {
+        backgroundColor: '#faa'
+      },
+      header: {
+        h1: {
+          fontSize: '1em'
+        }
+      },
+      source: {
+        h1: {
+          fontStyle: 'italic'
+        }
+      },
+      propTableHead: {
+        color: '#f33'
+      }
+    }
+  })(() => ({
+    template: '<base-button label="funny styled info"/>'
+  })))
+  .add('set .summary', withInfo({
+    summary: 'This summary is set by options.summary !!'
+  })(() => ({
+    template: '<base-button label="awesome button"/>'
+  })))
+  .add('pass summary strings to options', withInfo('Awesome button!')(() => ({
+    template: '<base-button label="My Awesome Button!"/>'
+  })))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
