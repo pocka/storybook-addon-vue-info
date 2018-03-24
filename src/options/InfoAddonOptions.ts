@@ -37,11 +37,6 @@ interface VueInfoAddonOptions {
   }
 
   /**
-   * Overrides components used to display markdown
-   */
-  components: {} // TODO: Implement!
-
-  /**
    * Override the component used to render the props table
    */
   TableComponent: VueComponent | null
