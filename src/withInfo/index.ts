@@ -18,12 +18,12 @@ function withInfo(summary: string): WithInfo
  * Displays Component information
  */
 function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
-  const opts = {
-    ...defaultOptions,
-    ...(typeof options === 'string' ? { summary: options } : options)
-  }
-
   return storyFn => () => {
+    const opts = {
+      ...defaultOptions,
+      ...(typeof options === 'string' ? { summary: options } : options)
+    }
+
     const story = storyFn()
 
     const componentInfo = parseStoryComponent(story)
@@ -35,6 +35,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
         return h(InfoView, {
           props: {
             name: componentInfo.name,
+            summary: opts.summary,
             template: story.template,
             propsList,
             showHeader: opts.header,
