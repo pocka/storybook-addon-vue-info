@@ -19,7 +19,23 @@ npm install --save-dev storybook-addon-vue-info
 
 ## Usage
 
-Set this addon as a decorator.
+Wrap story with `withInfo` function.
+
+```js
+import { storiesOf } from '@storybook/vue'
+
+import { withInfo } from 'storybook-addon-vue-info'
+
+storiesOf('MyComponent', module)
+  .add('foo', withInfo({
+    summary: 'Summary for MyComponent'
+  })(() => ({
+    components: { MyAwesomeComponent },
+    template: '<my-awesome-component/>'
+  })))
+```
+
+Or, set this addon as a decorator.
 
 ```js
 import { storiesOf } from '@storybook/vue'
@@ -33,6 +49,28 @@ storiesOf('MyComponent', module)
     template: '<my-awesome-component/>'
   })
 ```
+
+You can specify default options with `setDefaults`.
+
+```js
+// config.js
+import { setDefaults } from 'storybook-addon-vue-info'
+
+setDefaults({
+  header: false
+})
+```
+
+## Options
+
+This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybook/tree/master/addons/info) like options.
+
+|Name|Data type|Default value|Description|
+|---|---|---|---|
+|`header`|`boolean`|`true`|Whether to show header or not.|
+|`source`|`boolean`|`true`|Whether to show source(usage) or not.|
+|`styles`|`object`|`{}`|Styles override. See `src/options/InfoAddonOptions.ts` for available fields.|
+|`summary`|`string`|`''`|Summary for the story.|
 
 ## Example
 
