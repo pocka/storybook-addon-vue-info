@@ -29,12 +29,22 @@ storiesOf('BaseButton', module)
     `
   }))
 
-storiesOf('withInfo API', module).add(
-  'withInfo/1',
-  withInfo({})(() => ({
-    template: '<base-button label="You can use withInfo API"/>'
-  }))
-)
+storiesOf('withInfo API', module)
+  .add(
+    'withInfo/1',
+    withInfo({})(() => ({
+      template: '<base-button label="You can use withInfo API"/>'
+    }))
+  )
+  .add('set .TableComponent', withInfo({
+    TableComponent: BaseButton
+  })(() => ({
+    template: `
+      <div>
+        <base-button type="primary" label="nested"/>
+      </div>
+    `
+  })))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
