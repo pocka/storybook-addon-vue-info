@@ -26,7 +26,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
   return storyFn => () => {
     const story = storyFn()
 
-    const componentInfo = parseStoryComponent(story, opts)
+    const componentInfo = parseStoryComponent(story)
 
     const propsList = getPropsInfoList(componentInfo.component)
 

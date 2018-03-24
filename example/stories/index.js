@@ -46,15 +46,6 @@ storiesOf('withInfo API', module)
   })(() => ({
     template: '<base-button label="Without source"/>'
   })))
-  .add('set .TableComponent', withInfo({
-    TableComponent: BaseButton
-  })(() => ({
-    template: `
-      <div>
-        <base-button type="primary" label="nested"/>
-      </div>
-    `
-  })))
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
