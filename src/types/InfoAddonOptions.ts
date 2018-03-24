@@ -58,7 +58,7 @@ interface VueInfoAddonOptions {
   /**
    * Override the component used to render the props table
    */
-  TableComponent: VueComponent
+  TableComponent: VueComponent | null
 
   /**
    * Summary for the Story

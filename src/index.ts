@@ -1,11 +1,11 @@
 import Vue, { ComponentOptions, PropOptions } from 'vue'
 
-import {
-  RuntimeComponentOptions
-} from './types/VueRuntime'
+import { RuntimeComponentOptions } from './types/VueRuntime'
 
 import getPropsInfoList from './getPropsInfoList'
 import parseStoryComponent from './parseStoryComponent'
+
+export { default as withInfo } from './withInfo'
 
 // Since addon's component is compiled by vueify,
 // tsc cannot resolve module at compile-time.
