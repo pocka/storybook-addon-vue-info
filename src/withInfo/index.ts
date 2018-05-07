@@ -1,6 +1,6 @@
 import Vue, { ComponentOptions } from 'vue'
 
-import { Story, StoryDecorator } from '@storybook/vue'
+import { StoryDecorator } from '@storybook/vue'
 
 import { defaultOptions, InfoAddonOptions } from '../options'
 import {
@@ -14,7 +14,6 @@ import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
 
 import InfoView from '../components/InfoView.vue'
-import { Runtime } from 'inspector'
 import lookupComponent from '../lookupComponent'
 
 export type StoryFactory = () => RuntimeComponentOptions
