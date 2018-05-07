@@ -12,5 +12,6 @@ export default {
       typescript: require('typescript')
     }),
     vue()
-  ]
+  ],
+  external: ['vue']
 }
