@@ -1,5 +1,18 @@
 <script>
+import SectionTitle from './SectionTitle.vue'
+import InfoDescription from './InfoDescription.vue'
+import InfoHeader from './InfoHeader.vue'
+import PropsTable from './PropsTable.vue'
+import StorySource from './StorySource.vue'
+
 export default {
+  components: {
+    InfoDescription,
+    InfoHeader,
+    PropsTable,
+    SectionTitle,
+    StorySource
+  },
   props: {
     storyKind: {
       type: String,
@@ -41,169 +54,41 @@ export default {
     class="vue-info"
     :style="userStyle.info"
   >
-    <div
+    <info-header
       v-if="showHeader"
-      class="header"
-      :style="userStyle.header ? userStyle.header.body : {}"
-    >
-      <h1
-        class="title"
-        :style="userStyle.header ? userStyle.header.h1 : {}"
-      >
-        {{storyKind}}
-      </h1>
-      <h2
-        class="story-title"
-        :style="userStyle.header ? userStyle.header.h2 : {}"
-      >
-        {{storyTitle}}
-      </h2>
-    </div>
+      :user-style="userStyle.header"
+      :title="storyKind"
+      :subtitle="storyTitle"
+    />
 
     <div
-      class="component-area"
+      class="info-content"
       :style="userStyle.infoContent"
     >
       <slot></slot>
     </div>
-    <p
-      v-if="summary"
-      class="summary"
-    >
-      {{summary}}
-    </p>
 
-    <template v-if="showSource">
-      <h2
-        :style="userStyle.source ? userStyle.source.h1 : {}"
-        class="source-title"
-      >
-        Story Source
-      </h2>
-      <pre class="code"><code>{{template}}</code></pre>
-    </template>
+    <info-description v-if="summary">{{summary}}</info-description>
 
-    <h2
-      :style="userStyle.propTableHead"
-      class="props-title"
-    >
-      Props
-    </h2>
-    <table class="props">
-      <thead class="props-head">
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="prop in propsList" :key="prop.name">
-          <td>
-            {{prop.name}}
-            <span v-if="prop.required" class="tag">required</span>
-          </td>
-          <td>{{prop.type}}</td>
-          <td>{{prop.default}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <story-source
+      v-if="showSource"
+      :user-style="userStyle.source"
+      :source="template"
+    />
+
+    <section-title :style="userStyle.propTableHead">Props</section-title>
+    <props-table :props-list="propsList"/>
   </div>
 </template>
 
 <style scoped>
 .vue-info {
   padding: 0 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   color: #333;
 }
 
-h2 {
-  margin-top: 2em;
-}
-
-.header {
-  border-bottom: 1.5px solid #eee;
-}
-
-.title {
-  margin-bottom: 0;
-}
-
-.story-title {
-  color: #555;
-  margin-top: 0.5em;
-  font-weight: normal;
-  font-size: 1.2em;
-}
-
-.summary {
-  color: #777;
-}
-
-.summary {
-  color: #777;
-}
-
-.code {
-  overflow: auto;
-  padding: 1em;
-  color: #fff;
-  background-color: #333;
-  border-radius: 3px;
-}
-
-.source-title {
-  font-size: 1.5em;
-  padding-bottom: 0.5em;
-  border-bottom: 1.5px solid #eee;
-}
-
-.component-area {
+.info-content {
   margin-top: 2em;
   margin-bottom: 2em;
-}
-
-.props-title {
-  font-size: 1.5em;
-  padding-bottom: 0.5em;
-  border-bottom: 1.5px solid #eee;
-}
-
-.props {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-
-.props td,
-.props th {
-  padding: 0.5em 1em;
-  padding-right: 1.5em;
-}
-
-.props tr {
-  border-bottom: 1px solid #ccc;
-}
-
-.props-head {
-  color: #888;
-  background-color: #eee;
-  text-align: left;
-}
-
-.tag {
-  font-size: 0.7em;
-  padding: 0.2em 0.4em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #eee;
-  color: #333;
 }
 </style>
