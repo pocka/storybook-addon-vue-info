@@ -43,6 +43,7 @@ export default {
   >
     <div
       v-if="showHeader"
+      class="header"
       :style="userStyle.header ? userStyle.header.body : {}"
     >
       <h1
@@ -59,25 +60,23 @@ export default {
       </h2>
     </div>
 
-    <template v-if="showSource">
-      <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
-      <pre class="code"><code>{{template}}</code></pre>
-    </template>
-
-    <h2>Preview</h2>
     <div
       class="component-area"
       :style="userStyle.infoContent"
     >
       <slot></slot>
     </div>
-
     <p
       v-if="summary"
       class="summary"
     >
       {{summary}}
     </p>
+
+    <template v-if="showSource">
+      <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
+      <pre class="code"><code>{{template}}</code></pre>
+    </template>
 
     <h2 :style="userStyle.propTableHead">Props</h2>
     <table class="props">
@@ -120,6 +119,10 @@ h2 {
   margin-top: 2em;
 }
 
+.header {
+  border-bottom: 1px solid #ccc;
+}
+
 .title {
   margin-bottom: 0;
 }
@@ -148,9 +151,8 @@ h2 {
 }
 
 .component-area {
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .props {
