@@ -74,11 +74,21 @@ export default {
     </p>
 
     <template v-if="showSource">
-      <h2 :style="userStyle.source ? userStyle.source.h1 : {}">Usage</h2>
+      <h2
+        :style="userStyle.source ? userStyle.source.h1 : {}"
+        class="source-title"
+      >
+        Story Source
+      </h2>
       <pre class="code"><code>{{template}}</code></pre>
     </template>
 
-    <h2 :style="userStyle.propTableHead">Props</h2>
+    <h2
+      :style="userStyle.propTableHead"
+      class="props-title"
+    >
+      Props
+    </h2>
     <table class="props">
       <thead class="props-head">
         <tr>
@@ -120,7 +130,7 @@ h2 {
 }
 
 .header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1.5px solid #eee;
 }
 
 .title {
@@ -150,9 +160,21 @@ h2 {
   border-radius: 3px;
 }
 
+.source-title {
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1.5px solid #eee;
+}
+
 .component-area {
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+.props-title {
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1.5px solid #eee;
 }
 
 .props {
