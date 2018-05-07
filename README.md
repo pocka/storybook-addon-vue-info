@@ -71,7 +71,7 @@ This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybo
 | `source`     | `boolean`                   | `true`        | Whether to show source(usage) or not.                                                                                                             |
 | `styles`     | `object`                    | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                   |
 | `summary`    | `string`                    | `''`          | Summary for the story.                                                                                                                            |
-| `propTables` | `(string|Component)[]|null` | `null`        | Display prop tables with these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. |
+| `propTables` | `(string\|Component)[]\|null` | `null`        | Display prop tables with these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. |
 
 ## Example
 
