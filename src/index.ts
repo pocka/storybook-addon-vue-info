@@ -9,10 +9,6 @@ import withInfo from './withInfo'
 
 export { default as withInfo } from './withInfo'
 
-// Since addon's component is compiled by vueify,
-// tsc cannot resolve module at compile-time.
-const InfoView = require('./components/InfoView')
-
 /**
  * Shows Vue component's information.
  *
@@ -24,10 +20,14 @@ const InfoView = require('./components/InfoView')
  *     template: '<my-awesome-component :value="0"/>'
  *   }))
  */
-const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) => withInfo({})(storyFn)()
+const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) =>
+  withInfo({})(storyFn)()
 
 export default VueInfoAddon
 
 export function setDefaults(opts: Partial<InfoAddonOptions> | string): void {
-  Object.assign(defaultOptions, typeof opts === 'string' ? { summary: opts } : opts)
+  Object.assign(
+    defaultOptions,
+    typeof opts === 'string' ? { summary: opts } : opts
+  )
 }

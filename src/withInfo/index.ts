@@ -6,7 +6,7 @@ import { RuntimeComponentOptions } from '../types/VueRuntime'
 import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
 
-const InfoView = require('../components/InfoView')
+import InfoView from '../components/InfoView.vue'
 
 export type StoryFactory = () => RuntimeComponentOptions
 export type WithInfo = (story: StoryFactory) => () => ComponentOptions<Vue>

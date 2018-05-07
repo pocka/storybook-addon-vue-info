@@ -1,1 +1,4 @@
-declare function require(path: string): any
+declare module '*.vue' {
+  import Vue from 'vue'
+  export default Vue
+}

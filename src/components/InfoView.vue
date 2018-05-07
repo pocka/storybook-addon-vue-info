@@ -1,5 +1,5 @@
 <script>
-module.exports = {
+export default {
   props: {
     name: {
       type: String,
@@ -90,7 +90,12 @@ module.exports = {
   padding: 0 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #333;
 }
 
@@ -121,7 +126,8 @@ h2 {
   border-collapse: collapse;
 }
 
-.props td, .props th {
+.props td,
+.props th {
   padding: 0.5em 1em;
   padding-right: 1.5em;
 }
