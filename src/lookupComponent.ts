@@ -8,7 +8,7 @@ import ComponentInfo from './types/ComponentInfo'
 /**
  * Lookup component matched to specified name.
  * @param name A name to lookup (must be hyphenate)
- * @param components Components to be searched
+ * @param localComponents Components to be searched
  */
 function lookupComponent(
   name: string,
