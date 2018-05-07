@@ -30,6 +30,8 @@ interface VueInfoAddonOptions {
     infoContent?: InlineStyle
     header?: {
       h1?: InlineStyle
+      h2?: InlineStyle
+      body?: InlineStyle
     }
     source?: {
       h1?: InlineStyle

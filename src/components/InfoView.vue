@@ -1,7 +1,11 @@
 <script>
 export default {
   props: {
-    name: {
+    storyKind: {
+      type: String,
+      required: true
+    },
+    storyTitle: {
       type: String,
       required: true
     },
@@ -37,19 +41,22 @@ export default {
     class="vue-info"
     :style="userStyle.info"
   >
-    <h1
-      class="title"
-      v-if="showHeader"
-      :style="userStyle.header ? userStyle.header.h1 : {}"
-    >
-      {{name}}
-    </h1>
     <div
-      v-if="summary"
-      class="summary"
-      :style="userStyle.infoContent"
+      v-if="showHeader"
+      :style="userStyle.header ? userStyle.header.body : {}"
     >
-      {{summary}}
+      <h1
+        class="title"
+        :style="userStyle.header ? userStyle.header.h1 : {}"
+      >
+        {{storyKind}}
+      </h1>
+      <h2
+        class="story-title"
+        :style="userStyle.header ? userStyle.header.h2 : {}"
+      >
+        {{storyTitle}}
+      </h2>
     </div>
 
     <template v-if="showSource">
@@ -58,9 +65,19 @@ export default {
     </template>
 
     <h2>Preview</h2>
-    <div class="component-area">
+    <div
+      class="component-area"
+      :style="userStyle.infoContent"
+    >
       <slot></slot>
     </div>
+
+    <p
+      v-if="summary"
+      class="summary"
+    >
+      {{summary}}
+    </p>
 
     <h2 :style="userStyle.propTableHead">Props</h2>
     <table class="props">
@@ -101,6 +118,21 @@ h6 {
 
 h2 {
   margin-top: 2em;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.story-title {
+  color: #555;
+  margin-top: 0.5em;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+.summary {
+  color: #777;
 }
 
 .summary {
