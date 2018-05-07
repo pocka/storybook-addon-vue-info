@@ -1,5 +1,7 @@
 import Vue, { ComponentOptions } from 'vue'
 
+import { Story, StoryDecorator } from '@storybook/vue'
+
 import { defaultOptions, InfoAddonOptions } from '../options'
 import { RuntimeComponentOptions } from '../types/VueRuntime'
 
@@ -9,7 +11,9 @@ import parseStoryComponent from '../parseStoryComponent'
 import InfoView from '../components/InfoView.vue'
 
 export type StoryFactory = () => RuntimeComponentOptions
-export type WithInfo = (story: StoryFactory) => () => ComponentOptions<Vue>
+export type WithInfo = (
+  story: StoryFactory
+) => (context?: { kind: string; story: string }) => ComponentOptions<Vue>
 
 function withInfo(options: Partial<InfoAddonOptions>): WithInfo
 function withInfo(summary: string): WithInfo
@@ -18,7 +22,7 @@ function withInfo(summary: string): WithInfo
  * Displays Component information
  */
 function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
-  return storyFn => () => {
+  return storyFn => (context = { kind: '', story: '' }) => {
     const opts = {
       ...defaultOptions,
       ...(typeof options === 'string' ? { summary: options } : options)
@@ -34,7 +38,8 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
       render(h) {
         return h(InfoView, {
           props: {
-            name: componentInfo.name,
+            storyKind: context.kind,
+            storyTitle: context.story,
             summary: opts.summary,
             template: story.template,
             propsList,

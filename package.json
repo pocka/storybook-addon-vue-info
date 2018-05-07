@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
+    "@types/storybook__vue": "^3.3.0",
     "rollup": "^0.58.2",
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-plugin-vue": "^4.0.2",
