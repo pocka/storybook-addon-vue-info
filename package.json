@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-vue-info",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Storybook addon that shows Vue component information",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
+    "@types/storybook__vue": "^3.3.0",
     "rollup": "^0.58.2",
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-plugin-vue": "^4.0.2",

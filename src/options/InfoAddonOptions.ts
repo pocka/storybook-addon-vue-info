@@ -30,6 +30,8 @@ interface VueInfoAddonOptions {
     infoContent?: InlineStyle
     header?: {
       h1?: InlineStyle
+      h2?: InlineStyle
+      body?: InlineStyle
     }
     source?: {
       h1?: InlineStyle
@@ -41,6 +43,11 @@ interface VueInfoAddonOptions {
    * Summary for the Story
    */
   summary: string
+
+  /**
+   * Displays Props Tables with these components
+   */
+  propTables: VueComponent[] | false | null
 }
 
 export default VueInfoAddonOptions

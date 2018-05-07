@@ -1,5 +1,7 @@
 import Vue, { ComponentOptions, PropOptions } from 'vue'
 
+import { Addon, StoryDecorator } from '@storybook/vue'
+
 import { RuntimeComponentOptions } from './types/VueRuntime'
 
 import getPropsInfoList from './getPropsInfoList'
@@ -20,8 +22,10 @@ export { default as withInfo } from './withInfo'
  *     template: '<my-awesome-component :value="0"/>'
  *   }))
  */
-const VueInfoAddon = (storyFn: () => RuntimeComponentOptions) =>
-  withInfo({})(storyFn)()
+const VueInfoAddon: StoryDecorator = (
+  storyFn: () => RuntimeComponentOptions,
+  context
+) => withInfo({})(storyFn)(context)
 
 export default VueInfoAddon
 

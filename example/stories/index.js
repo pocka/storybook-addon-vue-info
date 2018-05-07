@@ -29,6 +29,22 @@ storiesOf('BaseButton', module)
     `
   }))
 
+storiesOf('Multiple components props', module).add(
+  'Shows multiple components props',
+  withInfo({
+    propTables: [BaseButton, 'local-button', BaseBlank]
+  })(() => ({
+    components: { LocalButton: BaseButton, BaseBlank },
+    template: `
+    <div>
+      <base-button label="I'm <base-button>"/>
+      <base-blank/>
+      <local-button label="I'm <local-button>"/>
+    </div>
+    `
+  }))
+)
+
 storiesOf('withInfo API', module)
   .add(
     'withInfo/1',
@@ -36,46 +52,61 @@ storiesOf('withInfo API', module)
       template: '<base-button label="You can use withInfo API"/>'
     }))
   )
-  .add('set .header=false', withInfo({
-    header: false
-  })(() => ({
-    template: '<base-button label="No header info!"/>'
-  })))
-  .add('set .source=false', withInfo({
-    source: false
-  })(() => ({
-    template: '<base-button label="Without source"/>'
-  })))
-  .add('set .style', withInfo({
-    styles: {
-      info: {
-        backgroundColor: '#faa'
-      },
-      header: {
-        h1: {
-          fontSize: '1em'
+  .add(
+    'set .header=false',
+    withInfo({
+      header: false
+    })(() => ({
+      template: '<base-button label="No header info!"/>'
+    }))
+  )
+  .add(
+    'set .source=false',
+    withInfo({
+      source: false
+    })(() => ({
+      template: '<base-button label="Without source"/>'
+    }))
+  )
+  .add(
+    'set .style',
+    withInfo({
+      styles: {
+        info: {
+          backgroundColor: '#faa'
+        },
+        header: {
+          h1: {
+            fontSize: '1em'
+          }
+        },
+        source: {
+          h1: {
+            fontStyle: 'italic'
+          }
+        },
+        propTableHead: {
+          color: '#f33'
         }
-      },
-      source: {
-        h1: {
-          fontStyle: 'italic'
-        }
-      },
-      propTableHead: {
-        color: '#f33'
       }
-    }
-  })(() => ({
-    template: '<base-button label="funny styled info"/>'
-  })))
-  .add('set .summary', withInfo({
-    summary: 'This summary is set by options.summary !!'
-  })(() => ({
-    template: '<base-button label="awesome button"/>'
-  })))
-  .add('pass summary strings to options', withInfo('Awesome button!')(() => ({
-    template: '<base-button label="My Awesome Button!"/>'
-  })))
+    })(() => ({
+      template: '<base-button label="funny styled info"/>'
+    }))
+  )
+  .add(
+    'set .summary',
+    withInfo({
+      summary: 'This summary is set by options.summary !!'
+    })(() => ({
+      template: '<base-button label="awesome button"/>'
+    }))
+  )
+  .add(
+    'pass summary strings to options',
+    withInfo('Awesome button!')(() => ({
+      template: '<base-button label="My Awesome Button!"/>'
+    }))
+  )
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
