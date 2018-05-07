@@ -43,6 +43,11 @@ interface VueInfoAddonOptions {
    * Summary for the Story
    */
   summary: string
+
+  /**
+   * Displays Props Tables with these components
+   */
+  propTables: VueComponent[] | false | null
 }
 
 export default VueInfoAddonOptions

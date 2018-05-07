@@ -1,14 +1,20 @@
 import Vue, { ComponentOptions } from 'vue'
 
-import { Story, StoryDecorator } from '@storybook/vue'
+import { StoryDecorator } from '@storybook/vue'
 
 import { defaultOptions, InfoAddonOptions } from '../options'
-import { RuntimeComponentOptions } from '../types/VueRuntime'
+import {
+  RuntimeComponentOptions,
+  RuntimeComponent,
+  RuntimeComponents
+} from '../types/VueRuntime'
+import ComponentInfo from '../types/ComponentInfo'
 
 import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
 
 import InfoView from '../components/InfoView.vue'
+import lookupComponent from '../lookupComponent'
 
 export type StoryFactory = () => RuntimeComponentOptions
 export type WithInfo = (
@@ -30,9 +36,48 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
 
     const story = storyFn()
 
-    const componentInfo = parseStoryComponent(story)
+    // Components shown in props tables
+    const propTablesComponents = opts.propTables
+      ? opts.propTables.map(
+          c =>
+            typeof c === 'string'
+              ? lookupComponent(c, story.components as RuntimeComponents)
+              : RuntimeComponent.toInfo(c as RuntimeComponent)
+        )
+      : [parseStoryComponent(story)]
 
-    const propsList = getPropsInfoList(componentInfo.component)
+    propTablesComponents.forEach((c, i) => {
+      // Dispay console error if failed to lookup component
+      if (!c) {
+        console.error(`Failed to lookup component at propTables[${i}].`)
+
+        return
+      }
+
+      // Display warning if there were no-runtime-name components
+      if (!c.name) {
+        console.warn(
+          `A component specified in propTables[${i}] has no "runtime name". Please consider using string literal.`
+        )
+      }
+    })
+
+    // Component details to be passed to <props-table>
+    const componentDetails = propTablesComponents
+      .map(
+        (c, i) =>
+          !c || c.name
+            ? c
+            : {
+                ...c,
+                name: `<anonymous>propTables[${i}]`
+              }
+      )
+      .filter(c => c !== null)
+      .map(c => ({
+        info: c,
+        propsList: getPropsInfoList(c!.component)
+      }))
 
     return {
       render(h) {
@@ -42,7 +87,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             storyTitle: context.story,
             summary: opts.summary,
             template: story.template,
-            propsList,
+            componentDetails,
             showHeader: opts.header,
             showSource: opts.source,
             userStyle: opts.styles

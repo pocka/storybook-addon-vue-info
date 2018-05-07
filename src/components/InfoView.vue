@@ -29,9 +29,9 @@ export default {
       type: String,
       required: true
     },
-    propsList: {
+    componentDetails: {
       type: Array,
-      required: true
+      default: () => []
     },
     showHeader: {
       type: Boolean,
@@ -77,7 +77,12 @@ export default {
     />
 
     <section-title :style="userStyle.propTableHead">Props</section-title>
-    <props-table :props-list="propsList"/>
+    <props-table
+      v-for="detail in componentDetails"
+      :key="detail.info.name"
+      :props-list="detail.propsList"
+      :component-name="detail.info.name"
+    />
   </div>
 </template>
 

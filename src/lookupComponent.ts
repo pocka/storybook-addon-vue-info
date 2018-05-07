@@ -1,14 +1,33 @@
+import Vue from 'vue'
+
 import hyphenate from './utils/hyphenate'
 
-import { RuntimeComponents } from './types/VueRuntime'
+import { RuntimeComponent, RuntimeComponents } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
 
 /**
  * Lookup component matched to specified name.
  * @param name A name to lookup (must be hyphenate)
- * @param components Components to be searched
+ * @param localComponents Components to be searched
  */
-function lookupComponent(name: string, components?: RuntimeComponents): ComponentInfo | null {
+function lookupComponent(
+  name: string,
+  localComponents?: RuntimeComponents
+): ComponentInfo | null {
+  return (
+    // Components registered by `{ components: { Foo }}`
+    lookupComponentFrom(name, localComponents) ||
+    // Components registered by `Vue.component('foo', Foo)`
+    lookupComponentFrom(name, (Vue as any).options.components)
+  )
+}
+
+export default lookupComponent
+
+function lookupComponentFrom(
+  name: string,
+  components?: RuntimeComponents
+): ComponentInfo | null {
   if (!components) {
     return null
   }
@@ -17,14 +36,9 @@ function lookupComponent(name: string, components?: RuntimeComponents): Componen
     if (hyphenate(componentName) === name) {
       const component = components[componentName]
 
-      return {
-        name: componentName,
-        component: component.options ? component.options : component
-      }
+      return RuntimeComponent.toInfo(component, componentName)
     }
   }
 
   return null
 }
-
-export default lookupComponent

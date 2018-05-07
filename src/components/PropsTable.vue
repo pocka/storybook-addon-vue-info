@@ -4,6 +4,9 @@ import PropsTableRow from './PropsTableRow.vue'
 export default {
   components: { PropsTableRow },
   props: {
+    componentName: {
+      type: String
+    },
     propsList: {
       type: Array,
       default: () => []
@@ -14,6 +17,13 @@ export default {
 
 <template>
   <div>
+    <h3
+      v-if="componentName"
+      class="component-name"
+    >
+      "{{componentName}}" Component
+    </h3>
+
     <table class="props">
       <thead class="props-head">
         <tr>
@@ -34,6 +44,10 @@ export default {
 </template>
 
 <style scoped>
+.component-name {
+  margin-bottom: 0.3em;
+}
+
 .props {
   border: 1px solid #ccc;
   border-collapse: collapse;
