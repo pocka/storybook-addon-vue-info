@@ -11,8 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
-    "mkdir": "mkdir -p lib/components",
-    "build": "npm run mkdir && npm run compile:js && npm run compile:types",
+    "build": "npm run compile:js && npm run compile:types",
     "prepublishOnly": "npm run build",
     "example": "cd example && npm install && npm run storybook"
   },
