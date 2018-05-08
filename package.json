@@ -8,7 +8,7 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
     "build": "npm run compile:js && npm run compile:types",
@@ -30,10 +30,13 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "@types/storybook__vue": "^3.3.0",
+    "jest": "^22.4.3",
     "rollup": "^0.58.2",
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-plugin-vue": "^4.0.2",
+    "ts-jest": "^22.4.5",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "vue": "^2.5.16",
@@ -45,5 +48,12 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "moduleFileExtensions": ["ts", "js"],
+    "testMatch": ["**/__test__/*.+(ts|js)", "**/*\\.spec\\.(ts|js)"]
   }
 }
