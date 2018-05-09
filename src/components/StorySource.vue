@@ -1,4 +1,6 @@
 <script>
+import hljs from 'highlight.js'
+
 import SectionTitle from './SectionTitle.vue'
 
 export default {
@@ -13,6 +15,25 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    highlight() {
+      if (!this.$refs.code) {
+        return
+      }
+
+      hljs.highlightBlock(this.$refs.code, {
+        languages: ['html', 'javascript']
+      })
+    }
+  },
+  mounted() {
+    this.highlight()
+  },
+  watch: {
+    source() {
+      this.highlight()
+    }
   }
 }
 </script>
@@ -20,16 +41,18 @@ export default {
 <template>
   <div>
     <section-title :style="userStyle.h1">Story Source</section-title>
-    <pre class="code"><code>{{source}}</code></pre>
+    <pre ref="code" class="code html"><code>{{source}}</code></pre>
   </div>
 </template>
+
+<style src="../../node_modules/highlight.js/styles/github.css">
+
+</style>
 
 <style scoped>
 .code {
   overflow: auto;
   padding: 1em;
-  color: #fff;
-  background-color: #333;
   border-radius: 3px;
 }
 </style>

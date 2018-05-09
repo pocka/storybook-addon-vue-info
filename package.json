@@ -34,6 +34,8 @@
     "@types/storybook__vue": "^3.3.0",
     "jest": "^22.4.3",
     "rollup": "^0.58.2",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-license": "^0.6.0",
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-plugin-vue": "^4.0.2",
     "ts-jest": "^22.4.5",
@@ -61,5 +63,8 @@
       "**/__test__/*.+(ts|js)",
       "**/*\\.spec\\.(ts|js)"
     ]
+  },
+  "dependencies": {
+    "highlight.js": "^9.12.0"
   }
 }
