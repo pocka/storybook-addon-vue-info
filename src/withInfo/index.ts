@@ -1,5 +1,7 @@
 import Vue, { ComponentOptions } from 'vue'
 
+import dedent from 'dedent'
+
 import { StoryDecorator } from '@storybook/vue'
 
 import { defaultOptions, InfoAddonOptions } from '../options'
@@ -86,7 +88,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             storyKind: context.kind,
             storyTitle: context.story,
             summary: opts.summary,
-            template: story.template,
+            template: dedent(story.template || ''),
             componentDetails,
             showHeader: opts.header,
             showSource: opts.source,
