@@ -63,5 +63,8 @@
       "**/__test__/*.+(ts|js)",
       "**/*\\.spec\\.(ts|js)"
     ]
+  },
+  "dependencies": {
+    "highlight.js": "^9.12.0"
   }
 }
