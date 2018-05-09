@@ -65,6 +65,8 @@
     ]
   },
   "dependencies": {
+    "@types/dedent": "^0.7.0",
+    "dedent": "^0.7.0",
     "highlight.js": "^9.12.0"
   }
 }
