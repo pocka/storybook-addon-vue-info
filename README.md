@@ -67,12 +67,12 @@ setDefaults({
 
 This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybook/tree/master/addons/info) like options.
 
-| Name         | Data type                   | Default value | Description                                                                                                                                       |
-| ------------ | --------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `header`     | `boolean`                   | `true`        | Whether to show header or not.                                                                                                                    |
-| `source`     | `boolean`                   | `true`        | Whether to show source(usage) or not.                                                                                                             |
-| `styles`     | `object`                    | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                   |
-| `summary`    | `string`                    | `''`          | Summary for the story.                                                                                                                            |
+| Name         | Data type                     | Default value | Description                                                                                                                                       |
+| ------------ | ----------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `header`     | `boolean`                     | `true`        | Whether to show header or not.                                                                                                                    |
+| `source`     | `boolean`                     | `true`        | Whether to show source(usage) or not.                                                                                                             |
+| `styles`     | `object`                      | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                   |
+| `summary`    | `string`                      | `''`          | Summary for the story. Accepts Markdown.                                                                                                          |
 | `propTables` | `(string\|Component)[]\|null` | `null`        | Display prop tables with these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. |
 
 ## Example
