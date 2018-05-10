@@ -107,6 +107,27 @@ storiesOf('withInfo API', module)
       template: '<base-button label="My Awesome Button!"/>'
     }))
   )
+  .add(
+    'Markdown summary',
+    withInfo(`
+    # Title
+    ## Subtitle
+
+    Summary is parsed as Markdown.
+
+    You can use *snippets* **of** ~~markup~~ markdown \`!\`
+
+    ${'```'}javascript
+    expect(CodeBlock).to.be(Highlighted)
+    ${'```'}
+
+    |col1|col2|col3|
+    |----|----|----|
+    |foo |bar |baz |
+    `)(() => ({
+      template: '<base-button label="See description"/>'
+    }))
+  )
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)

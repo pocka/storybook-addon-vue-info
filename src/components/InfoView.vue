@@ -22,6 +22,7 @@ export default {
       type: String,
       required: true
     },
+    /** Summary "HTML" string */
     summary: {
       type: String
     },
@@ -68,7 +69,10 @@ export default {
       <slot></slot>
     </div>
 
-    <info-description v-if="summary">{{summary}}</info-description>
+    <info-description
+      v-if="summary"
+      :description-html="summary"
+    />
 
     <story-source
       v-if="showSource"
