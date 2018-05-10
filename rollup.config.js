@@ -26,5 +26,5 @@ export default {
     }),
     vue()
   ],
-  external: ['vue']
+  external: ['vue', 'dedent', 'marked']
 }
