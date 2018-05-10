@@ -4,9 +4,6 @@ export default {
     descriptionHtml: {
       type: String
     }
-  },
-  created() {
-    console.log(this.descriptionHtml)
   }
 }
 </script>
