@@ -2,6 +2,7 @@ import Vue, { ComponentOptions } from 'vue'
 
 import dedent from 'dedent'
 import marked from 'marked'
+import hljs from 'highlight.js'
 
 import { StoryDecorator } from '@storybook/vue'
 
@@ -18,6 +19,15 @@ import parseStoryComponent from '../parseStoryComponent'
 
 import InfoView from '../components/InfoView.vue'
 import lookupComponent from '../lookupComponent'
+
+const renderer = new marked.Renderer()
+
+renderer.code = (code, lang) =>
+  `<pre><code class="hljs">${
+    hljs.highlightAuto(code, lang ? [lang] : undefined).value
+  }</code></pre>`
+
+marked.setOptions({ renderer })
 
 export type StoryFactory = () => RuntimeComponentOptions
 export type WithInfo = (
