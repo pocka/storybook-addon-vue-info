@@ -49,6 +49,12 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
 
     const story = storyFn()
 
+    if (!story.template && story.render) {
+      console.warn(
+        'This plugins does not support showing story source when using render method.'
+      )
+    }
+
     // Components shown in props tables
     const propTablesComponents = opts.propTables
       ? opts.propTables.map(
@@ -99,7 +105,10 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             storyKind: context.kind,
             storyTitle: context.story,
             summary: marked(dedent(opts.summary)),
-            template: dedent(story.template || ''),
+            template: dedent(
+              story.template ||
+                '<!-- Sorry, story source for "render" is not supported. -->'
+            ),
             componentDetails,
             showHeader: opts.header,
             showSource: opts.source,
