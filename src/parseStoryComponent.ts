@@ -1,8 +1,11 @@
+import Vue, { CreateElement, RenderContext, VueConstructor } from 'vue'
+
 import { RuntimeComponents, RuntimeComponentOptions } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
 
 import hyphenate from './utils/hyphenate'
 import getOutermostTagName from './utils/getOutermostTagName'
+import getOutermostJSXTagName from './utils/getOutermostJSXTagName'
 
 import lookupComponent from './lookupComponent'
 
@@ -12,13 +15,15 @@ import lookupComponent from './lookupComponent'
  */
 function parseStoryComponent(story: RuntimeComponentOptions): ComponentInfo {
   // We need template for display "Usage".
-  if (!story.template) {
+  if (!story.template && !story.render) {
     throw new Error(
-      '`template` must be on component options, but got undefined.'
+      '`template` or `render` must be on component options, but got undefined.'
     )
   }
 
-  const outermostTagName = hyphenate(getOutermostTagName(story.template))
+  const outermostTagName = story.template
+    ? hyphenate(getOutermostTagName(story.template))
+    : getOutermostJSXTagName(story.render!)
 
   // If component was not declared in `components` prop,
   // assume it was registered globally.

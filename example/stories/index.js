@@ -150,6 +150,14 @@ storiesOf('withInfo API', module)
       }
     }))
   )
+  .add(
+    'JSX story(2)',
+    withInfo('And you can use PascalCase tag')(() => ({
+      render(h) {
+        return <BaseButton label="works fine!" />
+      }
+    }))
+  )
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
