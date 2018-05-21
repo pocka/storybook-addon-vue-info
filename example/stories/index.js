@@ -142,6 +142,14 @@ storiesOf('withInfo API', module)
       template: '<base-button label="See description"/>'
     }))
   )
+  .add(
+    'JSX story',
+    withInfo('You can also use JSX stories!')(() => ({
+      render(h) {
+        return <base-button label="written in JSX" />
+      }
+    }))
+  )
 
 storiesOf('BaseBlank', module)
   .addDecorator(VueInfoAddon)
