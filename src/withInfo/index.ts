@@ -17,6 +17,8 @@ import ComponentInfo from '../types/ComponentInfo'
 import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
 
+import getJSXFromRenderFn from '../utils/getJSXFromRenderFn'
+
 import InfoView from '../components/InfoView.vue'
 import lookupComponent from '../lookupComponent'
 
@@ -106,9 +108,9 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             storyTitle: context.story,
             summary: marked(dedent(opts.summary)),
             template: dedent(
-              story.template ||
-                '<!-- Sorry, story source for "render" is not supported. -->'
+              story.template || getJSXFromRenderFn(story.render! as any)
             ),
+            lang: story.template ? 'html' : 'jsx',
             componentDetails,
             showHeader: opts.header,
             showSource: opts.source,

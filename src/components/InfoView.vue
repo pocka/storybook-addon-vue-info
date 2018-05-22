@@ -30,6 +30,11 @@ export default {
       type: String,
       required: true
     },
+    /** Language for highlighting story source */
+    lang: {
+      type: String,
+      required: true
+    },
     componentDetails: {
       type: Array,
       default: () => []
@@ -78,6 +83,7 @@ export default {
       v-if="showSource"
       :user-style="userStyle.source"
       :source="template"
+      :lang="lang"
     />
 
     <section-title :style="userStyle.propTableHead">Props</section-title>

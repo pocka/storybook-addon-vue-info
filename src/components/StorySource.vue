@@ -14,6 +14,16 @@ export default {
     source: {
       type: String,
       required: true
+    },
+    lang: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    sourceCode() {
+      // Append ; for jsx to enable syntax highlighting
+      return this.lang === 'jsx' ? `;${this.source}` : this.source
     }
   },
   methods: {
@@ -23,7 +33,7 @@ export default {
       }
 
       hljs.highlightBlock(this.$refs.code, {
-        languages: ['html', 'javascript']
+        languages: [this.lang]
       })
     }
   },
@@ -41,12 +51,11 @@ export default {
 <template>
   <div>
     <section-title :style="userStyle.h1">Story Source</section-title>
-    <pre ref="code" class="code html"><code>{{source}}</code></pre>
+    <pre ref="code" class="code" :class="lang"><code>{{sourceCode}}</code></pre>
   </div>
 </template>
 
 <style src="../../node_modules/highlight.js/styles/github.css">
-
 </style>
 
 <style scoped>

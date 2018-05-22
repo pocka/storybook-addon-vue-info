@@ -154,7 +154,7 @@ storiesOf('withInfo API', module)
     'JSX story(2)',
     withInfo('And you can use PascalCase tag')(() => ({
       render(h) {
-        return <BaseButton label="works fine!" />
+        return <BaseButton style={{ fontSize: '2em' }} label="Okay." />
       }
     }))
   )
