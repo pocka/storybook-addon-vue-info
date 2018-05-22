@@ -110,6 +110,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
             template: dedent(
               story.template || getJSXFromRenderFn(story.render! as any)
             ),
+            lang: story.template ? 'html' : 'jsx',
             componentDetails,
             showHeader: opts.header,
             showSource: opts.source,
