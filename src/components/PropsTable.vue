@@ -5,7 +5,8 @@ export default {
   components: { PropsTableRow },
   props: {
     componentName: {
-      type: String
+      type: String,
+      default: ''
     },
     propsList: {
       type: Array,
@@ -21,7 +22,7 @@ export default {
       v-if="componentName"
       class="component-name"
     >
-      "{{componentName}}" Component
+      "{{ componentName }}" Component
     </h3>
 
     <table class="props">

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' && eslint 'src/**/*.vue'",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
     "build": "npm run compile:js && npm run compile:types",
@@ -36,6 +36,8 @@
     "@types/jest": "^22.2.3",
     "@types/marked": "^0.3.0",
     "@types/storybook__vue": "^3.3.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-vue": "^4.5.0",
     "jest": "^22.4.3",
     "rollup": "^0.58.2",
     "rollup-plugin-commonjs": "^9.1.3",

@@ -24,7 +24,8 @@ export default {
     },
     /** Summary "HTML" string */
     summary: {
-      type: String
+      type: String,
+      default: ''
     },
     template: {
       type: String,
@@ -57,8 +58,8 @@ export default {
 
 <template>
   <div
-    class="vue-info"
     :style="userStyle.info"
+    class="vue-info"
   >
     <info-header
       v-if="showHeader"
@@ -68,10 +69,10 @@ export default {
     />
 
     <div
-      class="info-content"
       :style="userStyle.infoContent"
+      class="info-content"
     >
-      <slot></slot>
+      <slot/>
     </div>
 
     <info-description

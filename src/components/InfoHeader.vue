@@ -2,13 +2,16 @@
 export default {
   props: {
     userStyle: {
+      type: Object,
       default: () => ({})
     },
     title: {
-      type: String
+      type: String,
+      default: ''
     },
     subtitle: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 }
@@ -16,20 +19,20 @@ export default {
 
 <template>
   <div
-    class="info-header"
     :style="userStyle.body"
+    class="info-header"
   >
     <h1
-      class="title"
       :style="userStyle.h1"
+      class="title"
     >
-      {{title}}
+      {{ title }}
     </h1>
     <h2
-      class="story-title"
       :style="userStyle.h2"
+      class="story-title"
     >
-      {{subtitle}}
+      {{ subtitle }}
     </h2>
   </div>
 </template>
