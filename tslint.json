@@ -1,0 +1,26 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "no-console": false,
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        "object-literal-sort-keys": false,
+        "variable-name": [
+            true,
+            "check-format",
+            "allow-leading-underscore",
+            "allow-pascal-case"
+        ],
+        "unified-signatures": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "**/*.spec.ts"
+        ]
+    }
+}

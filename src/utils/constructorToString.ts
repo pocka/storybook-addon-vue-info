@@ -4,7 +4,9 @@ type Constructor = () => void
  * Returns type string of constructor.
  * @param constructor Constructor function
  */
-const constructorToString = (constructor: Constructor | Constructor[]): string => {
+const constructorToString = (
+  constructor: Constructor | Constructor[]
+): string => {
   if (constructor instanceof Array) {
     return constructor.map(constructorToString).join(' | ')
   } else if (constructor === Number) {

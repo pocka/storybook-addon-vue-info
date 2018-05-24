@@ -1,10 +1,10 @@
 import Vue, {
-  RenderContext,
-  Component,
   AsyncComponent,
-  VNodeData,
+  Component,
   ComponentOptions,
-  PropOptions
+  PropOptions,
+  RenderContext,
+  VNodeData
 } from 'vue'
 
 import { RuntimeComponent } from '../types/VueRuntime'

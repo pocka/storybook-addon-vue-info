@@ -9,6 +9,7 @@ export default {
   },
   props: {
     userStyle: {
+      type: Object,
       default: () => ({})
     },
     source: {
@@ -26,6 +27,14 @@ export default {
       return this.lang === 'jsx' ? `;${this.source}` : this.source
     }
   },
+  watch: {
+    source() {
+      this.highlight()
+    }
+  },
+  mounted() {
+    this.highlight()
+  },
   methods: {
     highlight() {
       if (!this.$refs.code) {
@@ -36,14 +45,6 @@ export default {
         languages: [this.lang]
       })
     }
-  },
-  mounted() {
-    this.highlight()
-  },
-  watch: {
-    source() {
-      this.highlight()
-    }
   }
 }
 </script>
@@ -51,7 +52,11 @@ export default {
 <template>
   <div>
     <section-title :style="userStyle.h1">Story Source</section-title>
-    <pre ref="code" class="code" :class="lang"><code>{{sourceCode}}</code></pre>
+    <pre
+      ref="code"
+      :class="lang"
+      class="code"
+    ><code>{{ sourceCode }}</code></pre>
   </div>
 </template>
 

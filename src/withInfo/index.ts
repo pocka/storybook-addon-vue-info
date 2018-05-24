@@ -1,18 +1,18 @@
 import Vue, { ComponentOptions } from 'vue'
 
 import dedent from 'dedent'
-import marked from 'marked'
 import hljs from 'highlight.js'
+import marked from 'marked'
 
 import { StoryDecorator } from '@storybook/vue'
 
 import { defaultOptions, InfoAddonOptions } from '../options'
+import ComponentInfo from '../types/ComponentInfo'
 import {
-  RuntimeComponentOptions,
   RuntimeComponent,
+  RuntimeComponentOptions,
   RuntimeComponents
 } from '../types/VueRuntime'
-import ComponentInfo from '../types/ComponentInfo'
 
 import getPropsInfoList from '../getPropsInfoList'
 import parseStoryComponent from '../parseStoryComponent'
