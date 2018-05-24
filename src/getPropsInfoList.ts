@@ -1,7 +1,7 @@
 import constructorToString from './utils/constructorToString'
 
-import { RuntimeComponentOptions } from './types/VueRuntime'
 import PropInfo from './types/PropInfo'
+import { RuntimeComponentOptions } from './types/VueRuntime'
 
 /**
  * Get properties informations from component instance.
@@ -32,7 +32,8 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
       name,
       type: constructorToString(prop.type),
       required: !!prop.required,
-      default: typeof prop.default === 'function' ? prop.default() : prop.default
+      default:
+        typeof prop.default === 'function' ? prop.default() : prop.default
     }
   })
 }

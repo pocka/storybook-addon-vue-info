@@ -2,8 +2,8 @@ import Vue from 'vue'
 
 import hyphenate from './utils/hyphenate'
 
-import { RuntimeComponent, RuntimeComponents } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
+import { RuntimeComponent, RuntimeComponents } from './types/VueRuntime'
 
 /**
  * Lookup component matched to specified name.
@@ -32,7 +32,7 @@ function lookupComponentFrom(
     return null
   }
 
-  for (let componentName in components) {
+  for (const componentName in components) {
     if (hyphenate(componentName) === name) {
       const component = components[componentName]
 

@@ -5,7 +5,9 @@ import { Component } from 'vue'
  */
 export type VueComponent = Component<any, any, any, any> | string
 
-export type InlineStyle = { [key: string]: string | number }
+export interface InlineStyle {
+  [key: string]: string | number
+}
 
 /**
  * Addon options

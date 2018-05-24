@@ -1,11 +1,11 @@
 import Vue, { CreateElement, RenderContext, VueConstructor } from 'vue'
 
-import { RuntimeComponents, RuntimeComponentOptions } from './types/VueRuntime'
 import ComponentInfo from './types/ComponentInfo'
+import { RuntimeComponentOptions, RuntimeComponents } from './types/VueRuntime'
 
-import hyphenate from './utils/hyphenate'
-import getOutermostTagName from './utils/getOutermostTagName'
 import getOutermostJSXTagName from './utils/getOutermostJSXTagName'
+import getOutermostTagName from './utils/getOutermostTagName'
+import hyphenate from './utils/hyphenate'
 
 import lookupComponent from './lookupComponent'
 

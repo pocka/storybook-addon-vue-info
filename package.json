@@ -50,7 +50,8 @@
     "vue-template-compiler": "^2.5.16"
   },
   "peerDependencies": {
-    "vue": "^2.0.0"
+    "vue": "^2.0.0",
+    "@storybook/vue": "*"
   },
   "prettier": {
     "semi": false,
