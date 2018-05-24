@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
     "build": "npm run compile:js && npm run compile:types",
@@ -42,7 +43,8 @@
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-plugin-vue": "^4.0.2",
     "ts-jest": "^22.4.5",
-    "tslint": "^5.8.0",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
     "typescript": "^2.6.2",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"

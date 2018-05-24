@@ -1,0 +1,19 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "no-console": false,
+        "interface-name": [
+            true,
+            "never-prefix"
+        ],
+        "object-literal-sort-keys": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "**/*.spec.ts"
+        ]
+    }
+}
