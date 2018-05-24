@@ -65,4 +65,3 @@ export default {
   padding-right: 1.5em;
 }
 </style>
-
