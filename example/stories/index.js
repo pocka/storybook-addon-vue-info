@@ -6,6 +6,7 @@ import BaseBlank from '../src/components/BaseBlank.vue'
 import BaseButton from '../src/components/BaseButton.vue'
 
 import NumberList from '../src/components/NumberList.vue'
+import RenderFnComponent from '../src/components/RenderFnComponent'
 
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
@@ -172,3 +173,14 @@ storiesOf('NumberList', module)
     components: { NumberList },
     template: '<number-list :numbers="[3, 4, 5]"/>'
   }))
+
+storiesOf('RenderFnComponent', module).add(
+  'Works with non-SFC',
+  withInfo({
+    propTables: [RenderFnComponent]
+  })(() => ({
+    render(h) {
+      return <RenderFnComponent name="Vue" />
+    }
+  }))
+)
