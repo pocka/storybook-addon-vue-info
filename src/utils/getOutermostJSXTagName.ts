@@ -1,3 +1,5 @@
+import { VueConstructor } from 'vue'
+
 /**
  * Returns outermost tag name in JSX.
  * @param render
@@ -18,7 +20,15 @@ const getOutermostJSXTagName = (
         }
 
         return 'Anonymous'
+      case 'function':
+        // component created with Vue.component/Vue.extend
+        if (tag.options && typeof tag.options.name === 'string') {
+          return tag.options.name
+        }
+
+        return 'Anonymous'
       default:
+        console.warn(tag)
         return ''
     }
   }, {})
