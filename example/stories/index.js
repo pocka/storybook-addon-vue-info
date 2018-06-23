@@ -11,13 +11,21 @@ import RenderFnComponent from '../src/components/RenderFnComponent'
 storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
   .add('global component', () => ({
-    template: '<base-button type="primary" label="global"/>'
+    template: '<base-button type="primary" label="global"/>',
+    propsDesc: {
+      type: 'type',
+      label: 'label'
+    }
   }))
   .add('local component', () => ({
     components: {
       LocalButton: BaseButton
     },
-    template: '<local-button :disabled="true" label="local"/>'
+    template: '<local-button :disabled="true" label="local"/>',
+    propsDesc: {
+      label: 'label',
+      disabled: 'disabled flag'
+    }
   }))
   .add('long long template', () => ({
     template:
