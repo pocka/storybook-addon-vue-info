@@ -97,7 +97,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
       .filter(c => c !== null)
       .map(c => ({
         info: c,
-        propsList: getPropsInfoList(c!.component)
+        propsList: getPropsInfoList(c!.component, story!)
       }))
 
     return {
