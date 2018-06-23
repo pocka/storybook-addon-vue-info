@@ -9,7 +9,10 @@ import { RuntimeComponentOptions } from './types/VueRuntime'
  * @param story
  * @returns {PropInfo[]}
  */
-function getPropsInfoList(component: RuntimeComponentOptions, story: any): PropInfo[] {
+function getPropsInfoList(
+  component: RuntimeComponentOptions,
+  story: any
+): PropInfo[] {
   const { props } = component
 
   if (!props) {
