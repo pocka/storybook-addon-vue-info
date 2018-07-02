@@ -23,8 +23,8 @@ function getPropsInfoList(
     const prop = (props as any)[name]
     let description = ''
 
-    if (story.propsDesc && story.propsDesc[name]) {
-      description = story.propsDesc[name]
+    if (story.propsDescription && story.propsDescription[name]) {
+      description = story.propsDescription[name]
     }
 
     // If there are no props defined in Object sytle,

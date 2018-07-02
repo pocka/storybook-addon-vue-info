@@ -12,7 +12,7 @@ storiesOf('BaseButton', module)
   .addDecorator(VueInfoAddon)
   .add('global component', () => ({
     template: '<base-button type="primary" label="global"/>',
-    propsDesc: {
+    propsDescription: {
       type: 'type',
       label: 'label'
     }
@@ -22,7 +22,7 @@ storiesOf('BaseButton', module)
       LocalButton: BaseButton
     },
     template: '<local-button :disabled="true" label="local"/>',
-    propsDesc: {
+    propsDescription: {
       label: 'label',
       disabled: 'disabled flag'
     }
