@@ -21,10 +21,10 @@ function getPropsInfoList(
 
   return Object.keys(props).map(name => {
     const prop = (props as any)[name]
-    let desc = ''
+    let description = ''
 
     if (story.propsDesc && story.propsDesc[name]) {
-      desc = story.propsDesc[name]
+      description = story.propsDesc[name]
     }
 
     // If there are no props defined in Object sytle,
@@ -34,7 +34,7 @@ function getPropsInfoList(
         name,
         type: constructorToString(prop),
         required: false,
-        description: desc,
+        description,
         default: undefined
       }
     }
@@ -43,7 +43,7 @@ function getPropsInfoList(
       name,
       type: constructorToString(prop.type),
       required: !!prop.required,
-      description: desc,
+      description,
       default:
         typeof prop.default === 'function' ? prop.default() : prop.default
     }
