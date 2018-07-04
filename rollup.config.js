@@ -26,5 +26,5 @@ export default {
     }),
     vue()
   ],
-  external: ['vue', 'dedent', 'marked', 'highlight.js']
+  external: ['vue', 'dedent', 'marked', 'highlight.js', 'parse5']
 }
