@@ -1,5 +1,3 @@
-import { VueConstructor } from 'vue'
-
 /**
  * Returns outermost tag name in JSX.
  * @param render

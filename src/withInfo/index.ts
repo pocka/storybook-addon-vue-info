@@ -4,10 +4,7 @@ import dedent from 'dedent'
 import hljs from 'highlight.js'
 import marked from 'marked'
 
-import { StoryDecorator } from '@storybook/vue'
-
 import { defaultOptions, InfoAddonOptions } from '../options'
-import ComponentInfo from '../types/ComponentInfo'
 import {
   RuntimeComponent,
   RuntimeComponentOptions,

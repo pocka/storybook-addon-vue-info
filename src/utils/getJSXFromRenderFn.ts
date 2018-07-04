@@ -1,11 +1,4 @@
-import Vue, {
-  AsyncComponent,
-  Component,
-  ComponentOptions,
-  PropOptions,
-  RenderContext,
-  VNodeData
-} from 'vue'
+import { AsyncComponent, Component, VNodeData } from 'vue'
 
 import { RuntimeComponent } from '../types/VueRuntime'
 
