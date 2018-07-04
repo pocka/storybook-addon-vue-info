@@ -65,7 +65,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
               ? lookupComponent(c, story.components as RuntimeComponents)
               : RuntimeComponent.toInfo(c as RuntimeComponent)
         )
-      : [parseStoryComponent(story)]
+      : parseStoryComponent(story)
 
     propTablesComponents.forEach((c, i) => {
       // Dispay console error if failed to lookup component

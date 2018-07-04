@@ -22,6 +22,16 @@ describe('#fromTemplate', () => {
   it('Remove duplicate tags', () => {
     expect(fromTemplate('<div><div/><div/></div>')).toEqual(['div'])
   })
+
+  it('Works with multiline template', () => {
+    expect(
+      fromTemplate(`
+      <div>
+        <p/>
+      </div>
+    `)
+    ).toEqual(['div', 'p'])
+  })
 })
 
 describe('#fromJSX', () => {

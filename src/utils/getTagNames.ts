@@ -1,3 +1,6 @@
+import dedent from 'dedent'
+import parse5 from 'parse5'
+
 import removeDuplicates from './removeDuplicates'
 
 /**
@@ -5,16 +8,16 @@ import removeDuplicates from './removeDuplicates'
  * @param template
  */
 export const fromTemplate = (template: string): string[] => {
-  const parser = new DOMParser()
+  const tree = parse5.parseFragment(dedent(template))
 
-  const tree = parser.parseFromString(template, 'application/xml')
-
-  return removeDuplicates(retrieveTagNamesFromDOMNode(tree))
+  return removeDuplicates(retrieveTagNamesFromDOMNode(tree as DocumentFragment))
 }
 
-const retrieveTagNamesFromDOMNode = (el: Element | Document): string[] => {
+const retrieveTagNamesFromDOMNode = (
+  el: DocumentFragment | Element | Node
+): string[] => {
   return [
-    ...Array.from(el.children).map(e => retrieveTagNamesFromDOMNode(e))
+    ...Array.from(el.childNodes || []).map(e => retrieveTagNamesFromDOMNode(e))
   ].reduce(
     (dest, cur) => [...dest, ...cur],
     'tagName' in el ? [el.tagName] : []
