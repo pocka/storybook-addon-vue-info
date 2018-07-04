@@ -30,21 +30,35 @@ storiesOf('BaseButton', module)
     `
   }))
 
-storiesOf('Multiple components props', module).add(
-  'Shows multiple components props',
-  withInfo({
-    propTables: [BaseButton, 'local-button', BaseBlank]
-  })(() => ({
-    components: { LocalButton: BaseButton, BaseBlank },
-    template: `
+storiesOf('Multiple components props', module)
+  .add(
+    'Shows multiple components props',
+    withInfo({})(() => ({
+      components: { LocalButton: BaseButton, BaseBlank },
+      template: `
     <div>
       <base-button label="I'm <base-button>"/>
       <base-blank/>
       <local-button label="I'm <local-button>"/>
     </div>
     `
-  }))
-)
+    }))
+  )
+  .add(
+    'Specify which components will be shown',
+    withInfo({
+      propTables: [BaseButton, 'local-button']
+    })(() => ({
+      components: { LocalButton: BaseButton, BaseBlank },
+      template: `
+    <div>
+      <base-button label="I'm <base-button>"/>
+      <base-blank/>
+      <local-button label="I'm <local-button>"/>
+    </div>
+    `
+    }))
+  )
 
 storiesOf('withInfo API', module)
   .add(

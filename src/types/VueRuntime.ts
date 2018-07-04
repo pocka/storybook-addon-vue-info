@@ -1,4 +1,4 @@
-import { ComponentOptions, PropOptions } from 'vue'
+import { ComponentOptions } from 'vue'
 
 import ComponentInfo from './ComponentInfo'
 

@@ -1,4 +1,4 @@
-import Vue, { CreateElement } from 'vue'
+import Vue from 'vue'
 
 import getJSXFromRenderFn, { CreateJSX } from './getJSXFromRenderFn'
 

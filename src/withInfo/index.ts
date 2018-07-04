@@ -4,10 +4,7 @@ import dedent from 'dedent'
 import hljs from 'highlight.js'
 import marked from 'marked'
 
-import { StoryDecorator } from '@storybook/vue'
-
 import { defaultOptions, InfoAddonOptions } from '../options'
-import ComponentInfo from '../types/ComponentInfo'
 import {
   RuntimeComponent,
   RuntimeComponentOptions,
@@ -65,7 +62,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
               ? lookupComponent(c, story.components as RuntimeComponents)
               : RuntimeComponent.toInfo(c as RuntimeComponent)
         )
-      : [parseStoryComponent(story)]
+      : parseStoryComponent(story)
 
     propTablesComponents.forEach((c, i) => {
       // Dispay console error if failed to lookup component
