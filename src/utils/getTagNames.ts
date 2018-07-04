@@ -31,7 +31,7 @@ type Render = (
  * @param render
  */
 export const fromJSX = (render: Render): string[] => {
-  let result: string[] = []
+  const result: string[] = []
 
   render((tag, dataObject, _children) => {
     switch (typeof tag) {
