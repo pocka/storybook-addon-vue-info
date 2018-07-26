@@ -7,15 +7,18 @@ export default function getDuplicatedPropsDesc(
 
   if (propsDescription) {
     Object.keys(propsDescription).some(propName => {
-      const isDuplicated = propTablesComponents.every(({ component }: any) => {
-        return component.props.hasOwnProperty(propName)
+      let count = 0
+
+      return propTablesComponents.some(({ component }: any) => {
+        if (component.props.hasOwnProperty(propName)) {
+          count++
+        }
+
+        if (count > 1) {
+          duplicatedPropName = propName
+          return true
+        }
       })
-
-      if (isDuplicated) {
-        duplicatedPropName = propName
-      }
-
-      return isDuplicated
     })
   }
 
