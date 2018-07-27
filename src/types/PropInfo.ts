@@ -6,4 +6,5 @@ export default interface PropInfo {
   type: string
   required: boolean
   default: any
+  description: string
 }

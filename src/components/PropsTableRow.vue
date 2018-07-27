@@ -20,6 +20,7 @@ export default {
     </td>
     <td>{{ prop.type }}</td>
     <td>{{ prop.default }}</td>
+    <td>{{ prop.description }}</td>
   </tr>
 </template>
 

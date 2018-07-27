@@ -19,6 +19,8 @@ import getJSXFromRenderFn from '../utils/getJSXFromRenderFn'
 import InfoView from '../components/InfoView.vue'
 import lookupComponent from '../lookupComponent'
 
+import getDuplicatedPropsDesc from '../getDuplicatedPropsDesc'
+
 const renderer = new marked.Renderer()
 
 renderer.code = (code, lang) =>
@@ -80,6 +82,18 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
       }
     })
 
+    // Check duplicated props description and log warning.
+    const duplicatedPropsDesc = getDuplicatedPropsDesc(
+      story,
+      propTablesComponents
+    )
+
+    if (duplicatedPropsDesc) {
+      console.warn(
+        `'${duplicatedPropsDesc}' property is used as duplicates. All '${duplicatedPropsDesc}' propsDescription may appear identical in all components.`
+      )
+    }
+
     // Component details to be passed to <props-table>
     const componentDetails = propTablesComponents
       .map(
@@ -94,7 +108,7 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
       .filter(c => c !== null)
       .map(c => ({
         info: c,
-        propsList: getPropsInfoList(c!.component)
+        propsList: getPropsInfoList(c!.component, story!)
       }))
 
     return {

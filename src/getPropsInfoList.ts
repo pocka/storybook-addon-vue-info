@@ -6,8 +6,13 @@ import { RuntimeComponentOptions } from './types/VueRuntime'
 /**
  * Get properties informations from component instance.
  * @param component Runtime component instance
+ * @param story
+ * @returns {PropInfo[]}
  */
-function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
+function getPropsInfoList(
+  component: RuntimeComponentOptions,
+  story: any
+): PropInfo[] {
   const { props } = component
 
   if (!props) {
@@ -16,6 +21,11 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
 
   return Object.keys(props).map(name => {
     const prop = (props as any)[name]
+    let description = ''
+
+    if (story.propsDescription && story.propsDescription[name]) {
+      description = story.propsDescription[name]
+    }
 
     // If there are no props defined in Object sytle,
     // Vue does not convert "prop: Constructor" into Object style (See #3).
@@ -24,6 +34,7 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
         name,
         type: constructorToString(prop),
         required: false,
+        description,
         default: undefined
       }
     }
@@ -32,6 +43,7 @@ function getPropsInfoList(component: RuntimeComponentOptions): PropInfo[] {
       name,
       type: constructorToString(prop.type),
       required: !!prop.required,
+      description,
       default:
         typeof prop.default === 'function' ? prop.default() : prop.default
     }
