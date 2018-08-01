@@ -76,6 +76,29 @@ This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybo
 | `summary`    | `string`                      | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                                    |
 | `propTables` | `(string\|Component)[]\|null` | `null`        | Display prop tables with these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. When using `render` method in a story component, this option is required. |
 
+In addition to addon options, we have a component option.
+
+### `propsDescription`
+
+If you want to add desciprion for component props, you can add `propsDescription` option for your story component.
+
+Assume `<my-awesome-component>` have props `label` and `visible`.
+
+```js
+storiesOf('MyComponent', module)
+  .add('foo', withInfo({})(() => ({
+    components: { MyAwesomeComponent },
+    template: '<my-awesome-component/>',
+    propsDescription: {
+      // These description will appear in `description` column in props table
+      label: 'A label for my awesome component',
+      visible: 'Whether component is visible or not'
+    }
+  })))
+```
+
+**NOTE:** This addon cannot distinguish props that have same name. For example, both `<component-a>` and `<component-b>` have prop named `foo`, and `propsDescription` has `foo: 'bar'`, then description for `foo` of both components will be `bar`.
+
 ## Example
 
 For real example, see `example` directory.
