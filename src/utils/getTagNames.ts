@@ -1,5 +1,5 @@
 import dedent from 'dedent'
-import { compile, ASTElement } from 'vue-template-compiler'
+import { ASTElement, compile } from 'vue-template-compiler'
 
 import removeDuplicates from './removeDuplicates'
 
