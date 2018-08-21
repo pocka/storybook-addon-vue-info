@@ -1,5 +1,5 @@
 import dedent from 'dedent'
-import parse5 from 'parse5'
+import { compile, ASTElement } from 'vue-template-compiler'
 
 import removeDuplicates from './removeDuplicates'
 
@@ -8,20 +8,19 @@ import removeDuplicates from './removeDuplicates'
  * @param template
  */
 export const fromTemplate = (template: string): string[] => {
-  const tree = parse5.parseFragment(dedent(template))
+  const { ast } = compile(dedent(template))
 
-  return removeDuplicates(retrieveTagNamesFromDOMNode(tree as DocumentFragment))
+  if (!ast) {
+    return []
+  }
+
+  return removeDuplicates(retrieveTagNamesFromAST(ast))
 }
 
-const retrieveTagNamesFromDOMNode = (
-  el: DocumentFragment | Element | Node
-): string[] => {
+const retrieveTagNamesFromAST = (el: ASTElement): string[] => {
   return [
-    ...Array.from(el.childNodes || []).map(e => retrieveTagNamesFromDOMNode(e))
-  ].reduce(
-    (dest, cur) => [...dest, ...cur],
-    'tagName' in el ? [el.tagName] : []
-  )
+    ...Array.from(el.children || []).map(e => retrieveTagNamesFromAST(e))
+  ].reduce((dest, cur) => [...dest, ...cur], [el.tag])
 }
 
 type Render = (
