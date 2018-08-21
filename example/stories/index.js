@@ -206,3 +206,13 @@ storiesOf('RenderFnComponent', module).add(
     }
   }))
 )
+
+storiesOf('Issues', module).add(
+  '#53',
+  withInfo({
+    summary: '<https://github.com/pocka/storybook-addon-vue-info/issues/53>'
+  })(() => ({
+    components: { NumberList },
+    template: '<NumberList :numbers="[1, 2]"/>'
+  }))
+)

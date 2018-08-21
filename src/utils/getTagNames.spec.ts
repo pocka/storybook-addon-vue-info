@@ -32,6 +32,10 @@ describe('#fromTemplate', () => {
     `)
     ).toEqual(['div', 'p'])
   })
+
+  it('Keeps case of tag names', () => {
+    expect(fromTemplate('<FooBar/>')).toEqual(['FooBar'])
+  })
 })
 
 describe('#fromJSX', () => {
