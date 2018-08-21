@@ -36,5 +36,5 @@ export default {
       plugins: ['external-helpers']
     })
   ],
-  external: ['vue', 'dedent', 'marked', 'highlight.js']
+  external: ['vue', 'dedent', 'marked', 'highlight.js', 'vue-template-compiler']
 }
