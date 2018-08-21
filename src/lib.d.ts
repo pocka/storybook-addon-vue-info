@@ -7,7 +7,7 @@ declare module 'vue-template-compiler' {
     parent?: ASTElement
     plain: boolean
     static: boolean
-    tag: string
+    tag?: string
   }
   export interface CompileResult {
     ast?: ASTElement

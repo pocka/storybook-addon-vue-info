@@ -20,7 +20,7 @@ export const fromTemplate = (template: string): string[] => {
 const retrieveTagNamesFromAST = (el: ASTElement): string[] => {
   return [
     ...Array.from(el.children || []).map(e => retrieveTagNamesFromAST(e))
-  ].reduce((dest, cur) => [...dest, ...cur], [el.tag])
+  ].reduce((dest, cur) => [...dest, ...cur], el.tag ? [el.tag] : [])
 }
 
 type Render = (
