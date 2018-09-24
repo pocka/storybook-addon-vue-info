@@ -100,7 +100,6 @@ export default {
 <style scoped>
 .vue-info {
   padding: 0 1em;
-  color: #333;
 }
 
 .info-content {
