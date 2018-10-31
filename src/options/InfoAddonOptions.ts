@@ -47,9 +47,14 @@ interface VueInfoAddonOptions {
   summary: string
 
   /**
-   * Displays Props Tables with these components
+   * Displays Props Tables for these components
    */
   propTables: VueComponent[] | false | null
+
+  /**
+   * Excludes Props Tables for these components
+   */
+  propTablesExclude: VueComponent[] | false | null
 }
 
 export default VueInfoAddonOptions

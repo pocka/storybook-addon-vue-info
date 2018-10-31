@@ -6,3 +6,5 @@ lib
 
 example/build
 example/package-lock.json
+
+.idea

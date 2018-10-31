@@ -20,6 +20,7 @@ import InfoView from '../components/InfoView.vue'
 import lookupComponent from '../lookupComponent'
 
 import getDuplicatedPropsDesc from '../getDuplicatedPropsDesc'
+import ComponentInfo from '../types/ComponentInfo'
 
 const renderer = new marked.Renderer()
 
@@ -52,12 +53,12 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
 
     if (!story.template && story.render) {
       console.warn(
-        'This plugins does not support showing story source when using render method.'
+        'This plugin does not support showing story source when using a render method.'
       )
     }
 
     // Components shown in props tables
-    const propTablesComponents = opts.propTables
+    let propTablesComponents = opts.propTables
       ? opts.propTables.map(
           c =>
             typeof c === 'string'
@@ -65,6 +66,21 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
               : RuntimeComponent.toInfo(c as RuntimeComponent)
         )
       : parseStoryComponent(story)
+
+    const propTablesExcludeComponents = opts.propTablesExclude
+      ? opts.propTablesExclude
+          .map(
+            c =>
+              typeof c === 'string'
+                ? lookupComponent(c, story.components as RuntimeComponents)
+                : RuntimeComponent.toInfo(c as RuntimeComponent)
+          )
+          .map(c => c && c.name)
+      : []
+
+    propTablesComponents = propTablesComponents.filter(
+      c => propTablesExcludeComponents.indexOf((c as ComponentInfo).name) === -1
+    )
 
     propTablesComponents.forEach((c, i) => {
       // Dispay console error if failed to lookup component
