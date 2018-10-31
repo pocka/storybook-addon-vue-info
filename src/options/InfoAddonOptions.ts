@@ -54,7 +54,7 @@ interface VueInfoAddonOptions {
   /**
    * Excludes Props Tables for these components
    */
-  propTablesExclude?: VueComponent[]
+  propTablesExclude: VueComponent[] | false | null
 }
 
 export default VueInfoAddonOptions

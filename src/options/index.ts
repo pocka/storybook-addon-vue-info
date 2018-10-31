@@ -7,5 +7,6 @@ export const defaultOptions: InfoAddonOptions = {
   source: true,
   styles: {},
   summary: '',
-  propTables: null
+  propTables: null,
+  propTablesExclude: null
 }
