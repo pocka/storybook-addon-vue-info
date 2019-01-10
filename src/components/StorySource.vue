@@ -60,8 +60,7 @@ export default {
   </div>
 </template>
 
-<style src="../../node_modules/highlight.js/styles/github.css">
-</style>
+<style src="../../node_modules/highlight.js/styles/github.css"></style>
 
 <style scoped>
 .code {

@@ -57,10 +57,7 @@ export default {
 </script>
 
 <template>
-  <div
-    :style="userStyle.info"
-    class="vue-info"
-  >
+  <div :style="userStyle.info" class="vue-info">
     <info-header
       v-if="showHeader"
       :user-style="userStyle.header"
@@ -68,17 +65,9 @@ export default {
       :subtitle="storyTitle"
     />
 
-    <div
-      :style="userStyle.infoContent"
-      class="info-content"
-    >
-      <slot/>
-    </div>
+    <div :style="userStyle.infoContent" class="info-content"><slot /></div>
 
-    <info-description
-      v-if="summary"
-      :description-html="summary"
-    />
+    <info-description v-if="summary" :description-html="summary" />
 
     <story-source
       v-if="showSource"

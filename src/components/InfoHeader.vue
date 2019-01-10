@@ -18,22 +18,9 @@ export default {
 </script>
 
 <template>
-  <div
-    :style="userStyle.body"
-    class="info-header"
-  >
-    <h1
-      :style="userStyle.h1"
-      class="title"
-    >
-      {{ title }}
-    </h1>
-    <h2
-      :style="userStyle.h2"
-      class="story-title"
-    >
-      {{ subtitle }}
-    </h2>
+  <div :style="userStyle.body" class="info-header">
+    <h1 :style="userStyle.h1" class="title">{{ title }}</h1>
+    <h2 :style="userStyle.h2" class="story-title">{{ subtitle }}</h2>
   </div>
 </template>
 

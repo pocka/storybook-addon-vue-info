@@ -9,12 +9,8 @@ export default {
 }
 </script>
 
-
 <template>
-  <p
-    class="summary"
-    v-html="descriptionHtml"
-  />
+  <p class="summary" v-html="descriptionHtml" />
 </template>
 
 <style scoped>

@@ -111,5 +111,5 @@ const formatProp = (k: string, v: any): string =>
   typeof v === 'string'
     ? `${k}="${v}"`
     : typeof v === 'function'
-      ? `${k}={${v.toString()}}`
-      : `${k}={${JSON.stringify(v)}}`
+    ? `${k}={${v.toString()}}`
+    : `${k}={${JSON.stringify(v)}}`

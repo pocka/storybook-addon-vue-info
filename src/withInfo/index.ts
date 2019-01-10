@@ -59,21 +59,19 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
 
     // Components shown in props tables
     let propTablesComponents = opts.propTables
-      ? opts.propTables.map(
-          c =>
-            typeof c === 'string'
-              ? lookupComponent(c, story.components as RuntimeComponents)
-              : RuntimeComponent.toInfo(c as RuntimeComponent)
+      ? opts.propTables.map(c =>
+          typeof c === 'string'
+            ? lookupComponent(c, story.components as RuntimeComponents)
+            : RuntimeComponent.toInfo(c as RuntimeComponent)
         )
       : parseStoryComponent(story)
 
     const propTablesExcludeComponents = opts.propTablesExclude
       ? opts.propTablesExclude
-          .map(
-            c =>
-              typeof c === 'string'
-                ? lookupComponent(c, story.components as RuntimeComponents)
-                : RuntimeComponent.toInfo(c as RuntimeComponent)
+          .map(c =>
+            typeof c === 'string'
+              ? lookupComponent(c, story.components as RuntimeComponents)
+              : RuntimeComponent.toInfo(c as RuntimeComponent)
           )
           .map(c => c && c.name)
       : []
@@ -112,14 +110,13 @@ function withInfo(options: Partial<InfoAddonOptions> | string): WithInfo {
 
     // Component details to be passed to <props-table>
     const componentDetails = propTablesComponents
-      .map(
-        (c, i) =>
-          !c || c.name
-            ? c
-            : {
-                ...c,
-                name: `<anonymous>propTables[${i}]`
-              }
+      .map((c, i) =>
+        !c || c.name
+          ? c
+          : {
+              ...c,
+              name: `<anonymous>propTables[${i}]`
+            }
       )
       .filter(c => c !== null)
       .map(c => ({

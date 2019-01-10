@@ -18,10 +18,7 @@ export default {
 
 <template>
   <div>
-    <h3
-      v-if="componentName"
-      class="component-name"
-    >
+    <h3 v-if="componentName" class="component-name">
       "{{ componentName }}" Component
     </h3>
 

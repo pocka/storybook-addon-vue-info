@@ -14,10 +14,7 @@ export default {
 
 <template>
   <tr class="props-table-row">
-    <td>
-      {{ prop.name }}
-      <tag v-if="prop.required">required</tag>
-    </td>
+    <td>{{ prop.name }} <tag v-if="prop.required">required</tag></td>
     <td>{{ prop.type }}</td>
     <td>{{ prop.default }}</td>
     <td>{{ prop.description }}</td>

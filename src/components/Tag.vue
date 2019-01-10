@@ -1,7 +1,5 @@
 <template>
-  <span class="tag">
-    <slot/>
-  </span>
+  <span class="tag"> <slot /> </span>
 </template>
 
 <style scoped>
