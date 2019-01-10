@@ -7,6 +7,9 @@
   "directories": {
     "example": "example"
   },
+  "files": [
+	"lib"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts' && eslint 'src/**/*.vue' && prettier --list-different 'src/**/*.{ts,vue}'",
