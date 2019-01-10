@@ -16,9 +16,9 @@
     "format": "prettier --write 'src/**/*.{ts,vue}'",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
-    "build": "npm run compile:js && npm run compile:types",
-    "prepublishOnly": "npm run build",
-    "example": "cd example && npm install && npm run storybook"
+    "build": "yarn compile:js && yarn compile:types",
+    "prepublishOnly": "yarn build",
+    "example": "cd example && yarn && yarn storybook"
   },
   "repository": {
     "type": "git",

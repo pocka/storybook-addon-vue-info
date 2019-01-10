@@ -13,4 +13,3 @@ node_modules
 lib
 
 example/build
-example/package-lock.json
