@@ -75,7 +75,8 @@
     "testMatch": [
       "**/__test__/*.+(ts|js)",
       "**/*\\.spec\\.(ts|js)"
-    ]
+    ],
+	"testURL": "http://localhost"
   },
   "dependencies": {
     "dedent": "^0.7.0",
