@@ -79,6 +79,13 @@
     ],
     "testURL": "http://localhost"
   },
+  "eslintConfig": {
+    "extends": [
+      "plugin:vue/recommended",
+      "prettier",
+      "prettier/vue"
+    ]
+  },
   "dependencies": {
     "dedent": "^0.7.0",
     "highlight.js": "^9.12.0",
