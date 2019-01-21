@@ -1,8 +1,8 @@
+<div align="center">
+  
 # storybook-addon-vue-info
 
-<div align="center">
-
-![logo](./assets/logo.png)
+<img src="./assets/logo.png" width="128" alt="logo">
 
 [![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
 [![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
