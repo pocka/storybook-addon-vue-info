@@ -24,7 +24,7 @@ const constructorToString = (
   } else if (constructor === Array) {
     return 'array'
   } else {
-    return 'unknown'
+    return constructor.name || 'unknown'
   }
 }
 
