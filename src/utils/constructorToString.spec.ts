@@ -28,10 +28,12 @@ it('Label of Function to equal "function"', () => {
   expect(constructorToString(Array)).toBe('array')
 })
 
-it('Other value will be "unknown"', () => {
-  expect(constructorToString(() => null)).toBe('unknown')
-
+it('Label of Class to equal its name', () => {
   function MyClass() {}
 
-  expect(constructorToString(MyClass)).toBe('unknown')
+  expect(constructorToString(MyClass)).toBe('MyClass')
+})
+
+it('Other value will be "unknown"', () => {
+  expect(constructorToString(() => null)).toBe('unknown')
 })
