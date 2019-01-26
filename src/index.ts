@@ -1,33 +1,58 @@
+import Vue, { ComponentOptions } from 'vue'
+
 import { StoryDecorator } from '@storybook/vue'
 
-import { RuntimeComponentOptions } from './types/VueRuntime'
-
 import { defaultOptions, InfoAddonOptions } from './options'
-import withInfo from './withInfo'
 
-export { default as withInfo } from './withInfo'
+export function withInfo(options: Partial<InfoAddonOptions>): StoryDecorator
+export function withInfo(summary: string): StoryDecorator
 
 /**
- * Shows Vue component's information.
+ * Display story's information.
  *
  * @example
- * storiesOf('My Vue component')
- *   .addDecorator(VueInfoAddon)
- *   .add('default', () => ({
- *     components: { MyAwesomeComponent },
- *     template: '<my-awesome-component :value="0"/>'
- *   }))
+ * storiesOf('stories')
+ *   .add('story', withInfo('summary')(() => '<foo/>'))
  */
-const VueInfoAddon: StoryDecorator = (
-  storyFn: () => RuntimeComponentOptions,
-  context
-) => withInfo({})(storyFn)(context)
+export function withInfo(options: Partial<InfoAddonOptions> | string): StoryDecorator {
+  return (story, ctx = { kind: '', story: '' }) => {
+    // Normalize options and set defaults
+    const opts = {
+      ...defaultOptions,
+      ...(typeof options === 'string' ? { summary: options } : options)
+    }
 
-export default VueInfoAddon
+    // Get component options inside story
+    const storyComponent = story()
 
-export function setDefaults(opts: Partial<InfoAddonOptions> | string): void {
+    // Extract information to display from "story component"
+    const info = extract(storyComponent, opts)
+
+    // Return story component wrapped with docs
+    return wrapComponent(storyComponent, info, opts)
+  }
+}
+
+/**
+ * Set default options.
+ *
+ * @param options options to override with
+ */
+export function setDefaults(options: Partial<InfoAddonOptions> | string): void {
   Object.assign(
     defaultOptions,
-    typeof opts === 'string' ? { summary: opts } : opts
+    typeof options === 'string' ? { summary: options } : options
   )
 }
+
+/**
+ * Story decorator.
+ *
+ * @example
+ * storiesOf('stories')
+ *   .addDecorator(VueInfoAddon)
+ *   .add('story', () => '<foo/>')
+ */
+export const VueInfoAddon: StoryDecorator = (story, ctx) => withInfo({})(story)(ctx)
+
+export default VueInfoAddon
