@@ -17,7 +17,6 @@
 
 </div>
 
-
 A Storybook addon that shows component's information.
 
 - [Demo](https://storybook-addon-vue-info.netlify.com/)
@@ -39,13 +38,15 @@ import { storiesOf } from '@storybook/vue'
 
 import { withInfo } from 'storybook-addon-vue-info'
 
-storiesOf('MyComponent', module)
-  .add('foo', withInfo({
+storiesOf('MyComponent', module).add(
+  'foo',
+  withInfo({
     summary: 'Summary for MyComponent'
   })(() => ({
     components: { MyAwesomeComponent },
     template: '<my-awesome-component/>'
-  })))
+  }))
+)
 ```
 
 Or, set this addon as a decorator.
@@ -78,13 +79,13 @@ setDefaults({
 
 This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybook/tree/master/addons/info) like options.
 
-| Name                | Data type                     | Default value | Description                                                                                                                                                                                                                 |
-| ------------------- | ----------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `header`            | `boolean`                     | `true`        | Whether to show header or not.                                                                                                                                                                                              |
-| `source`            | `boolean`                     | `true`        | Whether to show source(usage) or not.                                                                                                                                                                                       |
-| `styles`            | `object`                      | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                                                                                             |
-| `summary`           | `string`                      | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                                    |
-| `components`        | `{ [name: string]: Component }\|null` | `null`        | Display info for these components. Same type as component's `components` property. If `null` or `false`, this addon tries to use `components` property in story component then outermost tag in `template`. |
+| Name         | Data type                             | Default value | Description                                                                                                                                                                                                 |
+| ------------ | ------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `header`     | `boolean`                             | `true`        | Whether to show header or not.                                                                                                                                                                              |
+| `source`     | `boolean`                             | `true`        | Whether to show source(usage) or not.                                                                                                                                                                       |
+| `styles`     | `object`                              | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                                                                             |
+| `summary`    | `string`                              | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                    |
+| `components` | `{ [name: string]: Component }\|null` | `null`        | Display info for these components. Same type as component's `components` property. If `null` or `false`, this addon tries to use `components` property in story component then outermost tag in `template`. |
 
 In addition to addon options, we have a component option.
 
@@ -95,18 +96,20 @@ If you want to add desciprion for component props, you can add `propsDescription
 Assume `<my-awesome-component>` have props `label` and `visible`.
 
 ```js
-storiesOf('MyComponent', module)
-  .add('foo', withInfo({})(() => ({
+storiesOf('MyComponent', module).add(
+  'foo',
+  withInfo({})(() => ({
     components: { MyAwesomeComponent },
     template: '<my-awesome-component/>',
     propsDescription: {
       MyAwesomeComponent: {
-		// These description will appear in `description` column in props table
-      	label: 'A label for my awesome component',
-      	visible: 'Whether component is visible or not'
+        // These description will appear in `description` column in props table
+        label: 'A label for my awesome component',
+        visible: 'Whether component is visible or not'
       }
     }
-  })))
+  }))
+)
 ```
 
 ## Example
