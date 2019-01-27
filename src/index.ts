@@ -1,11 +1,17 @@
 import Vue, { ComponentOptions } from 'vue'
 
-import { StoryDecorator } from '@storybook/vue'
+import { StoryDecorator, StoryFunction } from '@storybook/vue'
 
 import { defaultOptions, InfoAddonOptions } from './options'
+import { extract } from './extract'
+import { wrap } from './view'
 
-export function withInfo(options: Partial<InfoAddonOptions>): StoryDecorator
-export function withInfo(summary: string): StoryDecorator
+type StoryWrapper = (
+  story: StoryFunction
+) => (ctx: { kind: string; story: string }) => ComponentOptions<Vue>
+
+export function withInfo(options: Partial<InfoAddonOptions>): StoryWrapper
+export function withInfo(summary: string): StoryWrapper
 
 /**
  * Display story's information.
@@ -14,8 +20,10 @@ export function withInfo(summary: string): StoryDecorator
  * storiesOf('stories')
  *   .add('story', withInfo('summary')(() => '<foo/>'))
  */
-export function withInfo(options: Partial<InfoAddonOptions> | string): StoryDecorator {
-  return (story, ctx = { kind: '', story: '' }) => {
+export function withInfo(
+  options: Partial<InfoAddonOptions> | string
+): StoryWrapper {
+  return story => ctx => {
     // Normalize options and set defaults
     const opts = {
       ...defaultOptions,
@@ -23,13 +31,15 @@ export function withInfo(options: Partial<InfoAddonOptions> | string): StoryDeco
     }
 
     // Get component options inside story
-    const storyComponent = story()
+    const storyResult = story()
+    const storyComponent =
+      typeof storyResult === 'string' ? { template: storyResult } : storyResult
 
-    // Extract information to display from "story component"
-    const info = extract(storyComponent, opts)
+    // Extract information to display
+    const info = extract(storyComponent, ctx.kind, ctx.story, opts)
 
     // Return story component wrapped with docs
-    return wrapComponent(storyComponent, info, opts)
+    return wrap(storyComponent, info, opts)
   }
 }
 
@@ -53,6 +63,7 @@ export function setDefaults(options: Partial<InfoAddonOptions> | string): void {
  *   .addDecorator(VueInfoAddon)
  *   .add('story', () => '<foo/>')
  */
-export const VueInfoAddon: StoryDecorator = (story, ctx) => withInfo({})(story)(ctx)
+export const VueInfoAddon: StoryDecorator = (story, ctx) =>
+  withInfo({})(story)(ctx)
 
 export default VueInfoAddon

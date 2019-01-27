@@ -1,11 +1,11 @@
-// TODO: Rename me!
-export interface Info {
+export interface StoryInfo {
   title: string
   subtitle: string
 
   summary?: string
 
   storySource: string
+  jsxStory: boolean
 
   components: ComponentInfo[]
 }
@@ -13,10 +13,10 @@ export interface Info {
 export interface ComponentInfo {
   name: string
 
-  props: CProp[]
+  props: PropInfo[]
 }
 
-export interface CProp {
+export interface PropInfo {
   name: string
   type: string
   required: boolean

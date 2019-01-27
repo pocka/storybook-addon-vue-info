@@ -1,9 +1,7 @@
 import { Component } from 'vue'
 
-/**
- * We accepts Component object and Component name (which is registered globaly)
- */
-export type VueComponent = Component<any, any, any, any> | string
+import { ComponentRegistory } from '../types/vue'
+
 
 export interface InlineStyle {
   [key: string]: string | number
@@ -47,14 +45,9 @@ interface VueInfoAddonOptions {
   summary: string
 
   /**
-   * Displays Props Tables for these components
+   * Explicitly specify components to display info
    */
-  propTables: VueComponent[] | false | null
-
-  /**
-   * Excludes Props Tables for these components
-   */
-  propTablesExclude: VueComponent[] | false | null
+  components: ComponentRegistory | false | null
 }
 
 export default VueInfoAddonOptions

@@ -13,8 +13,10 @@ storiesOf('BaseButton', module)
   .add('global component', () => ({
     template: '<base-button type="primary" label="global"/>',
     propsDescription: {
-      type: 'type',
-      label: 'label'
+      'base-button': {
+        type: 'type',
+        label: 'label'
+      }
     }
   }))
   .add('local component', () => ({
@@ -23,8 +25,10 @@ storiesOf('BaseButton', module)
     },
     template: '<local-button :disabled="true" label="local"/>',
     propsDescription: {
-      label: 'label',
-      disabled: 'disabled flag'
+      LocalButton: {
+        label: 'label',
+        disabled: 'disabled flag'
+      }
     }
   }))
   .add('long long template', () => ({
@@ -55,7 +59,7 @@ storiesOf('Multiple components props', module)
   .add(
     'Specify which components will be shown',
     withInfo({
-      propTables: [BaseButton, 'local-button']
+      components: { BaseButton, 'local-button': BaseButton }
     })(() => ({
       components: { LocalButton: BaseButton, BaseBlank },
       template: `
@@ -199,7 +203,7 @@ storiesOf('NumberList', module)
 storiesOf('RenderFnComponent', module).add(
   'Works with non-SFC',
   withInfo({
-    propTables: [RenderFnComponent]
+    components: { RenderFnComponent }
   })(() => ({
     render(h) {
       return <RenderFnComponent name="Vue" />
