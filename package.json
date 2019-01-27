@@ -18,7 +18,7 @@
     "compile:js": "rollup -c",
     "build": "yarn compile:js && yarn compile:types",
     "prepublishOnly": "yarn build",
-    "example": "cd example && yarn && yarn storybook"
+    "example": "cd example && rm -rf node_modules && yarn && yarn storybook"
   },
   "repository": {
     "type": "git",
