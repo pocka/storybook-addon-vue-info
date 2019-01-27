@@ -1,7 +1,12 @@
-import { Component } from 'vue'
+import { ComponentRegistory } from './types/vue'
 
-import { ComponentRegistory } from '../types/vue'
-
+export const defaultOptions: InfoAddonOptions = {
+  header: true,
+  source: true,
+  styles: {},
+  summary: '',
+  components: null
+}
 
 export interface InlineStyle {
   [key: string]: string | number
@@ -9,9 +14,8 @@ export interface InlineStyle {
 
 /**
  * Addon options
- * NOTE: There are no maxProp*** options since we use template strings to render source code.
  */
-interface VueInfoAddonOptions {
+export interface InfoAddonOptions {
   /**
    * Toggles display of header with component name and description
    */
@@ -49,5 +53,3 @@ interface VueInfoAddonOptions {
    */
   components: ComponentRegistory | false | null
 }
-
-export default VueInfoAddonOptions
