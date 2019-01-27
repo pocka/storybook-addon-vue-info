@@ -48,10 +48,7 @@ function createJSX(
 }
 
 export type JSXStringChildren = string[]
-export type Tag =
-  | string
-  | AnyComponent
-  | undefined
+export type Tag = string | AnyComponent | undefined
 
 /** Tag name for components that have no name on runtime */
 const Anonymous = 'Anonymous'

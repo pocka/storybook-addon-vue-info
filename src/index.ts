@@ -2,8 +2,8 @@ import Vue, { ComponentOptions } from 'vue'
 
 import { StoryDecorator, StoryFunction } from '@storybook/vue'
 
-import { defaultOptions, InfoAddonOptions } from './options'
 import { extract } from './extract'
+import { defaultOptions, InfoAddonOptions } from './options'
 import { wrap } from './view'
 
 type StoryWrapper = (

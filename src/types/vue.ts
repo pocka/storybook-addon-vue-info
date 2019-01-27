@@ -15,4 +15,3 @@ export interface ComponentRegistory {
     | Component<any, any, any, any>
     | AsyncComponent<any, any, any, any>
 }
-

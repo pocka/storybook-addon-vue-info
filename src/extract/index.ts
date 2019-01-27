@@ -1,13 +1,13 @@
-import Vue, { ComponentOptions } from 'vue'
 import dedent from 'dedent'
 import hljs from 'highlight.js'
 import marked from 'marked'
+import Vue, { ComponentOptions } from 'vue'
 
 import { InfoAddonOptions } from '../options'
 import { StoryInfo } from '../types/info'
 import { AnyComponent } from '../types/vue'
-import { hyphenate } from '../utils/hyphenate'
 import { getJSXFromRenderFn } from '../utils/getJSXFromRenderFn'
+import { hyphenate } from '../utils/hyphenate'
 
 import { decideTargets } from './decideTargets'
 import { getProps } from './getProps'
@@ -76,9 +76,9 @@ const formatPropsDescription = (story: any): PropsDescription => {
     return {}
   }
 
-  let components: PropsDescription = {}
+  const components: PropsDescription = {}
 
-  for (const component in story.propsDescription) {
+  for (const component of Object.keys(story.propsDescription)) {
     components[hyphenate(component)] = story.propsDescription[component]
   }
 

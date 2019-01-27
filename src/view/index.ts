@@ -1,8 +1,8 @@
 import Vue, { ComponentOptions } from 'vue'
 
+import InfoView from '../components/InfoView.vue'
 import { InfoAddonOptions } from '../options'
 import { StoryInfo } from '../types/info'
-import InfoView from '../components/InfoView.vue'
 
 export function wrap(
   component: ComponentOptions<Vue>,

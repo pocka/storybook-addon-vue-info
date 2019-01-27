@@ -1,7 +1,7 @@
 import Vue, { AsyncComponent, Component, ComponentOptions } from 'vue'
 
-import { ComponentRegistory } from '../types/vue'
 import { InfoAddonOptions } from '../options'
+import { ComponentRegistory } from '../types/vue'
 import * as getTagNames from '../utils/getTagNames'
 import { hyphenate } from '../utils/hyphenate'
 
@@ -36,7 +36,7 @@ export function decideTargets(
     .map(tagName => lookupGlobalComponent(tagName))
     .filter((res): res is LookupResult => !!res)
 
-  let ret: ComponentRegistory = {}
+  const ret: ComponentRegistory = {}
 
   for (const { name, component } of components) {
     ret[name] = component
@@ -46,13 +46,12 @@ export function decideTargets(
 }
 
 const normalizeComponents = (c: ComponentRegistory): ComponentRegistory => {
-  let ret: ComponentRegistory = {}
+  const ret: ComponentRegistory = {}
 
   // There are cases component options only exists under "options" property
-  for (const key in c) {
+  for (const key of Object.keys(c)) {
     ret[key] = (c[key] as any).options || c[key]
   }
 
   return ret
 }
-
