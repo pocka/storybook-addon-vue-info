@@ -84,8 +84,7 @@ This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybo
 | `source`            | `boolean`                     | `true`        | Whether to show source(usage) or not.                                                                                                                                                                                       |
 | `styles`            | `object`                      | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                                                                                             |
 | `summary`           | `string`                      | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                                    |
-| `propTables`        | `(string\|Component)[]\|null` | `null`        | Display prop tables for these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. When using `render` method in a story component, this option is required.  |
-| `propTablesExclude` | `(string\|Component)[]\|null` | `null`        | Don't display prop tables for these components. `string[]` is recommended.                                                                                                                                                  |
+| `components`        | `{ [name: string]: Component }\|null` | `null`        | Display info for these components. Same type as component's `components` property. If `null` or `false`, this addon tries to use `components` property in story component then outermost tag in `template`. |
 
 In addition to addon options, we have a component option.
 
@@ -101,14 +100,14 @@ storiesOf('MyComponent', module)
     components: { MyAwesomeComponent },
     template: '<my-awesome-component/>',
     propsDescription: {
-      // These description will appear in `description` column in props table
-      label: 'A label for my awesome component',
-      visible: 'Whether component is visible or not'
+      MyAwesomeComponent: {
+		// These description will appear in `description` column in props table
+      	label: 'A label for my awesome component',
+      	visible: 'Whether component is visible or not'
+      }
     }
   })))
 ```
-
-**NOTE:** This addon cannot distinguish props that have same name. For example, both `<component-a>` and `<component-b>` have prop named `foo`, and `propsDescription` has `foo: 'bar'`, then description for `foo` of both components will be `bar`.
 
 ## Example
 
