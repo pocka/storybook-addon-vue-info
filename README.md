@@ -49,21 +49,6 @@ storiesOf('MyComponent', module).add(
 )
 ```
 
-Or, set this addon as a decorator.
-
-```js
-import { storiesOf } from '@storybook/vue'
-
-import VueInfoAddon from 'storybook-addon-vue-info'
-
-storiesOf('MyComponent', module)
-  .addDecorator(VueInfoAddon)
-  .add('foo', () => ({
-    components: { MyAwesomeComponent },
-    template: '<my-awesome-component/>'
-  })
-```
-
 You can specify default options with `setDefaults`.
 
 ```js
@@ -74,6 +59,8 @@ setDefaults({
   header: false
 })
 ```
+
+NOTE: Using this addon as decorator is deprecated ([detail](https://github.com/pocka/storybook-addon-vue-info/commit/d11151d69988f3a0f192e04e9714e154578094a6)).
 
 ## Options
 
