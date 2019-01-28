@@ -8,7 +8,8 @@
     "example": "example"
   },
   "files": [
-    "lib"
+    "lib",
+    "loader"
   ],
   "scripts": {
     "test": "jest",
@@ -93,6 +94,8 @@
     "dedent": "^0.7.0",
     "highlight.js": "^9.12.0",
     "marked": "^0.3.19",
+    "querystring": "^0.2.0",
+    "vue-docgen-api": "^3.3.4",
     "vue-template-compiler": "^2.5.16"
   }
 }
