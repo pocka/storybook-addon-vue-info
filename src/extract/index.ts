@@ -23,13 +23,14 @@ export function extract(
 
   const propsDescription = formatPropsDescription(story)
 
-  const components = Object.keys(targets).map(name => {
+  const components = Object.keys(targets).map<ComponentInfo>(name => {
     const component = targets[name]
     const kebabName = hyphenate(name)
 
     if ('__docgenInfo' in component) {
       const partial = extractDocgenInfo(component)
 
+      // tslint:disable-next-line:no-shadowed-variable
       const props = partial.props
         ? partial.props.map(prop => {
             if (
@@ -46,7 +47,7 @@ export function extract(
           })
         : []
 
-      return { name, ...partial, props } as ComponentInfo
+      return { name, ...partial, props }
     }
 
     const props = getProps(component).map(prop => {
