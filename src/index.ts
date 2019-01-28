@@ -85,7 +85,9 @@ export const VueInfoAddon: StoryDecorator = (story, ctx) => {
     if (s.$options && s.$options.STORYBOOK_WRAPS) {
       wrappedComponent = s.$options.STORYBOOK_WRAPS.options
     }
-  } catch (e) {}
+  } catch (e) {
+    // If `new` fails, we get story component directly
+  }
 
   return withInfo({}, wrappedComponent)(story)(ctx)
 }
