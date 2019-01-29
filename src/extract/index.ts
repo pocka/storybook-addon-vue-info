@@ -27,7 +27,7 @@ export function extract(
     const component = targets[name]
     const kebabName = hyphenate(name)
 
-    if ('__docgenInfo' in component) {
+    if (options.useDocgen && '__docgenInfo' in component) {
       const partial = extractDocgenInfo(component)
 
       // tslint:disable-next-line:no-shadowed-variable

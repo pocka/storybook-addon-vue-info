@@ -73,6 +73,7 @@ This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybo
 | `styles`     | `object`                              | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                                                                             |
 | `summary`    | `string`                              | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                    |
 | `components` | `{ [name: string]: Component }\|null` | `null`        | Display info for these components. Same type as component's `components` property. If `null` or `false`, this addon tries to use `components` property in story component then outermost tag in `template`. |
+| `useDocgen`  | `boolean`                             | `true`        | Whether to use result of vue-docgen-api.                                                                                                                                                                    |
 
 In addition to addon options, we have a component option.
 
