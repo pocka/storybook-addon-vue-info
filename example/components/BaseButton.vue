@@ -1,9 +1,15 @@
 <script>
 export default {
   props: {
+    /**
+     * Whether to disable button
+     */
     disabled: {
       type: Boolean
     },
+    /**
+     * Button type
+     */
     type: {
       type: String,
       default: 'normal'
