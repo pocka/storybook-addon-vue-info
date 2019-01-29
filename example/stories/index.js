@@ -6,6 +6,8 @@ import BaseBlank from '../components/BaseBlank.vue'
 import BaseButton from '../components/BaseButton.vue'
 import NumberList from '../components/NumberList.vue'
 
+import Issue59 from '../components/issues/59/child.vue'
+
 storiesOf('Examples/Basic usage', module)
   .add(
     'Simple example',
@@ -250,5 +252,15 @@ storiesOf('Issues/#53', module).add(
   })(() => ({
     components: { NumberList },
     template: '<NumberList :numbers="[1, 2]"/>'
+  }))
+)
+
+storiesOf('Issues/#59', module).add(
+  'Should load extended component properly',
+  withInfo({
+    summary: '<https://github.com/pocka/storybook-addon-vue-info/issues/59>'
+  })(() => ({
+    components: { Issue59 },
+    template: '<issue-59 foo="FOO"/>'
   }))
 )
