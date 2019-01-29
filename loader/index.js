@@ -18,7 +18,7 @@ module.exports = function(content, map) {
       '\n' +
       `component.options.__docgenInfo = ${JSON.stringify(info)}\n`
 
-    this.callback(null, js, map)
+    this.callback(null, js)
   } catch (e) {
     this.callback(null, content, map)
   }
