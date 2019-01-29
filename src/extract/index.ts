@@ -4,12 +4,13 @@ import marked from 'marked'
 import Vue, { ComponentOptions } from 'vue'
 
 import { InfoAddonOptions } from '../options'
-import { StoryInfo } from '../types/info'
+import { ComponentInfo, StoryInfo } from '../types/info'
 import { AnyComponent } from '../types/vue'
 import { getJSXFromRenderFn } from '../utils/getJSXFromRenderFn'
 import { hyphenate } from '../utils/hyphenate'
 
 import { decideTargets } from './decideTargets'
+import { extractDocgenInfo } from './extractDocgenInfo'
 import { getProps } from './getProps'
 
 export function extract(
@@ -22,9 +23,32 @@ export function extract(
 
   const propsDescription = formatPropsDescription(story)
 
-  const components = Object.keys(targets).map(name => {
+  const components = Object.keys(targets).map<ComponentInfo>(name => {
     const component = targets[name]
     const kebabName = hyphenate(name)
+
+    if (options.useDocgen && '__docgenInfo' in component) {
+      const partial = extractDocgenInfo(component)
+
+      // tslint:disable-next-line:no-shadowed-variable
+      const props = partial.props
+        ? partial.props.map(prop => {
+            if (
+              kebabName in propsDescription &&
+              prop.name in propsDescription[kebabName]
+            ) {
+              return {
+                ...prop,
+                description: propsDescription[kebabName][prop.name]
+              }
+            }
+
+            return prop
+          })
+        : []
+
+      return { name, ...partial, props }
+    }
 
     const props = getProps(component).map(prop => {
       if (

@@ -45,7 +45,9 @@ storiesOf('BaseButton', module)
 storiesOf('Multiple components props', module)
   .add(
     'Shows multiple components props',
-    withInfo({})(() => ({
+    withInfo({
+      useDocgen: false
+    })(() => ({
       components: { LocalButton: BaseButton, BaseBlank },
       template: `
     <div>
