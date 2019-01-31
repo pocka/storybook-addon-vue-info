@@ -51,6 +51,6 @@ export default {
   </x-section-container>
 </template>
 
-<style src="../../../node_modules/highlight.js/styles/github.css"/>
+<style src="../../../node_modules/highlight.js/styles/github.css" />
 
-<style module src="./style.css"/>
+<style module src="./style.css" />

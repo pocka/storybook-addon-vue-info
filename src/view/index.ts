@@ -12,11 +12,13 @@ export function wrap(
 ): ComponentOptions<Vue> {
   return {
     render(h) {
-      return h(Wrapper, {
-        props: { info, options }
-      }, [
-        h(component)
-      ])
+      return h(
+        Wrapper,
+        {
+          props: { info, options }
+        },
+        [h(component)]
+      )
     }
   }
 }

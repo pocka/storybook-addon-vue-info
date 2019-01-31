@@ -1,5 +1,5 @@
 <template>
-  <hr :class="$style.separator"/>
+  <hr :class="$style.separator" />
 </template>
 
-<style module src="./style.css"/>
+<style module src="./style.css" />

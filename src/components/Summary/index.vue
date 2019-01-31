@@ -35,10 +35,10 @@ export default {
 </script>
 
 <template>
-  <section v-if="html" v-html="html" :class="$style.container"/>
-  <section v-else v-html="markdownHtml" :class="$style.container"/>
+  <section v-if="html" :class="$style.container" v-html="html" />
+  <section v-else :class="$style.container" v-html="markdownHtml" />
 </template>
 
-<style src="../../../node_modules/highlight.js/styles/github.css"/>
+<style src="../../../node_modules/highlight.js/styles/github.css" />
 
-<style module src="./style.css"/>
+<style module src="./style.css" />

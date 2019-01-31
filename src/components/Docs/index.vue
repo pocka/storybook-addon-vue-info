@@ -4,7 +4,10 @@ export default {
     const link = document.createElement('link')
 
     link.setAttribute('rel', 'stylesheet')
-    link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,500,700')
+    link.setAttribute(
+      'href',
+      'https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,500,700'
+    )
     link.dataset.saviHead = 'true'
 
     document.head.appendChild(link)
@@ -22,9 +25,7 @@ export default {
 </script>
 
 <template>
-  <div :class="$style.container">
-    <slot/>
-  </div>
+  <div :class="$style.container"><slot /></div>
 </template>
 
-<style module src="./style.css"/>
+<style module src="./style.css" />
