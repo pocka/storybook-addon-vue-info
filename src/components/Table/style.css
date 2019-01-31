@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 12px;
+
+  margin-left: 1px;
+  margin-bottom: 8px;
+}
+
+.table {
+  position: relative;
+  font-size: 12px;
+  width: 100%;
+  border-spacing: 0;
+
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.table thead {
+  color: #fff;
+  background-color: #333;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.table tbody tr {
+  position: relative;
+}
+
+.table tbody tr:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 8px;
+  right: 8px;
+
+  border-bottom: 1px solid #333;
+}
+
+.table tbody tr:first-child > td {
+  padding-top: 16px;
+}
+.table tbody tr:last-child > td {
+  padding-bottom: 16px;
+}
+
+.table td:last-child {
+  width: 100%;
+
+  white-space: initial;
+}
+
+.table th {
+  padding: 8px;
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: 16px;
+  padding-right: 56px;
+}
+
+.table td {
+  padding: 8px;
+  padding-right: 48px;
+
+  white-space: nowrap;
+}

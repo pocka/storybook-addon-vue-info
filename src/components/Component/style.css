@@ -1,0 +1,14 @@
+.container > :not(:first-child) {
+  margin-top: 24px;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+
+  font-weight: 400;
+}
+
+.required {
+  color: #A01A1A;
+}

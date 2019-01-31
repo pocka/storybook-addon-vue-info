@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  width: 112px;
+  font-size: 12px;
+  line-height: 15px;
+  padding: 4px 0;
+
+  color: #fff;
+  background-color: #333;
+  border-radius: 4px 4px 0 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.contents {
+  padding: 8px;
+
+  border: 1px solid #333;
+  border-radius: 0 4px 4px 4px;
+  overflow: hidden;
+}

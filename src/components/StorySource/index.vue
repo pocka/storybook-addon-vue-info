@@ -1,29 +1,22 @@
 <script>
 import hljs from 'highlight.js'
 
-import SectionTitle from './SectionTitle.vue'
+import XSectionContainer from '../SectionContainer/index.vue'
 
 export default {
-  components: {
-    SectionTitle
-  },
+  components: { XSectionContainer },
   props: {
-    userStyle: {
-      type: Object,
-      default: () => ({})
-    },
     source: {
       type: String,
-      required: true
+      default: ''
     },
     lang: {
       type: String,
-      required: true
+      default: 'html'
     }
   },
   computed: {
     sourceCode() {
-      // Append ; for jsx to enable syntax highlighting
       return this.lang === 'jsx' ? `;${this.source}` : this.source
     }
   },
@@ -50,22 +43,14 @@ export default {
 </script>
 
 <template>
-  <div>
-    <section-title :style="userStyle.h1">Story Source</section-title>
+  <x-section-container label="Story source">
     <pre
       ref="code"
-      :class="lang"
-      class="code"
+      :class="[lang, $style.codeBlock]"
     ><code>{{ sourceCode }}</code></pre>
-  </div>
+  </x-section-container>
 </template>
 
-<style src="../../node_modules/highlight.js/styles/github.css"></style>
+<style src="../../../node_modules/highlight.js/styles/github.css"/>
 
-<style scoped>
-.code {
-  overflow: auto;
-  padding: 1em;
-  border-radius: 3px;
-}
-</style>
+<style module src="./style.css"/>

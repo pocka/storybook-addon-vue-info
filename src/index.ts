@@ -6,6 +6,8 @@ import { extract } from './extract'
 import { defaultOptions, InfoAddonOptions } from './options'
 import { wrap } from './view'
 
+export * from './components'
+
 type StoryWrapper = (
   story: StoryFunction
 ) => (ctx: { kind: string; story: string }) => ComponentOptions<Vue>
