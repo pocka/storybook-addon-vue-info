@@ -5,13 +5,21 @@ module.exports = (baseConfig, env, defaultConfig) => {
 
   defaultConfig.module.rules.push({
     test: /\.css$/,
-    use: [
-      'vue-style-loader',
+    oneOf: [
       {
-        loader: 'css-loader',
-        options: {
-          modules: true
-        }
+        resourceQuery: /module/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+      {
+        use: ['vue-style-loader', 'css-loader']
       }
     ]
   })
