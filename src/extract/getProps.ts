@@ -1,5 +1,3 @@
-import Vue from 'vue'
-
 import { PropInfo } from '../types/info'
 import { AnyComponent } from '../types/vue'
 import { constructorToString } from '../utils/constructorToString'
