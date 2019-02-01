@@ -10,6 +10,8 @@ import Issue59 from '../components/issues/59/child.vue'
 
 import CustomWrapper from '../components/customDocs/wrapper/Wrapper.vue'
 
+import './issues'
+
 storiesOf('Examples/Basic usage', module)
   .add(
     'Simple example',
@@ -251,3 +253,4 @@ storiesOf('Issues/#59', module).add(
     template: '<issue-59 foo="FOO"/>'
   }))
 )
+
