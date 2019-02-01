@@ -20,7 +20,8 @@
     "build": "yarn compile:js && yarn compile:types",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prepublishOnly": "yarn build",
-    "example": "cd example && npm i && npm run storybook"
+    "example": "cd example && npm run storybook",
+    "example:update": "cd example && npm i"
   },
   "repository": {
     "type": "git",
