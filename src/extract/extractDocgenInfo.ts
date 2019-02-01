@@ -3,9 +3,7 @@ import { AnyComponent } from '../types/vue'
 
 type Extracted = Pick<ComponentInfo, Exclude<keyof ComponentInfo, 'name'>>
 
-export function extractDocgenInfo(
-  component: AnyComponent
-): Extracted {
+export function extractDocgenInfo(component: AnyComponent): Extracted {
   const docs = (component as any).__docgenInfo
 
   const props = Object.keys(docs.props).map(name => {
