@@ -3,6 +3,7 @@ import path from 'path'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import license from 'rollup-plugin-license'
+import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
 import vue from 'rollup-plugin-vue'
@@ -26,8 +27,13 @@ export default {
         output: path.join(__dirname, 'lib', 'dependencies.txt')
       }
     }),
+    postcss({
+      modules: true,
+      plugins: ['autoprefixer']
+    }),
     typescript({
-      typescript: require('typescript')
+      typescript: require('typescript'),
+      clean: true
     }),
     vue(),
     babel({

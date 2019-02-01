@@ -8,6 +8,8 @@ import NumberList from '../components/NumberList.vue'
 
 import Issue59 from '../components/issues/59/child.vue'
 
+import CustomWrapper from '../components/customDocs/wrapper/Wrapper.vue'
+
 storiesOf('Examples/Basic usage', module)
   .add(
     'Simple example',
@@ -171,37 +173,22 @@ storiesOf('Examples/Advance usage', module)
     }))
   )
   .add(
-    'Custom styles',
+    'Customize docs',
     withInfo({
       summary: `
-        To style docs, set \`styles\` option.
+        To customize docs view, set your docs component to \`wrapperComponent\` option.
+
+        This addon passes two props:
+
+        - \`info\` ... Information about story and contained components. Interface defined in \`src/types/info\` (\`StoryInfo\`).
+        - \`options\` ... Addon options.
+
+        Story component is passed as default slot.
+
+        For more detail, please look at source code of this example
+        (\`example/components/customDocs/wrapper\`).
       `,
-      styles: {
-        info: {
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          padding: '5rem 3rem',
-          backgroundColor: '#222',
-          color: '#fff',
-          fontFamily: 'sans-serif'
-        },
-        header: {
-          h2: {
-            color: '#e33'
-          },
-          body: {
-            marginBottom: '3rem'
-          }
-        },
-        infoContent: {
-          padding: '1rem 1rem',
-          borderRadius: '4px',
-          background: '#eee'
-        }
-      }
+      wrapperComponent: CustomWrapper
     })(() => ({
       components: { BaseButton },
       template: '<base-button label="I\'m a button!"/>'
