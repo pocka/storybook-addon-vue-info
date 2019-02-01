@@ -1,3 +1,5 @@
+/* tslint:disable:ban-types */
+
 declare module 'vue-template-compiler' {
   export interface ASTElement {
     attrs?: any[]
@@ -20,7 +22,7 @@ declare module 'vue-template-compiler' {
 
 declare module 'vuera' {
   import * as React from 'react'
-  import { Component, AsyncComponent } from 'vue'
+  import { AsyncComponent, Component } from 'vue'
 
   interface Props {
     component:

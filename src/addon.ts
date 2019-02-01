@@ -5,4 +5,3 @@ export const PanelName = AddonName + '/panel'
 export const Events = {
   ShowDocs: AddonName + '/show_docs'
 }
-

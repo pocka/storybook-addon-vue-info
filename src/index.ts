@@ -4,7 +4,7 @@ import { StoryDecorator, StoryFunction } from '@storybook/vue'
 
 import { extract } from './extract'
 import { defaultOptions, InfoAddonOptions } from './options'
-import { wrap, transfer } from './view'
+import { transfer, wrap } from './view'
 
 export * from './components'
 
