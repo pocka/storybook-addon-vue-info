@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import VueInfoAddon, { withInfo } from 'storybook-addon-vue-info'
 
-import NumberList from '../../components/NumberList.vue'
+import NumberList from '../../../components/NumberList.vue'
 
 storiesOf('Issues/#53', module).add(
   'Should load tables even for PascalCase components',

@@ -4,7 +4,7 @@ import VueI18n from 'vue-i18n'
 
 import { withInfo } from 'storybook-addon-vue-info'
 
-import Issue63 from '../../components/issues/63/index.vue'
+import Issue63 from './component.vue'
 
 storiesOf('Issues/#63', module)
   .add(

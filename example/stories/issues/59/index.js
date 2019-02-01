@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue'
 
 import { withInfo } from 'storybook-addon-vue-info'
 
-import Issue59 from '../../components/issues/59/child.vue'
+import Issue59 from './child.vue'
 
 storiesOf('Issues/#59', module).add(
   'Should load extended component properly',
