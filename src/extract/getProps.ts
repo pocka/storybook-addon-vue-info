@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 import { PropInfo } from '../types/info'
 import { AnyComponent } from '../types/vue'
 import { constructorToString } from '../utils/constructorToString'
@@ -43,14 +45,16 @@ export function getProps(component: AnyComponent): PropInfo[] {
 
     if (typeof propDef.default === 'function') {
       try {
-        default$ = propDef.default.apply(component)
+        default$ = JSON.stringify(propDef.default.apply(component))
       } catch (e) {
+        console.error(e)
         console.warn(
           `[storybook-addon-vue-info] Failed to get default value for ${name}`
         )
+        default$ = 'Failed to get default value'
       }
     } else {
-      default$ = 'default' in propDef ? `${propDef.default}` : ''
+      default$ = 'default' in propDef ? JSON.stringify(propDef.default) : ''
     }
 
     return {
