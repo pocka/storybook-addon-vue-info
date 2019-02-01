@@ -38,11 +38,13 @@
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@storybook/addons": "^4.1.11",
     "@storybook/vue": "^4.1.11",
     "@types/dedent": "^0.7.0",
     "@types/highlight.js": "^9.12.2",
     "@types/jest": "^22.2.3",
     "@types/marked": "^0.3.0",
+    "@types/react": "^16.7.22",
     "@types/storybook__vue": "^3.3.0",
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
@@ -65,12 +67,13 @@
     "ts-jest": "^22.4.5",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2",
+    "typescript": "3",
     "vue": "^2.5.16",
     "vue-loader": "^15.6.2"
   },
   "peerDependencies": {
     "@storybook/vue": "*",
+    "react": "*",
     "vue": "^2.0.0"
   },
   "prettier": {
@@ -104,6 +107,7 @@
     "marked": "^0.3.19",
     "querystring": "^0.2.0",
     "vue-docgen-api": "^3.3.4",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "vuera": "^0.2.3"
   }
 }

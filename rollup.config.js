@@ -8,12 +8,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import typescript from 'rollup-plugin-typescript2'
 import vue from 'rollup-plugin-vue'
 
-export default {
-  input: './src/index.ts',
-  output: {
-    file: './lib/index.js',
-    format: 'es'
-  },
+const commonConfig = {
   plugins: [
     resolve({
       only: ['parse5']
@@ -42,5 +37,24 @@ export default {
       plugins: ['external-helpers']
     })
   ],
-  external: ['vue', 'dedent', 'marked', 'highlight.js', 'vue-template-compiler']
+  external: ['vue', 'dedent', 'marked', 'highlight.js', 'vue-template-compiler', 'react', 'vuera', '@storybook/addons']
 }
+
+export default [
+  {
+    input: './src/index.ts',
+    output: {
+      file: './lib/index.js',
+      format: 'es'
+    },
+    ...commonConfig
+  },
+  {
+    input: './src/register.tsx',
+    output: {
+      file: './lib/register.js',
+      format: 'es'
+    },
+    ...commonConfig
+  }
+]
