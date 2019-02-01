@@ -3,8 +3,6 @@ import Vue, { ComponentOptions } from 'vue'
 import { InfoAddonOptions } from '../options'
 import { StoryInfo } from '../types/info'
 
-import Wrapper from '../components/Wrapper/index.vue'
-
 export function wrap(
   component: ComponentOptions<Vue>,
   info: StoryInfo,
@@ -13,7 +11,7 @@ export function wrap(
   return {
     render(h) {
       return h(
-        Wrapper,
+        options.wrapperComponent,
         {
           props: { info, options }
         },
