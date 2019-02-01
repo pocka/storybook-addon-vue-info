@@ -18,16 +18,26 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    click(ev) {
+      /**
+       * Passthrough click event
+       * @type {Event}
+       */
+      this.$emit('click', ev)
+    }
   }
 }
 </script>
 
 <template>
-  <button
-    class="btn"
-    :class="type"
-    :disabled="disabled"
-  >{{label}}</button>
+  <button class="btn" :class="type" :disabled="disabled" @click="click">
+    <!-- @slot Default to label prop -->
+    <slot>
+      {{ label }}
+    </slot>
+  </button>
 </template>
 
 <style scoped>

@@ -62,14 +62,22 @@ export default {
     getPropText(p) {
       const pretext = p.type + (p.required ? ', required' : p.default ? `, default to "${p.default}"` : '') + '. '
 
-      if (!pretext && !p.description) {
-        return p.name
-      }
-
       // Camelized
       const pretext$ = pretext.slice(0, 1).toUpperCase() + pretext.slice(1)
 
       return `${p.name} ... ${pretext$}${p.description}`
+    },
+    getEventText(e) {
+      if (!e.type && !e.description) {
+        return e.name
+      }
+
+      const pretext = e.type ? e.type + '. ' : ''
+
+      return `${e.name} ... ${pretext}${e.description}`
+    },
+    getSlotText(s) {
+      return s.description ? `${s.name} ... ${s.description}` : e.name
     }
   }
 }
@@ -104,6 +112,30 @@ export default {
               class="item"
             >
               {{getPropText(p)}}
+            </li>
+          </ul>
+        </div>
+        <div v-if="c.events.length">
+          <h3 class="subheading">Events</h3>
+          <ul class="list">
+            <li
+              v-for="e in c.events"
+              :key="e.name"
+              class="item"
+            >
+              {{getEventText(e)}}
+            </li>
+          </ul>
+        </div>
+        <div v-if="c.slots.length">
+          <h3 class="subheading">Slots</h3>
+          <ul class="list">
+            <li
+              v-for="s in c.slots"
+              :key="s.name"
+              class="item"
+            >
+              {{getSlotText(s)}}
             </li>
           </ul>
         </div>

@@ -14,6 +14,8 @@ export interface ComponentInfo {
   name: string
 
   props: PropInfo[]
+  events: EventInfo[]
+  slots: SlotInfo[]
 }
 
 export interface PropInfo {
@@ -21,5 +23,16 @@ export interface PropInfo {
   type: string
   required: boolean
   default?: string
+  description?: string
+}
+
+export interface EventInfo {
+  name: string
+  type?: string
+  description?: string
+}
+
+export interface SlotInfo {
+  name: string
   description?: string
 }

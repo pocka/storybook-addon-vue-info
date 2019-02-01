@@ -64,7 +64,7 @@ export function extract(
       return prop
     })
 
-    return { name, props }
+    return { name, props, events: [], slots: [] }
   })
 
   // Set up markdown renderer for summary
