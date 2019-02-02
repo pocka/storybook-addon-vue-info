@@ -4,7 +4,7 @@ import { StoryDecorator, StoryFunction } from '@storybook/vue'
 
 import { extract } from './extract'
 import { defaultOptions, InfoAddonOptions } from './options'
-import { wrap } from './view'
+import { transfer, wrap } from './view'
 
 export * from './components'
 
@@ -46,6 +46,12 @@ export function withInfo(
 
     // Extract information to display
     const info = extract(storyComponent, ctx.kind, ctx.story, opts)
+
+    if (opts.docsInPanel) {
+      transfer(info, opts)
+
+      return storyComponent
+    }
 
     // Return story component wrapped with docs
     return wrap(storyComponent, info, opts)

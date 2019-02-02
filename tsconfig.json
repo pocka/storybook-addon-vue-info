@@ -7,6 +7,7 @@
 			"es2015",
 			"es2015.promise"
 		],
+    "jsx": "react",
 		"target": "es5",
 		"strict": true,
 		"module": "es2015",
