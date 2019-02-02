@@ -9,8 +9,10 @@ Vue.component('base-button', BaseButton)
 
 Vue.use(VueI18n)
 
+const req = require.context('../stories', true, /\.stories\.js$/)
+
 function loadStories() {
-  require('../stories')
+  req.keys().forEach(req)
 }
 
 configure(loadStories, module)
