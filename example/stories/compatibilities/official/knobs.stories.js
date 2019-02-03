@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 
 import { withKnobs, text } from '@storybook/addon-knobs'
-import { withInfo } from 'storybook-addon-vue-info'
 
 import MyButton from './components/MyButton.vue'
 
@@ -15,7 +14,7 @@ storiesOf('Compatibilities/@storybook/addon-knobs', module)
   .addDecorator(withKnobs)
   .add(
     'panel',
-    withInfo({})(() => ({
+    () => ({
       props: {
         label: {
           type: String,
@@ -24,13 +23,14 @@ storiesOf('Compatibilities/@storybook/addon-knobs', module)
       },
       components: { MyButton },
       template: '<my-button>{{label}}</my-button>'
-    }))
+    }),
+    {
+      info: {}
+    }
   )
   .add(
     'inline',
-    withInfo({
-      docsInPanel: false
-    })(() => ({
+    () => ({
       props: {
         label: {
           type: String,
@@ -39,5 +39,8 @@ storiesOf('Compatibilities/@storybook/addon-knobs', module)
       },
       components: { MyButton },
       template: '<my-button>{{label}}</my-button>'
-    }))
+    }),
+    {
+      info: { docsInPanel: false }
+    }
   )
