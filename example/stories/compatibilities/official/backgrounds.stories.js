@@ -1,14 +1,10 @@
 import { storiesOf } from '@storybook/vue'
 
 import { withBackgrounds } from '@storybook/addon-backgrounds'
-import { withInfo } from 'storybook-addon-vue-info'
 
 import MyButton from './components/MyButton.vue'
 
-storiesOf(
-  'Compatibilities/@storybook/addon-backgrounds',
-  module
-)
+storiesOf('Compatibilities/@storybook/addon-backgrounds', module)
   .addDecorator(
     withBackgrounds([
       { name: 'twitter', value: '#00aced' },
@@ -18,17 +14,23 @@ storiesOf(
   )
   .add(
     'panel',
-    withInfo({})(() => ({
+    () => ({
       components: { MyButton },
       template: '<my-button>FOO</my-button>'
-    }))
+    }),
+    {
+      info: {}
+    }
   )
   .add(
     'inline',
-    withInfo({
-      docsInPanel: false
-    })(() => ({
+    () => ({
       components: { MyButton },
       template: '<my-button>FOO</my-button>'
-    }))
+    }),
+    {
+      info: {
+        docsInPanel: false
+      }
+    }
   )

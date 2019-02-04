@@ -65,4 +65,17 @@ declare module '@storybook/addons' {
   const addons: Mod
 
   export default addons
+
+  export interface DecoratorOptions {
+    name: string
+    parameterName: string
+    skipIfNoParametersOrOptions?: boolean
+    wrapper(
+      getStory: (ctx: any) => any,
+      ctx: any,
+      options: { parameters: any }
+    ): any
+  }
+
+  export function makeDecorator(opts: DecoratorOptions): any
 }
