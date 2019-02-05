@@ -25,9 +25,9 @@ A Storybook addon that shows Vue component's information.
 First, install the addon.
 
 ```sh
-npm install --save-dev storybook-addon-vue-info@alpha
+npm install --save-dev storybook-addon-vue-info@beta
 
-# yarn add -D storybook-addon-vue-info@alpha
+# yarn add -D storybook-addon-vue-info@beta
 ```
 
 Then register in `addons.js`.
