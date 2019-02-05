@@ -152,4 +152,4 @@ storiesOf('MyComponent', module)
 
 For real example, see `example` directory.
 
-[live examples]: https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?panelRight=1
+[live examples]: https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?selectedKind=Examples%2FBasic%20usage&selectedStory=Simple%20example&full=0&addons=1&stories=1&panelRight=1&addonPanel=STORYBOOK_ADDON_VUE_INFO%2Fpanel
