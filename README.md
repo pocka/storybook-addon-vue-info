@@ -1,35 +1,60 @@
 <div align="center">
   
-# storybook-addon-vue-info
+  <img src="./assets/logo.png" width="104" alt="logo">
+  <br/>
 
-<img src="./assets/logo.png" width="128" alt="logo">
-
-<br/>
-<hr/>
-
-[![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
-[![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
-[![Monthly download](https://img.shields.io/npm/dm/storybook-addon-vue-info.svg)](https://www.npmjs.com/package/storybook-addon-vue-info)
-[![GitHub license](https://img.shields.io/github/license/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/blob/master/LICENSE)
-![Top Language](https://img.shields.io/github/languages/top/pocka/storybook-addon-vue-info.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/commits/master)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+  [![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
+  [![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
+  [![Monthly download](https://img.shields.io/npm/dm/storybook-addon-vue-info.svg)](https://www.npmjs.com/package/storybook-addon-vue-info)
+  [![GitHub license](https://img.shields.io/github/license/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/blob/master/LICENSE)
+  [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 </div>
 
-A Storybook addon that shows component's information.
+<hr/>
 
-- [Demo](https://storybook-addon-vue-info.netlify.com/)
+## storybook-addon-vue-info
 
-![Screenshot](https://raw.githubusercontent.com/pocka/storybook-addon-vue-info/master/assets/storybook-addon-vue-info--screen-shot.png)
+A Storybook addon that shows Vue component's information.
 
-## Install
+- [Demo][live examples]
+
+
+## Getting started
+
+First, install the addon.
 
 ```sh
 npm install --save-dev storybook-addon-vue-info@alpha
 
-# or
 # yarn add -D storybook-addon-vue-info@alpha
+```
+
+Then register in `addons.js`.
+
+```js
+// .storybook/addons.js
+
+// Don't forget "/lib/" !!
+import 'storybook-addon-vue-info/lib/register'
+```
+
+And setup custom webpack loader in order to extract component information with [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api).
+
+```js
+// .storybook/webpack.config.js
+
+// This example uses "Full control mode + default".
+// If you are using other mode, add payload of `defaultConfig.module.rules.push` to rules list.
+module.exports = (base, env, defaultConfig) => {
+  defaultConfig.module.rules.push({
+    test: /\.vue$/,
+    loader: 'storybook-addon-vue-info/loader',
+    enforce: 'post'
+  })
+  
+  return defaultConfig
+}
 ```
 
 ## Usage
@@ -57,7 +82,7 @@ storiesOf('MyComponent', module)
   )
 ```
 
-You can set the addon as global.
+You can set the addon as global decorator.
 
 ```js
 // config.js
@@ -68,10 +93,10 @@ import { withInfo } from 'storybook-addon-vue-info'
 addDecorator(withInfo)
 ```
 
-You can specify default options with `setDefaults`.
+To set default options, use `setDefaults`.
 
 ```js
-// config.js
+// .storybook/config.js
 import { setDefaults } from 'storybook-addon-vue-info'
 
 setDefaults({
@@ -79,27 +104,7 @@ setDefaults({
 })
 ```
 
-### Setup docgen loader
-
-```js
-// .storybook/webpack.config.js
-module.exports = {
-  // ...
-  module: {
-    // ...
-    rules: [
-      // ...
-      {
-        test: /\.vue$/,
-        loader: 'storybook-addon-vue-info/loader',
-        enforce: 'post'
-      }
-    ]
-    // ...
-  }
-  // ...
-}
-```
+For more details, see [live examples].
 
 ## Options
 
@@ -107,9 +112,9 @@ module.exports = {
 | ------------------ | ------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                                                                                                                                              |
 | `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                                                                                                                                                       |
-| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override docs component.                                                                                                                                                                                    |
+| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                                                                                                                                                    |
 | `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                                                                                                                                                    |
-| `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. If `null` or `false`, this addon tries to use `components` property in story component then outermost tag in `template`. |
+| `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. |
 | `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                                                                                                                                                        |
 | `useDocgen`        | `boolean`                             | `true`                                              | Whether to use result of vue-docgen-api.                                                                                                                                                                    |
 
@@ -117,7 +122,7 @@ In addition to addon options, we have a component option.
 
 ### `propsDescription`
 
-If you want to add desciprion for component props, you can add `propsDescription` option for your story component.
+If you want to explicitly specify desciprion for component props, add `propsDescription` option for your story component.
 
 Assume `<my-awesome-component>` have props `label` and `visible`.
 
@@ -146,3 +151,5 @@ storiesOf('MyComponent', module)
 ## Example
 
 For real example, see `example` directory.
+
+[live examples]: https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?selectedKind=Examples%2FBasic%20usage&selectedStory=Simple%20example&full=0&addons=1&stories=1&panelRight=1&addonPanel=STORYBOOK_ADDON_VUE_INFO%2Fpanel
