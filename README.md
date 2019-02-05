@@ -17,7 +17,7 @@
 
 A Storybook addon that shows Vue component's information.
 
-- [Demo](https://storybook-addon-vue-info.netlify.com/)
+- [Demo][live examples]
 
 
 ## Getting started
@@ -104,7 +104,7 @@ setDefaults({
 })
 ```
 
-For more details, see [live examples](https://storybook-addon-vue-info.netlify.com/).
+For more details, see [live examples].
 
 ## Options
 
@@ -151,3 +151,5 @@ storiesOf('MyComponent', module)
 ## Example
 
 For real example, see `example` directory.
+
+[live examples]: https://deploy-preview-66--storybook-addon-vue-info.netlify.com/?panelRight=1
