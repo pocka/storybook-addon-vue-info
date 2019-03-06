@@ -38,8 +38,8 @@
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@storybook/addons": "^4.1.11",
-    "@storybook/vue": "^4.1.11",
+    "@storybook/addons": "^5.0.0",
+    "@storybook/vue": "^5.0.0",
     "@types/dedent": "^0.7.0",
     "@types/highlight.js": "^9.12.2",
     "@types/jest": "^22.2.3",
