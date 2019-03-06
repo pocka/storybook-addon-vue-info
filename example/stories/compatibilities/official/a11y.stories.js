@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 
-import { checkA11y } from '@storybook/addon-a11y'
+import { withA11y } from '@storybook/addon-a11y'
 
 import MyButton from './components/MyButton.vue'
 
@@ -10,7 +10,7 @@ import MyButton from './components/MyButton.vue'
  */
 
 storiesOf('Compatibilities/@storybook/addon-a11y', module)
-  .addDecorator(checkA11y)
+  .addDecorator(withA11y)
   .add(
     'panel',
     () => ({

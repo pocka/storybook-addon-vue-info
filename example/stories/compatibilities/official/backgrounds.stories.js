@@ -1,17 +1,15 @@
 import { storiesOf } from '@storybook/vue'
 
-import { withBackgrounds } from '@storybook/addon-backgrounds'
-
 import MyButton from './components/MyButton.vue'
 
 storiesOf('Compatibilities/@storybook/addon-backgrounds', module)
-  .addDecorator(
-    withBackgrounds([
+  .addParameters({
+    backgrounds: [
       { name: 'twitter', value: '#00aced' },
       { name: 'facebook', value: '#3b5998' },
       { name: 'normal', value: '#fff', default: true }
-    ])
-  )
+    ]
+  })
   .add(
     'panel',
     () => ({
