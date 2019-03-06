@@ -21,17 +21,26 @@
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "dependencies": {
     "storybook-addon-vue-info": "file:..",
-    "vue": "^2.5.9"
+    "vue": "^2.5.22"
   },
   "devDependencies": {
-    "@storybook/vue": "^3.2.17",
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-a11y": "^5.0.0",
+    "@storybook/addon-backgrounds": "^5.0.0",
+    "@storybook/addon-knobs": "^5.0.0",
+    "@storybook/addon-storysource": "^5.0.0",
+    "@storybook/addon-viewport": "^5.0.0",
+    "@storybook/vue": "^5.0.0",
+    "babel-loader": "^8.0.5",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "babel-preset-env": "^1.7.0",
-    "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.9",
-    "webpack": "^3.9.1",
-    "webpack-dev-server": "^2.9.5"
+    "babel-preset-vue": "^2.0.2",
+    "highlight.js": "^9.14.1",
+    "marked": "^0.6.0",
+    "vue-i18n": "^8.8.0",
+    "vue-loader": "^15.6.1",
+    "vue-template-compiler": "^2.5.22",
+    "webpack": "^4.29.0",
+    "webpack-dev-server": "^3.1.14"
   }
 }

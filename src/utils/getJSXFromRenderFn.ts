@@ -1,6 +1,6 @@
 import { AsyncComponent, Component, VNodeData } from 'vue'
 
-import { RuntimeComponent } from '../types/VueRuntime'
+import { AnyComponent } from '../types/vue'
 
 export type RenderFn = (h: CreateJSX) => any
 
@@ -8,7 +8,7 @@ export type RenderFn = (h: CreateJSX) => any
  * Get JSX strings from render function.
  * @param render
  */
-const getJSXFromRenderFn = (render: RenderFn): string => {
+export const getJSXFromRenderFn = (render: RenderFn): string => {
   return render(createJSX)
 }
 
@@ -48,12 +48,7 @@ function createJSX(
 }
 
 export type JSXStringChildren = string[]
-export type Tag =
-  | string
-  | Component<any, any, any, any>
-  | AsyncComponent<any, any, any, any>
-  | (() => Component)
-  | undefined
+export type Tag = string | AnyComponent | undefined
 
 /** Tag name for components that have no name on runtime */
 const Anonymous = 'Anonymous'
@@ -68,7 +63,7 @@ const getTagName = (tag: Tag) => {
   } else if (typeof tag === 'string') {
     return tag
   } else if (tag.name) {
-    const t = tag as RuntimeComponent
+    const t = tag as any
 
     if (!t.options) {
       return t.name || Anonymous
@@ -111,5 +106,5 @@ const formatProp = (k: string, v: any): string =>
   typeof v === 'string'
     ? `${k}="${v}"`
     : typeof v === 'function'
-      ? `${k}={${v.toString()}}`
-      : `${k}={${JSON.stringify(v)}}`
+    ? `${k}={${v.toString()}}`
+    : `${k}={${JSON.stringify(v)}}`

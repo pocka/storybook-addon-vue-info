@@ -1,0 +1,101 @@
+.savi-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: auto;
+  color: #fff;
+  background-color: #d5287b;
+  font-family: Roboto, sans-serif;
+}
+
+.header {
+  padding: 32px;
+  padding-bottom: 60px;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.1875;
+
+  font-weight: 500;
+}
+
+.subtitle {
+  margin: 0;
+  margin-top: 8px;
+  font-size: 24px;
+  line-height: 1.208;
+
+  font-weight: 400;
+
+  opacity: 0.85;
+}
+
+.preview-container {
+  padding: 32px;
+
+  background-color: #fff;
+}
+
+.preview {
+  all: initial;
+  display: block;
+  position: relative;
+}
+
+.info-body {
+  padding: 32px;
+}
+
+.info-body > :not(:first-child) {
+  padding-top: 32px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.208;
+
+  font-weight: 500;
+}
+
+.subheading {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.1875;
+
+  font-weight: 500;
+}
+
+.codeblock {
+  margin: 0;
+  margin-top: 16px;
+  padding: 8px 16px;
+  font-size: 12px;
+
+  background-color: #444;
+  border-radius: 4px;
+}
+
+.component > :not(:first-child) {
+  margin-top: 16px;
+}
+
+.list {
+  margin: 0;
+  margin-top: 8px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item:not(:first-child) {
+  margin-top: 8px;
+}
+.item::before {
+  content: '-';
+}

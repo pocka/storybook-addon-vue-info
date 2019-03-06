@@ -4,7 +4,7 @@ type Constructor = () => void
  * Returns type string of constructor.
  * @param constructor Constructor function
  */
-const constructorToString = (
+export const constructorToString = (
   constructor: Constructor | Constructor[]
 ): string => {
   if (constructor instanceof Array) {

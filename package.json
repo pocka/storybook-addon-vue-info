@@ -1,21 +1,26 @@
 {
   "name": "storybook-addon-vue-info",
-  "version": "0.7.1",
+  "version": "1.0.0-beta.1",
   "description": "Storybook addon that shows Vue component information",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
     "example": "example"
   },
+  "files": [
+    "lib",
+    "loader"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts' && eslint 'src/**/*.vue' && prettier --list-different 'src/**/*.{ts,vue}'",
     "format": "prettier --write 'src/**/*.{ts,vue}'",
     "compile:types": "tsc --declaration --noEmit",
     "compile:js": "rollup -c",
-    "build": "npm run compile:js && npm run compile:types",
-    "prepublishOnly": "npm run build",
-    "example": "cd example && npm install && npm run storybook"
+    "build": "yarn compile:js && yarn compile:types",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "prepublishOnly": "yarn build",
+    "example": "cd example && npm i && npm run storybook"
   },
   "repository": {
     "type": "git",
@@ -32,14 +37,22 @@
   },
   "homepage": "https://github.com/pocka/storybook-addon-vue-info#readme",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addons": "^5.0.0",
+    "@storybook/vue": "^5.0.0",
     "@types/dedent": "^0.7.0",
     "@types/highlight.js": "^9.12.2",
     "@types/jest": "^22.2.3",
     "@types/marked": "^0.3.0",
+    "@types/react": "^16.7.22",
     "@types/storybook__vue": "^3.3.0",
+    "autoprefixer": "^9.4.7",
+    "babel-loader": "^8.0.5",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-vue": "^2.0.2",
     "eslint": "^4.19.1",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-vue": "^4.5.0",
     "jest": "^22.4.3",
     "prettier": "^1.12.1",
@@ -48,17 +61,21 @@
     "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-license": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-typescript2": "^0.13.0",
+    "rollup-plugin-postcss": "^2.0.1",
+    "rollup-plugin-typescript2": "^0.19.2",
     "rollup-plugin-vue": "^4.0.2",
     "ts-jest": "^22.4.5",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2",
-    "vue": "^2.5.16"
+    "typescript": "3",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.6.2"
   },
   "peerDependencies": {
-    "vue": "^2.0.0",
-    "@storybook/vue": "*"
+    "@storybook/addons": ">=4",
+    "@storybook/vue": "*",
+    "react": "*",
+    "vue": "^2.0.0"
   },
   "prettier": {
     "semi": false,
@@ -75,12 +92,23 @@
     "testMatch": [
       "**/__test__/*.+(ts|js)",
       "**/*\\.spec\\.(ts|js)"
+    ],
+    "testURL": "http://localhost"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:vue/recommended",
+      "prettier",
+      "prettier/vue"
     ]
   },
   "dependencies": {
     "dedent": "^0.7.0",
     "highlight.js": "^9.12.0",
     "marked": "^0.3.19",
-    "vue-template-compiler": "^2.5.16"
+    "querystring": "^0.2.0",
+    "vue-docgen-api": "^3.3.4",
+    "vue-template-compiler": "^2.5.16",
+    "vuera": "^0.2.3"
   }
 }

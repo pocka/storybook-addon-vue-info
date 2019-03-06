@@ -1,4 +1,5 @@
 import dedent from 'dedent'
+import { VNodeChildren } from 'vue'
 import { ASTElement, compile } from 'vue-template-compiler'
 
 import removeDuplicates from './removeDuplicates'
@@ -24,7 +25,7 @@ const retrieveTagNamesFromAST = (el: ASTElement): string[] => {
 }
 
 type Render = (
-  h: (tag: any, dataObject?: any, children?: any[] | string) => any,
+  h: (tag: any, dataObject?: any, children?: VNodeChildren) => any,
   hack: any
 ) => any
 

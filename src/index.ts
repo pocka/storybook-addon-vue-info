@@ -1,33 +1,68 @@
-import { StoryDecorator } from '@storybook/vue'
+import Vue from 'vue'
 
-import { RuntimeComponentOptions } from './types/VueRuntime'
+import { makeDecorator } from '@storybook/addons'
 
+import { extract } from './extract'
 import { defaultOptions, InfoAddonOptions } from './options'
-import withInfo from './withInfo'
+import { renderToPanel } from './view'
 
-export { default as withInfo } from './withInfo'
+export * from './components'
+
+export const withInfo = makeDecorator({
+  name: 'withInfo',
+  parameterName: 'info',
+  skipIfNoParametersOrOptions: true,
+  wrapper(getStory, context, { parameters }) {
+    // Normalize options and set defaults
+    const options = {
+      ...defaultOptions,
+      ...(parameters === true
+        ? {}
+        : typeof parameters === 'string'
+        ? { summary: parameters }
+        : parameters)
+    }
+
+    const WrappedComponent = getStory(context)
+
+    return Vue.extend({
+      render(h) {
+        const story = h(getStory(context)) as any
+
+        const { options: componentOptions } = (story.fnOptions &&
+          story.fnOptions.STORYBOOK_WRAPS) ||
+          (story.componentOptions && story.componentOptions.Ctor) || {
+            options: undefined
+          }
+
+        const info = extract(
+          componentOptions,
+          context.kind,
+          context.story,
+          options
+        )
+
+        if (options.docsInPanel) {
+          renderToPanel(info, options)
+          return story
+        }
+
+        return h(options.wrapperComponent, { props: { info, options } }, [
+          story
+        ])
+      }
+    })
+  }
+})
 
 /**
- * Shows Vue component's information.
+ * Set default options.
  *
- * @example
- * storiesOf('My Vue component')
- *   .addDecorator(VueInfoAddon)
- *   .add('default', () => ({
- *     components: { MyAwesomeComponent },
- *     template: '<my-awesome-component :value="0"/>'
- *   }))
+ * @param options options to override with
  */
-const VueInfoAddon: StoryDecorator = (
-  storyFn: () => RuntimeComponentOptions,
-  context
-) => withInfo({})(storyFn)(context)
-
-export default VueInfoAddon
-
-export function setDefaults(opts: Partial<InfoAddonOptions> | string): void {
+export function setDefaults(options: Partial<InfoAddonOptions> | string): void {
   Object.assign(
     defaultOptions,
-    typeof opts === 'string' ? { summary: opts } : opts
+    typeof options === 'string' ? { summary: options } : options
   )
 }

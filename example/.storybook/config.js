@@ -1,18 +1,22 @@
-import { configure } from '@storybook/vue'
-import { setDefaults } from 'storybook-addon-vue-info'
+import { configure, addDecorator } from '@storybook/vue'
 
 import Vue from 'vue'
+import VueI18n from 'vue-i18n'
 
-import BaseButton from '../src/components/BaseButton.vue'
+import { withInfo } from 'storybook-addon-vue-info'
+
+import BaseButton from '../components/BaseButton.vue'
 
 Vue.component('base-button', BaseButton)
 
+Vue.use(VueI18n)
+
+addDecorator(withInfo)
+
+const req = require.context('../stories', true, /\.stories\.js$/)
+
 function loadStories() {
-  require('../stories')
+  req.keys().forEach(req)
 }
 
 configure(loadStories, module)
-
-setDefaults({
-  summary: 'This summary is set by setDefaults/1'
-})

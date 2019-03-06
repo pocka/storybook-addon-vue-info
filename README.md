@@ -1,29 +1,64 @@
-# storybook-addon-vue-info
+<div align="center">
+  
+  <img src="./assets/logo.png" width="104" alt="logo">
+  <br/>
 
 [![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
 [![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
 [![Monthly download](https://img.shields.io/npm/dm/storybook-addon-vue-info.svg)](https://www.npmjs.com/package/storybook-addon-vue-info)
 [![GitHub license](https://img.shields.io/github/license/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/blob/master/LICENSE)
-![Top Language](https://img.shields.io/github/languages/top/pocka/storybook-addon-vue-info.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/commits/master)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
+</div>
 
-A Storybook addon that shows component's information.
+<hr/>
 
-- [Demo](https://storybook-addon-vue-info.netlify.com/)
+## storybook-addon-vue-info
 
-![Screenshot](https://raw.githubusercontent.com/pocka/storybook-addon-vue-info/master/assets/storybook-addon-vue-info--screen-shot.png)
+A Storybook addon that shows Vue component's information.
 
-## Install
+- [Demo][live examples]
+
+## Getting started
+
+First, install the addon.
 
 ```sh
 npm install --save-dev storybook-addon-vue-info
+
+# yarn add -D storybook-addon-vue-info
+```
+
+Then register in `addons.js`.
+
+```js
+// .storybook/addons.js
+
+// Don't forget "/lib/" !!
+import 'storybook-addon-vue-info/lib/register'
+```
+
+And setup custom webpack loader in order to extract component information with [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api).
+
+```js
+// .storybook/webpack.config.js
+
+// This example uses "Full control mode + default".
+// If you are using other mode, add payload of `defaultConfig.module.rules.push` to rules list.
+module.exports = (base, env, defaultConfig) => {
+  defaultConfig.module.rules.push({
+    test: /\.vue$/,
+    loader: 'storybook-addon-vue-info/loader',
+    enforce: 'post'
+  })
+
+  return defaultConfig
+}
 ```
 
 ## Usage
 
-Wrap story with `withInfo` function.
+Add `withInfo` decorator then set `info` options to the story.
 
 ```js
 import { storiesOf } from '@storybook/vue'
@@ -31,33 +66,36 @@ import { storiesOf } from '@storybook/vue'
 import { withInfo } from 'storybook-addon-vue-info'
 
 storiesOf('MyComponent', module)
-  .add('foo', withInfo({
-    summary: 'Summary for MyComponent'
-  })(() => ({
-    components: { MyAwesomeComponent },
-    template: '<my-awesome-component/>'
-  })))
+  .addDecorator(withInfo)
+  .add(
+    'foo',
+    () => ({
+      components: { MyAwesomeComponent },
+      template: '<my-awesome-component/>'
+    }),
+    {
+      info: {
+        summary: 'Summary for MyComponent'
+      }
+    }
+  )
 ```
 
-Or, set this addon as a decorator.
-
-```js
-import { storiesOf } from '@storybook/vue'
-
-import VueInfoAddon from 'storybook-addon-vue-info'
-
-storiesOf('MyComponent', module)
-  .addDecorator(VueInfoAddon)
-  .add('foo', () => ({
-    components: { MyAwesomeComponent },
-    template: '<my-awesome-component/>'
-  })
-```
-
-You can specify default options with `setDefaults`.
+You can set the addon as global decorator.
 
 ```js
 // config.js
+import { addDecorator } from '@storybook/vue'
+
+import { withInfo } from 'storybook-addon-vue-info'
+
+addDecorator(withInfo)
+```
+
+To set default options, use `setDefaults`.
+
+```js
+// .storybook/config.js
 import { setDefaults } from 'storybook-addon-vue-info'
 
 setDefaults({
@@ -65,42 +103,52 @@ setDefaults({
 })
 ```
 
+For more details, see [live examples].
+
 ## Options
 
-This addon accepts [@storybook/addon-info](https://github.com/storybooks/storybook/tree/master/addons/info) like options.
-
-| Name                | Data type                     | Default value | Description                                                                                                                                                                                                                 |
-| ------------------- | ----------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `header`            | `boolean`                     | `true`        | Whether to show header or not.                                                                                                                                                                                              |
-| `source`            | `boolean`                     | `true`        | Whether to show source(usage) or not.                                                                                                                                                                                       |
-| `styles`            | `object`                      | `{}`          | Styles override. See [`src/options/InfoAddonOptions.ts`](src/options/InfoAddonOptions.ts) for available fields.                                                                                                             |
-| `summary`           | `string`                      | `''`          | Summary for the story. Accepts Markdown.                                                                                                                                                                                    |
-| `propTables`        | `(string\|Component)[]\|null` | `null`        | Display prop tables for these components. `string[]` is recommended. If specified `null` or `false`, this addon use outermost tag in `template`. When using `render` method in a story component, this option is required.  |
-| `propTablesExclude` | `(string\|Component)[]\|null` | `null`        | Don't display prop tables for these components. `string[]` is recommended.                                                                                                                                                  |
+| Name               | Data type                             | Default value                                       | Description                                                                        |
+| ------------------ | ------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                     |
+| `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                              |
+| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                    |
+| `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                           |
+| `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. |
+| `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                               |
+| `useDocgen`        | `boolean`                             | `true`                                              | Whether to use result of vue-docgen-api.                                           |
 
 In addition to addon options, we have a component option.
 
 ### `propsDescription`
 
-If you want to add desciprion for component props, you can add `propsDescription` option for your story component.
+If you want to explicitly specify desciprion for component props, add `propsDescription` option for your story component.
 
 Assume `<my-awesome-component>` have props `label` and `visible`.
 
 ```js
 storiesOf('MyComponent', module)
-  .add('foo', withInfo({})(() => ({
-    components: { MyAwesomeComponent },
-    template: '<my-awesome-component/>',
-    propsDescription: {
-      // These description will appear in `description` column in props table
-      label: 'A label for my awesome component',
-      visible: 'Whether component is visible or not'
+  .addDecorator(withInfo)
+  .add(
+    'foo',
+    () => ({
+      components: { MyAwesomeComponent },
+      template: '<my-awesome-component/>',
+      propsDescription: {
+        MyAwesomeComponent: {
+          // These description will appear in `description` column in props table
+          label: 'A label for my awesome component',
+          visible: 'Whether component is visible or not'
+        }
+      }
+    }),
+    {
+      info: true
     }
-  })))
+  )
 ```
-
-**NOTE:** This addon cannot distinguish props that have same name. For example, both `<component-a>` and `<component-b>` have prop named `foo`, and `propsDescription` has `foo: 'bar'`, then description for `foo` of both components will be `bar`.
 
 ## Example
 
 For real example, see `example` directory.
+
+[live examples]: https://storybook-addon-vue-info.netlify.com/?path=/story/examples-basic-usage--simple-example
