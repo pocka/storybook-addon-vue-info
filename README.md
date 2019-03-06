@@ -3,11 +3,11 @@
   <img src="./assets/logo.png" width="104" alt="logo">
   <br/>
 
-  [![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
-  [![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
-  [![Monthly download](https://img.shields.io/npm/dm/storybook-addon-vue-info.svg)](https://www.npmjs.com/package/storybook-addon-vue-info)
-  [![GitHub license](https://img.shields.io/github/license/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/blob/master/LICENSE)
-  [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Build Status](https://travis-ci.com/pocka/storybook-addon-vue-info.svg?branch=master)](https://travis-ci.com/pocka/storybook-addon-vue-info)
+[![npm version](https://badge.fury.io/js/storybook-addon-vue-info.svg)](https://badge.fury.io/js/storybook-addon-vue-info)
+[![Monthly download](https://img.shields.io/npm/dm/storybook-addon-vue-info.svg)](https://www.npmjs.com/package/storybook-addon-vue-info)
+[![GitHub license](https://img.shields.io/github/license/pocka/storybook-addon-vue-info.svg)](https://github.com/pocka/storybook-addon-vue-info/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 </div>
 
@@ -19,15 +19,14 @@ A Storybook addon that shows Vue component's information.
 
 - [Demo][live examples]
 
-
 ## Getting started
 
 First, install the addon.
 
 ```sh
-npm install --save-dev storybook-addon-vue-info@beta
+npm install --save-dev storybook-addon-vue-info
 
-# yarn add -D storybook-addon-vue-info@beta
+# yarn add -D storybook-addon-vue-info
 ```
 
 Then register in `addons.js`.
@@ -52,7 +51,7 @@ module.exports = (base, env, defaultConfig) => {
     loader: 'storybook-addon-vue-info/loader',
     enforce: 'post'
   })
-  
+
   return defaultConfig
 }
 ```
@@ -108,15 +107,15 @@ For more details, see [live examples].
 
 ## Options
 
-| Name               | Data type                             | Default value                                       | Description                                                                                                                                                                                                 |
-| ------------------ | ------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                                                                                                                                              |
-| `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                                                                                                                                                       |
-| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                                                                                                                                                    |
-| `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                                                                                                                                                    |
+| Name               | Data type                             | Default value                                       | Description                                                                        |
+| ------------------ | ------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                     |
+| `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                              |
+| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                    |
+| `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                           |
 | `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. |
-| `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                                                                                                                                                        |
-| `useDocgen`        | `boolean`                             | `true`                                              | Whether to use result of vue-docgen-api.                                                                                                                                                                    |
+| `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                               |
+| `useDocgen`        | `boolean`                             | `true`                                              | Whether to use result of vue-docgen-api.                                           |
 
 In addition to addon options, we have a component option.
 
