@@ -60,6 +60,8 @@ module.exports = (base, env, defaultConfig) => {
 
 Add `withInfo` decorator then set `info` options to the story.
 
+NOTE: `info` option is required for the addon. If you omit it, it won't work.
+
 ```js
 import { storiesOf } from '@storybook/vue'
 
