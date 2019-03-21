@@ -79,8 +79,8 @@ class Info extends React.Component<Props, State> {
 addons.register(AddonName, api => {
   addons.addPanel(PanelName, {
     title: 'Info(Vue)',
-    render: ({ active }) => (
-      <Info channel={addons.getChannel()} api={api} active={active} />
+    render: ({ active, key }) => (
+      <Info key={key} channel={addons.getChannel()} api={api} active={active} />
     )
   })
 })

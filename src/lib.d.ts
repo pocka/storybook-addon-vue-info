@@ -55,7 +55,7 @@ declare module '@storybook/addons' {
       name: string,
       options: {
         title: string
-        render: SFC<{ active: boolean }>
+        render: SFC<{ active: boolean; key: string }>
       }
     ): void
 
