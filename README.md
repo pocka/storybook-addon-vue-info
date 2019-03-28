@@ -44,15 +44,15 @@ And setup custom webpack loader in order to extract component information with [
 // .storybook/webpack.config.js
 
 // This example uses "Full control mode + default".
-// If you are using other mode, add payload of `defaultConfig.module.rules.push` to rules list.
-module.exports = (base, env, defaultConfig) => {
-  defaultConfig.module.rules.push({
+// If you are using other mode, add payload of `config.module.rules.push` to rules list.
+module.exports = ({ config }) => {
+  config.module.rules.push({
     test: /\.vue$/,
     loader: 'storybook-addon-vue-info/loader',
     enforce: 'post'
   })
 
-  return defaultConfig
+  return config
 }
 ```
 
