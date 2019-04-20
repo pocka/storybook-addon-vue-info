@@ -19,6 +19,10 @@ A Storybook addon that shows Vue component's information.
 
 - [Demo][live examples]
 
+## Requirements
+
+- `@storybook/vue>=4.0.0`
+
 ## Getting started
 
 First, install the addon.
