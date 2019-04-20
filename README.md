@@ -153,6 +153,29 @@ storiesOf('MyComponent', module)
   )
 ```
 
+### Loader options
+
+You can pass options for vue-docgen-api through loader options (e.g. module alias).
+
+```js
+// .storybook/webpack.config.js
+
+module.exports = ({ config }) => {
+  config.module.rules.push({
+    test: /\.vue$/,
+    loader: 'storybook-addon-vue-info/loader',
+    options: {
+      docgenOptions: {
+        // options for vue-docgen-api...
+      }
+    },
+    enforce: 'post'
+  })
+
+  return config
+}
+```
+
 ## Example
 
 For real example, see `example` directory.

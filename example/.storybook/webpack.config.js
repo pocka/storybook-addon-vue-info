@@ -1,7 +1,19 @@
+const path = require('path')
+
 module.exports = ({ config }) => {
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    '~': path.resolve(__dirname, '../stories')
+  }
+
   config.module.rules.push({
     test: /\.vue$/,
     loader: 'storybook-addon-vue-info/loader',
+    options: {
+      docgenOptions: {
+        alias: config.resolve.alias
+      }
+    },
     enforce: 'post'
   })
 
