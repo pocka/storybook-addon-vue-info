@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue'
 
-import dedent from 'dedent'
+import dedent from 'dedent-tabs'
 
 import XWrapper from './index.vue'
 

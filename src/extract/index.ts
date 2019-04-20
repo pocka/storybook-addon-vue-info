@@ -1,4 +1,4 @@
-import dedent from 'dedent'
+import dedent from 'dedent-tabs'
 import hljs from 'highlight.js'
 import marked from 'marked'
 import Vue, { ComponentOptions } from 'vue'

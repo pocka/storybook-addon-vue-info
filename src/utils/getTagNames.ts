@@ -1,4 +1,4 @@
-import dedent from 'dedent'
+import dedent from 'dedent-tabs'
 import { VNodeChildren } from 'vue'
 import { ASTElement, compile } from 'vue-template-compiler'
 
