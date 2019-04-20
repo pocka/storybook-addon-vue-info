@@ -1,5 +1,5 @@
 <script>
-import MyMixin from './mixin.vue'
+import MyMixin from '~/issues/86/mixin.vue'
 
 export default {
   mixins: [MyMixin]
