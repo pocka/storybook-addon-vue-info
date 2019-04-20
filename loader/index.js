@@ -1,4 +1,6 @@
+const clone = require('clone')
 const docgen = require('vue-docgen-api')
+const loaderUtils = require('loader-utils')
 const qs = require('querystring')
 
 module.exports = function(content, map) {
@@ -11,7 +13,9 @@ module.exports = function(content, map) {
   }
 
   try {
-    const info = docgen.parse(this.resourcePath)
+    const options = clone(loaderUtils.getOptions(this)) || {}
+
+    const info = docgen.parse(this.resourcePath, options.docgenOptions)
 
     const js =
       content +
