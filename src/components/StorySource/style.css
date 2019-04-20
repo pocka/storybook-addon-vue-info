@@ -1,4 +1,4 @@
-.codeBlock {
+.codeBlock.codeBlock {
   margin: -8px;
   padding: 16px;
 
@@ -6,7 +6,7 @@
   background-color: #eee;
 }
 
-.codeBlock > code {
+.codeBlock.codeBlock > code {
   font-size: 12px;
 
   font-family: 'Roboto Mono', monospace;
