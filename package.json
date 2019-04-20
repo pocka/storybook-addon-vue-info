@@ -73,9 +73,9 @@
   },
   "peerDependencies": {
     "@storybook/addons": ">=4",
-    "@storybook/vue": "*",
+    "@storybook/vue": ">=4",
     "react": "*",
-    "vue": "^2.0.0"
+    "vue": ">=2.0.0"
   },
   "prettier": {
     "semi": false,
