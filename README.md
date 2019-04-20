@@ -19,6 +19,10 @@ A Storybook addon that shows Vue component's information.
 
 - [Demo][live examples]
 
+## Requirements
+
+- `@storybook/vue>=4.0.0`
+
 ## Getting started
 
 First, install the addon.
@@ -147,6 +151,29 @@ storiesOf('MyComponent', module)
       info: true
     }
   )
+```
+
+### Loader options
+
+You can pass options for vue-docgen-api through loader options (e.g. module alias).
+
+```js
+// .storybook/webpack.config.js
+
+module.exports = ({ config }) => {
+  config.module.rules.push({
+    test: /\.vue$/,
+    loader: 'storybook-addon-vue-info/loader',
+    options: {
+      docgenOptions: {
+        // options for vue-docgen-api...
+      }
+    },
+    enforce: 'post'
+  })
+
+  return config
+}
 ```
 
 ## Example

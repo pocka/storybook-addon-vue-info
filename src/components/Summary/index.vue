@@ -39,6 +39,4 @@ export default {
   <section v-else :class="$style.container" v-html="markdownHtml" />
 </template>
 
-<style src="../../../node_modules/highlight.js/styles/github.css" />
-
 <style module src="./style.css" />

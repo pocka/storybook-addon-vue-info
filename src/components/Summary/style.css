@@ -30,11 +30,11 @@
 }
 
 .container a {
-  color: #0D7CCD;
+  color: #0d7ccd;
 }
 
-.container pre,
-.container code {
+.container.container pre,
+.container.container code {
   font-size: 12px;
   padding: 4px 8px;
 
@@ -43,13 +43,13 @@
   border-radius: 4px;
 }
 
-.container pre {
+.container.container pre {
   display: block;
   padding: 16px;
   margin: 16px 0;
 }
 
-.container pre > code {
+.container.container pre > code {
   padding: 0;
   background-color: transparent;
   border-radius: 0;

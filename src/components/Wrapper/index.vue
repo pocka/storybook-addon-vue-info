@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <x-docs>
+  <x-docs class="storybook-addon-vue-info">
     <x-header
       v-if="options.header"
       :title="info.title"
@@ -48,3 +48,9 @@ export default {
     <x-component v-for="c in info.components" :key="c.name" :component="c" />
   </x-docs>
 </template>
+
+<style lang="less">
+.storybook-addon-vue-info {
+  @import (less) '../../../node_modules/highlight.js/styles/github.css';
+}
+</style>
