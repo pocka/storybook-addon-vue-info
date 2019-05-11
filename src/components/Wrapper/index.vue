@@ -37,7 +37,13 @@ export default {
       :title="info.title"
       :subtitle="info.subtitle"
     />
-    <x-preview v-if="!options.docsInPanel"> <slot /> </x-preview>
+    <x-preview
+      v-if="!options.docsInPanel"
+      :custom-class-name="options.previewClassName"
+      :custom-style="options.previewStyle"
+    >
+      <slot />
+    </x-preview>
     <x-summary :markdown="info.summary" />
     <x-story-source
       v-if="options.source"

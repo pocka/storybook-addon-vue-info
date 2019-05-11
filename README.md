@@ -118,6 +118,8 @@ For more details, see [live examples].
 | `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                     |
 | `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                              |
 | `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                    |
+| `previewClassName` | `string`                              | `undefined`                                         | Class name passed down to preview container.                                       |
+| `previewStyle`     | Style object                          | `undefined`                                         | Style passed down to preview container.                                            |
 | `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                           |
 | `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. |
 | `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                               |

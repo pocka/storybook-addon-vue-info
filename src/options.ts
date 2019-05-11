@@ -31,6 +31,9 @@ export interface InfoAddonOptions {
    */
   summary: string
 
+  previewClassName?: string
+  previewStyle?: ElementCSSInlineStyle
+
   /**
    * Explicitly specify components to display info
    */

@@ -233,6 +233,27 @@ storiesOf('Examples/Advance usage', module)
     }
   )
   .add(
+    'Apply custom styles to preview',
+    () => ({
+      components: { BaseButton },
+      template: '<base-button label="I\'m a button!"/>'
+    }),
+    {
+      info: {
+        docsInPanel: false,
+        previewClassName: 'my-custom-class-name',
+        previewStyle: {
+          backgroundColor: 'tomato',
+          padding: '1em'
+        },
+        summary: `
+        You can customize preview wrapper style by
+        passing \`previewClassName\` option or \`previewStyle\` option.
+      `
+      }
+    }
+  )
+  .add(
     'Customize docs',
     () => ({
       components: { BaseButton },
