@@ -2,17 +2,19 @@
 import XSectionContainer from '../SectionContainer/index.vue'
 
 export default {
+  components: { XSectionContainer },
   props: {
     customClassName: {
       type: String,
-      required: false
+      required: false,
+      default: undefined
     },
     customStyle: {
       type: Object,
-      required: false
+      required: false,
+      default: undefined
     }
-  },
-  components: { XSectionContainer }
+  }
 }
 </script>
 

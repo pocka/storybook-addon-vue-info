@@ -39,8 +39,8 @@ export default {
     />
     <x-preview
       v-if="!options.docsInPanel"
-      :customClassName="options.previewClassName"
-      :customStyle="options.previewStyle"
+      :custom-class-name="options.previewClassName"
+      :custom-style="options.previewStyle"
     >
       <slot />
     </x-preview>
