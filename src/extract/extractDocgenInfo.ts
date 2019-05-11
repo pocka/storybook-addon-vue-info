@@ -12,7 +12,7 @@ export function extractDocgenInfo(component: AnyComponent): Extracted {
 
         return {
           name,
-          type: prop.type.name,
+          type: prop.type ? prop.type.name : 'any',
           required: !!prop.required,
           default: prop.defaultValue ? prop.defaultValue.value : undefined,
           description: prop.description
