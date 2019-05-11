@@ -54,6 +54,6 @@ it('Renderes attributes and props', () => {
     })
 
   expect(getJSXFromRenderFn(render)).toBe(
-    '<div foo="foo" bar={false} label="baz" onClick={function (ev) {return console.log(ev);}}/>'
+    '<div foo="foo" bar={false} label="baz" onClick={function (ev) { return console.log(ev); }}/>'
   )
 })

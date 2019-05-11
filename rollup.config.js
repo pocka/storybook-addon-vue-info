@@ -33,11 +33,20 @@ const commonConfig = {
     vue(),
     babel({
       exclude: '!node_modules/**',
-      presets: [['env', { modules: false }]],
-      plugins: ['external-helpers']
+      presets: [['@babel/preset-env', { modules: false }]],
+      externalHelpers: true
     })
   ],
-  external: ['vue', 'dedent', 'marked', 'highlight.js', 'vue-template-compiler', 'react', 'vuera', '@storybook/addons']
+  external: [
+    'vue',
+    'dedent',
+    'marked',
+    'highlight.js',
+    'vue-template-compiler',
+    'react',
+    'vuera',
+    '@storybook/addons'
+  ]
 }
 
 export default [
