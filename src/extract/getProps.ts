@@ -57,7 +57,7 @@ export function getProps(component: AnyComponent): PropInfo[] {
 
     return {
       name,
-      type: constructorToString(propDef.type),
+      type: propDef.type ? constructorToString(propDef.type) : 'any',
       required: propDef.required,
       default: default$
     }
