@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .label {
@@ -10,14 +11,17 @@
   margin-bottom: 8px;
 }
 
+.contents {
+  overflow: auto;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
 .table {
   position: relative;
   font-size: 12px;
   width: 100%;
   border-spacing: 0;
-
-  border: 1px solid #333;
-  border-radius: 4px;
 }
 
 .table thead {
