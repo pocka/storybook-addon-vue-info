@@ -12,9 +12,11 @@ export default {
 <template>
   <div :class="$style.container">
     <label v-if="label" :class="$style.label">{{ label }}</label>
-    <table :class="$style.table">
-      <slot />
-    </table>
+    <div :class="$style.contents">
+      <table :class="$style.table">
+        <slot />
+      </table>
+    </div>
   </div>
 </template>
 
