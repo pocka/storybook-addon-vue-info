@@ -52,7 +52,7 @@ export function getProps(component: AnyComponent): PropInfo[] {
         default$ = 'Failed to get default value'
       }
     } else {
-      default$ = 'default' in propDef ? JSON.stringify(propDef.default) : ''
+      default$ = typeof propDef === 'object' && 'default' in propDef ? JSON.stringify(propDef.default) : ''
     }
 
     return {
