@@ -38,49 +38,37 @@ export function extract(
     if (options.useDocgen && '__docgenInfo' in component) {
       const partial = extractDocgenInfo(component)
 
-      // tslint:disable-next-line:no-shadowed-variable
-      const props = partial.props
-        ? partial.props.map(prop => {
-            if (prop.name in propDescriptions) {
-              return {
-                ...prop,
-                description: propDescriptions[prop.name]
-              }
+      const hydrateStoryDescription = <
+        T extends { name: string; description?: string }
+      >(
+        defs: T[],
+        description: Description
+      ): T[] => {
+        return defs.map(def => {
+          if (def.name in description) {
+            return {
+              ...def,
+              description: description[def.name]
             }
+          }
 
-            return prop
-          })
-        : []
+          return def
+        })
+      }
 
-      // tslint:disable-next-line:no-shadowed-variable
-      const events = partial.events
-        ? partial.events.map(event => {
-            if (event.name in eventDescriptions) {
-              return {
-                ...event,
-                description: eventDescriptions[event.name]
-              }
-            }
-
-            return event
-          })
-        : []
-
-      // tslint:disable-next-line:no-shadowed-variable
-      const slots = partial.slots
-        ? partial.slots.map(slot => {
-            if (slot.name in slotDescriptions) {
-              return {
-                ...slot,
-                description: slotDescriptions[slot.name]
-              }
-            }
-
-            return slot
-          })
-        : []
-
-      return { name, ...partial, props, events, slots }
+      return {
+        name,
+        ...partial,
+        props:
+          partial.props &&
+          hydrateStoryDescription(partial.props, propDescriptions),
+        events:
+          partial.events &&
+          hydrateStoryDescription(partial.events, eventDescriptions),
+        slots:
+          partial.slots &&
+          hydrateStoryDescription(partial.slots, slotDescriptions)
+      }
     }
 
     const props = getProps(component).map(prop => {
