@@ -21,11 +21,19 @@ export function extract(
 ): StoryInfo {
   const targets = decideTargets(story, options)
 
-  const propsDescription = formatPropsDescription(story)
+  const descriptions =
+    getDescriptionsFromStory(story) || formatPropsDescription(story)
 
   const components = Object.keys(targets).map<ComponentInfo>(name => {
     const component = targets[name]
     const kebabName = hyphenate(name)
+
+    const propDescriptions =
+      (descriptions[kebabName] && descriptions[kebabName].props) || {}
+    const eventDescriptions =
+      (descriptions[kebabName] && descriptions[kebabName].events) || {}
+    const slotDescriptions =
+      (descriptions[kebabName] && descriptions[kebabName].slots) || {}
 
     if (options.useDocgen && '__docgenInfo' in component) {
       const partial = extractDocgenInfo(component)
@@ -33,13 +41,10 @@ export function extract(
       // tslint:disable-next-line:no-shadowed-variable
       const props = partial.props
         ? partial.props.map(prop => {
-            if (
-              kebabName in propsDescription &&
-              prop.name in propsDescription[kebabName]
-            ) {
+            if (prop.name in propDescriptions) {
               return {
                 ...prop,
-                description: propsDescription[kebabName][prop.name]
+                description: propDescriptions[prop.name]
               }
             }
 
@@ -47,24 +52,61 @@ export function extract(
           })
         : []
 
-      return { name, ...partial, props }
+      const events = partial.events
+        ? partial.events.map(event => {
+            if (event.name in eventDescriptions) {
+              return {
+                ...event,
+                description: eventDescriptions[event.name]
+              }
+            }
+
+            return event
+          })
+        : []
+
+      const slots = partial.slots
+        ? partial.slots.map(slot => {
+            if (slot.name in slotDescriptions) {
+              return {
+                ...slot,
+                description: slotDescriptions[slot.name]
+              }
+            }
+
+            return slot
+          })
+        : []
+
+      return { name, ...partial, props, events, slots }
     }
 
     const props = getProps(component).map(prop => {
-      if (
-        kebabName in propsDescription &&
-        prop.name in propsDescription[kebabName]
-      ) {
+      if (prop.name in propDescriptions) {
         return {
           ...prop,
-          description: propsDescription[kebabName][prop.name]
+          description: propDescriptions[prop.name]
         }
       }
 
       return prop
     })
 
-    return { name, props, events: [], slots: [] }
+    const events = Object.keys(eventDescriptions).map(eventName => {
+      return {
+        name: eventName,
+        description: eventDescriptions[eventName]
+      }
+    })
+
+    const slots = Object.keys(slotDescriptions).map(slotName => {
+      return {
+        name: slotName,
+        description: slotDescriptions[slotName]
+      }
+    })
+
+    return { name, props, events, slots }
   })
 
   // Set up markdown renderer for summary
@@ -89,21 +131,49 @@ export function extract(
   }
 }
 
-interface PropsDescription {
+// Description for props, events and methods.
+interface Description {
+  [name: string]: string
+}
+
+// Description object user
+interface Descriptions {
   [componentName: string]: {
-    [propName: string]: string
+    props?: Description
+    events?: Description
+    slots?: Description
   }
 }
 
-const formatPropsDescription = (story: any): PropsDescription => {
+const getDescriptionsFromStory = (story: any): Descriptions | null => {
+  if (!story.description) {
+    return null
+  }
+
+  const ret: Descriptions = {}
+
+  for (const component of Object.keys(story.description)) {
+    ret[hyphenate(component)] = story.description[component]
+  }
+
+  return ret
+}
+
+const formatPropsDescription = (story: any): Descriptions => {
   if (!story.propsDescription) {
     return {}
   }
 
-  const components: PropsDescription = {}
+  console.warn(
+    '[storybook-addon-vue-info] `propsDescription` is deprecated. Please consider switching to `description.props`'
+  )
+
+  const components: Descriptions = {}
 
   for (const component of Object.keys(story.propsDescription)) {
-    components[hyphenate(component)] = story.propsDescription[component]
+    components[hyphenate(component)] = {
+      props: story.propsDescription[component]
+    }
   }
 
   return components
