@@ -52,6 +52,7 @@ export function extract(
           })
         : []
 
+      // tslint:disable-next-line:no-shadowed-variable
       const events = partial.events
         ? partial.events.map(event => {
             if (event.name in eventDescriptions) {
@@ -65,6 +66,7 @@ export function extract(
           })
         : []
 
+      // tslint:disable-next-line:no-shadowed-variable
       const slots = partial.slots
         ? partial.slots.map(slot => {
             if (slot.name in slotDescriptions) {
