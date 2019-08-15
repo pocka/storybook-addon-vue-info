@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.3] - 2019-08-15
+
+### Security
+
+- Bump marked from 0.6.2 to 0.7.0. (Issue: [#110](https://github.com/pocka/storybook-addon-vue-info/issues/110), Vulnerability detail: [npm](https://github.com/pocka/storybook-addon-vue-info/issues/110))
+
 ## [1.2.2] - 2019-07-26
 
 ### Fixed
