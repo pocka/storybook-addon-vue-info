@@ -106,7 +106,7 @@
     "dedent-tabs": "^0.8.0",
     "highlight.js": "^9.12.0",
     "loader-utils": "^1.2.3",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "querystring": "^0.2.0",
     "vue-docgen-api": "^3.11.4",
     "vue-template-compiler": "^2.5.16",
