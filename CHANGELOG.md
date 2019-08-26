@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `description` story option, which supports descriptions for props, events and slots.
+
+### Deprecated
+
+- Deprecate `propsDescription` in favor of `description`.
+
 ## [1.2.3] - 2019-08-15
 
 ### Security

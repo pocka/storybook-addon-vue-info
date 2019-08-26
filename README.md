@@ -127,9 +127,9 @@ For more details, see [live examples].
 
 In addition to addon options, we have a component option.
 
-### `propsDescription`
+### Set descriptions manually
 
-If you want to explicitly specify desciprion for component props, add `propsDescription` option for your story component.
+If you want to explicitly specify desciprion for component props, events or slots, add `description` option for your story component.
 
 Assume `<my-awesome-component>` have props `label` and `visible`.
 
@@ -141,11 +141,19 @@ storiesOf('MyComponent', module)
     () => ({
       components: { MyAwesomeComponent },
       template: '<my-awesome-component/>',
-      propsDescription: {
+      description: {
         MyAwesomeComponent: {
-          // These description will appear in `description` column in props table
-          label: 'A label for my awesome component',
-          visible: 'Whether component is visible or not'
+          props: {
+            // These description will appear in `description` column in props table
+            label: 'A label for my awesome component',
+            visible: 'Whether component is visible or not'
+          },
+          events: {
+            click: 'Event for user clicking the component'
+          },
+          slots: {
+            default: 'Place text or icon here'
+          }
         }
       }
     }),
@@ -154,6 +162,8 @@ storiesOf('MyComponent', module)
     }
   )
 ```
+
+For more detail, please take a look at [live example](https://storybook-addon-vue-info.netlify.com/?path=/story/examples-advance-usage--set-descriptions-manually).
 
 ### Loader options
 
