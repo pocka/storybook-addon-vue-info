@@ -129,7 +129,8 @@ In addition to addon options, we have a component option.
 
 ### Set descriptions manually
 
-If you want to explicitly specify desciprion for component props, events or slots, add `description` option for your story component.
+With vue-docgen-api, the addon automatically shows descriptions and types extracted by docgen ([see example in vue-docgen-api README](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api#example)).
+However, if you want to explicitly specify desciprion for component props, events or slots, add `description` option for your story component.
 
 Assume `<my-awesome-component>` have props `label` and `visible`.
 
