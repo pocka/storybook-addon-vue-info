@@ -23,8 +23,6 @@ export const withInfo = makeDecorator({
         : parameters)
     }
 
-    const WrappedComponent = getStory(context)
-
     return Vue.extend({
       render(h) {
         const story = h(getStory(context)) as any
