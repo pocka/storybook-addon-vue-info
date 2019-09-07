@@ -8,6 +8,27 @@ import { renderToPanel } from './view'
 
 export * from './components'
 
+function findBottomStorybookWraps(w: any) {
+  while (
+    w &&
+    w.options &&
+    w.options.components &&
+    w.options.components.story &&
+    w.options.components.story.options &&
+    w.options.components.story.options.STORYBOOK_WRAPS
+  ) {
+    w = w.options.components.story.options.STORYBOOK_WRAPS
+  }
+  return w
+}
+
+function getComponentOptions(story: any) {
+  if (story.fnOptions && story.fnOptions.STORYBOOK_WRAPS) {
+    return findBottomStorybookWraps(story.fnOptions.STORYBOOK_WRAPS).options
+  }
+  return ((story.componentOptions && story.componentOptions.Ctor) || {}).options
+}
+
 export const withInfo = makeDecorator({
   name: 'withInfo',
   parameterName: 'info',
@@ -23,18 +44,10 @@ export const withInfo = makeDecorator({
         : parameters)
     }
 
-    const WrappedComponent = getStory(context)
-
     return Vue.extend({
       render(h) {
         const story = h(getStory(context)) as any
-
-        const { options: componentOptions } = (story.fnOptions &&
-          story.fnOptions.STORYBOOK_WRAPS) ||
-          (story.componentOptions && story.componentOptions.Ctor) || {
-            options: undefined
-          }
-
+        const componentOptions = getComponentOptions(story)
         const info = extract(
           componentOptions,
           context.kind,
