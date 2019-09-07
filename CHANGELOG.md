@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2019-09-07
+
+### Fixed
+
+- Ignore story decorators. (Issue: [#50](https://github.com/pocka/storybook-addon-vue-info/issues/50), PR: [#113](https://github.com/pocka/storybook-addon-vue-info/pull/113))
+
 ## [1.3.0] - 2019-08-26
 
 ### Added
