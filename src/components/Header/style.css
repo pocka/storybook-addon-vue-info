@@ -1,4 +1,10 @@
-.title, .subtitle {
+.container {
+  color: #333;
+  font-family: Roboto, sans-serif;
+}
+
+.title,
+.subtitle {
   margin: 0;
 }
 
@@ -13,5 +19,4 @@
   margin-top: 8px;
 
   font-weight: 400;
-  color: #333;
 }
