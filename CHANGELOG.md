@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2019-09-24
+
+### Fixed
+
+- Do not reset preview style with `all: initial`. (Issue: [#21](https://github.com/pocka/storybook-addon-vue-info/issues/21), PR: [#115](https://github.com/pocka/storybook-addon-vue-info/pull/115))
+
 ## [1.3.1] - 2019-09-07
 
 ### Fixed
