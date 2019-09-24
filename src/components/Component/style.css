@@ -1,3 +1,7 @@
+.container {
+  font-family: Roboto, sans-serif;
+}
+
 .container > :not(:first-child) {
   margin-top: 24px;
 }
@@ -6,9 +10,10 @@
   font-size: 24px;
   margin: 0;
 
+  color: #333;
   font-weight: 400;
 }
 
 .required {
-  color: #A01A1A;
+  color: #a01a1a;
 }
