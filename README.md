@@ -1,3 +1,10 @@
+Want to automatically generate beautiful docs or write stories in docs?
+Try [Storybook Docs](https://github.com/storybookjs/storybook/tree/master/addons/docs)!
+
+Docs Mode (docs-addon) is a successor of info-addon, and supports many frameworks/libraries, include Vue.js!
+
+---
+
 <div align="center">
   
   <img src="./assets/logo.png" width="104" alt="logo">
