@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.3] - 2019-11-14
+
+### Deprecated
+
+- Deprecate the custom loader in favor of vue-docgen-loader. (PR: [#121](https://github.com/pocka/storybook-addon-vue-info/pull/121))
+
 ## [1.3.2] - 2019-09-24
 
 ### Fixed
