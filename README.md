@@ -49,7 +49,13 @@ Then register in `addons.js`.
 import 'storybook-addon-vue-info/lib/register'
 ```
 
-And setup custom webpack loader in order to extract component information with [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api).
+And setup a webpack loader in order to extract component information with [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api).
+
+```sh
+npm install --save-dev vue-docgen-loader vue-docgen-api
+
+# yarn add -D vue-docgen-loader vue-docgen-api
+```
 
 ```js
 // .storybook/webpack.config.js
@@ -59,7 +65,7 @@ And setup custom webpack loader in order to extract component information with [
 module.exports = ({ config }) => {
   config.module.rules.push({
     test: /\.vue$/,
-    loader: 'storybook-addon-vue-info/loader',
+    loader: 'vue-docgen-loader',
     enforce: 'post'
   })
 
@@ -172,29 +178,6 @@ storiesOf('MyComponent', module)
 ```
 
 For more detail, please take a look at [live example](https://storybook-addon-vue-info.netlify.com/?path=/story/examples-advance-usage--set-descriptions-manually).
-
-### Loader options
-
-You can pass options for vue-docgen-api through loader options (e.g. module alias).
-
-```js
-// .storybook/webpack.config.js
-
-module.exports = ({ config }) => {
-  config.module.rules.push({
-    test: /\.vue$/,
-    loader: 'storybook-addon-vue-info/loader',
-    options: {
-      docgenOptions: {
-        // options for vue-docgen-api...
-      }
-    },
-    enforce: 'post'
-  })
-
-  return config
-}
-```
 
 ## Example
 

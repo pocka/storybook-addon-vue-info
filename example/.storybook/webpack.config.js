@@ -8,7 +8,7 @@ module.exports = ({ config }) => {
 
   config.module.rules.push({
     test: /\.vue$/,
-    loader: 'storybook-addon-vue-info/loader',
+    loader: 'vue-docgen-loader',
     options: {
       docgenOptions: {
         alias: config.resolve.alias
