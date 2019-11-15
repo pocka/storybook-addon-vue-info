@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.4] - 2019-11-15
+
+### Fixed
+
+- Fix compatibility issue with vue-docgen-api@4.
+
 ## [1.3.3] - 2019-11-14
 
 ### Deprecated
