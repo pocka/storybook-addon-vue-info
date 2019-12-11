@@ -102,6 +102,7 @@
     ]
   },
   "dependencies": {
+    "change-case": "^4.1.0",
     "clone": "^2.1.2",
     "dedent-tabs": "^0.8.0",
     "highlight.js": "^9.12.0",

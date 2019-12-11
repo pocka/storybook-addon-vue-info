@@ -1,6 +1,5 @@
+import { paramCase } from 'change-case'
 import Vue from 'vue'
-
-import hyphenate from '../utils/hyphenate'
 
 import { AnyComponent } from '../types/vue'
 
@@ -15,7 +14,7 @@ export interface LookupResult {
  */
 export function lookupGlobalComponent(name: string): LookupResult | null {
   for (const componentName in (Vue as any).options.components) {
-    if (hyphenate(componentName) === name) {
+    if (paramCase(componentName) === name) {
       const target = (Vue as any).options.components[componentName]
 
       return {

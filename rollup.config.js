@@ -38,6 +38,7 @@ const commonConfig = {
     })
   ],
   external: [
+    'change-case',
     'vue',
     'dedent',
     'marked',
