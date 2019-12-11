@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2019-12-11
+
+### Added
+
+- Add `casing` option. (Issue: [#122](https://github.com/pocka/storybook-addon-vue-info/issues/122), PR: [#123](https://github.com/pocka/storybook-addon-vue-info/pull/123))
+
 ## [1.3.4] - 2019-11-15
 
 ### Fixed
