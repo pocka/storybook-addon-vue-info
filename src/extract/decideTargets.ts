@@ -1,5 +1,5 @@
-import Vue, { ComponentOptions } from 'vue'
 import { paramCase } from 'change-case'
+import Vue, { ComponentOptions } from 'vue'
 
 import { InfoAddonOptions } from '../options'
 import { ComponentRegistory } from '../types/vue'

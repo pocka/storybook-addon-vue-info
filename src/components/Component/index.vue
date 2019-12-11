@@ -1,4 +1,5 @@
 <script>
+import { paramCase, camelCase, pascalCase } from 'change-case'
 import XTable from '../Table/index.vue'
 
 export default {
@@ -11,11 +12,35 @@ export default {
     component: {
       type: Object,
       required: true
+    },
+    /**
+     * Case conversion
+     * See components/Wrapper/index.vue
+     */
+    casing: {
+      type: Object,
+      required: true
     }
   },
   computed: {
     title() {
-      return `# <${this.component.name}/>`
+      return `# <${this.normalizeCase(this.component.name, 'component')}/>`
+    }
+  },
+  methods: {
+    normalizeCase(name, attr) {
+      switch (this.casing[attr]) {
+        case void 0:
+          return name
+        case 'kebab':
+        case 'kebab-case':
+          return paramCase(name)
+        case 'camel':
+        case 'camelCase':
+        case 'pascalCase':
+        case 'PascalCase':
+          return attr === 'component' ? pascalCase(name) : camelCase(name)
+      }
     }
   }
 }
@@ -36,7 +61,7 @@ export default {
       <tbody>
         <tr v-for="prop in component.props" :key="prop.name">
           <td>
-            {{ prop.name }}
+            {{ normalizeCase(prop.name, 'props') }}
             <sup v-if="prop.required" :class="$style.required">*</sup>
           </td>
           <td>{{ prop.type }}</td>
