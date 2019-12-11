@@ -1,9 +1,9 @@
-import Vue, { AsyncComponent, Component, ComponentOptions } from 'vue'
+import { paramCase } from 'change-case'
+import Vue, { ComponentOptions } from 'vue'
 
 import { InfoAddonOptions } from '../options'
 import { ComponentRegistory } from '../types/vue'
 import * as getTagNames from '../utils/getTagNames'
-import { hyphenate } from '../utils/hyphenate'
 
 import { lookupGlobalComponent, LookupResult } from './lookup'
 
@@ -29,7 +29,7 @@ export function decideTargets(
   }
 
   const tagNames = story.template
-    ? getTagNames.fromTemplate(story.template).map(hyphenate)
+    ? getTagNames.fromTemplate(story.template).map(s => paramCase(s))
     : getTagNames.fromJSX(story.render!)
 
   const components = tagNames

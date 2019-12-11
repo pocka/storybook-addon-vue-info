@@ -1,3 +1,4 @@
+import { paramCase } from 'change-case'
 import dedent from 'dedent-tabs'
 import hljs from 'highlight.js'
 import marked from 'marked'
@@ -5,9 +6,7 @@ import Vue, { ComponentOptions } from 'vue'
 
 import { InfoAddonOptions } from '../options'
 import { ComponentInfo, StoryInfo } from '../types/info'
-import { AnyComponent } from '../types/vue'
 import { getJSXFromRenderFn } from '../utils/getJSXFromRenderFn'
-import { hyphenate } from '../utils/hyphenate'
 
 import { decideTargets } from './decideTargets'
 import { extractDocgenInfo } from './extractDocgenInfo'
@@ -26,7 +25,7 @@ export function extract(
 
   const components = Object.keys(targets).map<ComponentInfo>(name => {
     const component = targets[name]
-    const kebabName = hyphenate(name)
+    const kebabName = paramCase(name)
 
     const propDescriptions =
       (descriptions[kebabName] && descriptions[kebabName].props) || {}
@@ -143,7 +142,7 @@ const getDescriptionsFromStory = (story: any): Descriptions | null => {
   const ret: Descriptions = {}
 
   for (const component of Object.keys(story.description)) {
-    ret[hyphenate(component)] = story.description[component]
+    ret[paramCase(component)] = story.description[component]
   }
 
   return ret
@@ -161,7 +160,7 @@ const formatPropsDescription = (story: any): Descriptions => {
   const components: Descriptions = {}
 
   for (const component of Object.keys(story.propsDescription)) {
-    components[hyphenate(component)] = {
+    components[paramCase(component)] = {
       props: story.propsDescription[component]
     }
   }

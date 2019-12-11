@@ -126,17 +126,47 @@ For more details, see [live examples].
 
 ## Options
 
-| Name               | Data type                             | Default value                                       | Description                                                                        |
-| ------------------ | ------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `header`           | `boolean`                             | `true`                                              | Whether to show header or not.                                                     |
-| `source`           | `boolean`                             | `true`                                              | Whether to show source(usage) or not.                                              |
-| `wrapperComponent` | `Component`                           | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                    |
-| `previewClassName` | `string`                              | `undefined`                                         | Class name passed down to preview container.                                       |
-| `previewStyle`     | Style object                          | `undefined`                                         | Style passed down to preview container.                                            |
-| `summary`          | `string`                              | `''`                                                | Summary for the story. Accepts Markdown.                                           |
-| `components`       | `{ [name: string]: Component }\|null` | `null`                                              | Display info for these components. Same type as component's `components` property. |
-| `docsInPanel`      | `boolean`                             | `true`                                              | Whether to show docs in addon panel.                                               |
-| `useDocgen`        | `boolean`                             | `true`                                              | Whether to use result of vue-docgen-api.                                           |
+| Name               | Data type                                     | Default value                                       | Description                                                                        |
+| ------------------ | --------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `header`           | `boolean`                                     | `true`                                              | Whether to show header or not.                                                     |
+| `source`           | `boolean`                                     | `true`                                              | Whether to show source(usage) or not.                                              |
+| `wrapperComponent` | `Component`                                   | [default wrapper](src/components/Wrapper/index.vue) | Override inline docs component.                                                    |
+| `previewClassName` | `string`                                      | `undefined`                                         | Class name passed down to preview container.                                       |
+| `previewStyle`     | Style object                                  | `undefined`                                         | Style passed down to preview container.                                            |
+| `summary`          | `string`                                      | `''`                                                | Summary for the story. Accepts Markdown.                                           |
+| `components`       | `{ [name: string]: Component }\|null`         | `null`                                              | Display info for these components. Same type as component's `components` property. |
+| `docsInPanel`      | `boolean`                                     | `true`                                              | Whether to show docs in addon panel.                                               |
+| `useDocgen`        | `boolean`                                     | `true`                                              | Whether to use result of vue-docgen-api.                                           |
+| `casing`           | `"kebab" \| "camel" \| "pascal" \| undefined` | `undefined`                                         | Which case to use. For detailed usage, see below.                                  |
+
+### Valid `casing` options
+
+```js
+{
+  // Don't convert names
+  casing: undefined
+}
+
+{
+  // Show names in kebab-case
+  casing 'kebab'
+}
+
+{
+  // Show prop names in camelCase and
+  // Show component names in PascalCase
+  casing: 'camel' // or 'pascal'
+}
+
+{
+  // Show prop names in camelCase and
+  // Show component names in kebab-case
+  casing: {
+    props: 'camel',
+    component: 'kebab'
+  }
+}
+```
 
 In addition to addon options, we have a component option.
 

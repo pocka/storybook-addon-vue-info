@@ -26,6 +26,20 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    casing() {
+      return {
+        component:
+          typeof this.options.casing === 'string' || !this.options.casing
+            ? this.options.casing
+            : this.options.casing.component,
+        props:
+          typeof this.options.casing === 'string' || !this.options.casing
+            ? this.options.casing
+            : this.options.casing.props
+      }
+    }
   }
 }
 </script>
@@ -51,7 +65,12 @@ export default {
       :lang="info.jsxStory ? 'jsx' : 'html'"
     />
     <x-separator />
-    <x-component v-for="c in info.components" :key="c.name" :component="c" />
+    <x-component
+      v-for="c in info.components"
+      :key="c.name"
+      :component="c"
+      :casing="casing"
+    />
   </x-docs>
 </template>
 
