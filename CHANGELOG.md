@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2019-12-19
+
+### Fixed
+
+- Fix incorrect component detection.
+
 ## [1.4.0] - 2019-12-11
 
 ### Added
