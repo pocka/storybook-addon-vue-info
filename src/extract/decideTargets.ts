@@ -50,7 +50,9 @@ const normalizeComponents = (c: ComponentRegistory): ComponentRegistory => {
 
   // There are cases component options only exists under "options" property
   for (const key of Object.keys(c)) {
-    ret[key] = (c[key] as any).options || c[key]
+    ret[key] = (c[key] as any).__docgenInfo
+      ? c[key]
+      : (c[key] as any).options || c[key]
   }
 
   return ret
