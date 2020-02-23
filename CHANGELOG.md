@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.2] - 2020-02-24
+
+### Fixed
+
+- Stringify function props' default value. (Issue: [#126](https://github.com/pocka/storybook-addon-vue-info/issues/126), PR: [#127](https://github.com/pocka/storybook-addon-vue-info/pull/127))
+
 ## [1.4.1] - 2019-12-19
 
 ### Fixed
