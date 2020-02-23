@@ -41,7 +41,9 @@ export function getProps(component: AnyComponent): PropInfo[] {
 
     let default$
 
-    if (typeof propDef.default === 'function') {
+    if (propDef.type === Function && propDef.default) {
+      default$ = propDef.default.toString()
+    } else if (typeof propDef.default === 'function') {
       try {
         default$ = JSON.stringify(propDef.default.apply(component))
       } catch (e) {
