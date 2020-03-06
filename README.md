@@ -1,7 +1,82 @@
-Want to automatically generate beautiful docs or write stories in docs?
-Try [Storybook Docs](https://github.com/storybookjs/storybook/tree/master/addons/docs)!
+## Deprecated
 
-Docs Mode (docs-addon) is a successor of info-addon, and supports many frameworks/libraries, include Vue.js!
+This addon is deprecated due to [the retirement of official addon-info](https://github.com/storybookjs/deprecated-addons).
+
+Storybook now has an alternative addon, called [Docs addon(`addon-docs`)](https://github.com/storybookjs/storybook/tree/next/addons/docs),
+which comes with native Vue.js support and automatically props/events/slots documentation powered by vue-docgen-api.
+
+There will be no feature addition nor bug fixes to this repo. Please use Docs addon instead.
+
+### Migration to Docs
+
+As described above, Docs addon uses `vue-docgen-api` via `vue-docgen-loader`.
+They are also the tools `storybook-addon-vue-info` uses internally.
+So the migration steps is quite simple.
+
+#### docgen tools are no longer `peerDependencies`
+
+Since the Docs addon specifies `vue-docgen-api` and `vue-docgen-loader` as direct dependency,
+you don't have to list them in your `package.json`.
+
+```diff
+ "dependencies": {
+-  "vue-docgen-api": "x.x.x",
+-  "vue-docgen-loader": "x.x.x"
+ }
+```
+
+Of course, you can keep them to controll which exact versions to use.
+
+#### Explicitly specify which component to documentate
+
+You need to set `component` field in your story metadata.
+
+```js
+// foo.stories.js
+import MyComponent from './my-component.vue'
+
+export default {
+  title: 'Components/MyComponent',
+  component: MyComponent
+}
+
+export const story = () => ({
+  components: { MyComponent },
+  template: '<my-component/>'
+})
+```
+
+#### Move `summary` inside a JSDoc comment or MDX
+
+`summary` option equivalent in Docs addon is component comments or MDX.
+Docs addon reads a component comment and displays it as a description for the component.
+
+```js
+// legacy.stories.js
+export const myStory = () => ({
+  /* ... */
+})
+
+myStory.story = {
+  info: {
+    summary: 'foo bar'
+  }
+}
+```
+
+```html
+<!-- component -->
+<script>
+  /**
+   * foo bar
+   */
+  export default {
+    /* ... */
+  }
+</script>
+```
+
+Or you can use [MDX](https://github.com/storybookjs/storybook/tree/next/addons/docs#mdx) for more complicated usage.
 
 ---
 
